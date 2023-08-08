@@ -61,11 +61,11 @@ Class FB_FairyBall1 : FB_BHProjBase
 		A_SpawnParticleEx
 		(
 		"",
-		TexMan.CheckForTexture("DTPRB0"),
+		TexMan.CheckForTexture("SPKBA0"),
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(2,8),
-		size: random(60,150),
+		size: random(60,140),
 		angle: 0,
 		xoff: 0,
 		yoff: 0,
