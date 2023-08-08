@@ -1,0 +1,5 @@
+version "4.10.0"
+
+#include "Actors/FBBase.txt"
+
+#include "Actors/Monsters/Fairy.txt"
