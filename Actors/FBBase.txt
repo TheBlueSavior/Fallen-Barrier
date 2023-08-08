@@ -1,82 +1,95 @@
-Class FB_BHProjBase : Actor
+Class FB_FairyBase : Actor
 {
-   Default
+  int attacktype;
+  int attackloop;
+  Default
+  {
+    Health 20;
+    Radius 16;
+    Height 30;
+    Mass 50;
+    MeleeRange 100;
+	MeleeThreshold 180;
+    Speed 3;
+    Scale 1;
+	Painchance 128;
+    Tag "Fairy";
+    Monster;
+    +DONTHARMCLASS
+    +NOGRAVITY
+    +FLOAT
+    +FLOATBOB
+    +DONTFALL
+    +NOICEDEATH
+	+AVOIDMELEE
+	FloatBobStrength 0.5;
+	//MinMissileChance 240;
+	//TeleFogSourceType "PM_SmallDemonicTeleportFog";
+	//TeleFogDestType "PM_SmallDemonicTeleportFog";
+  }
+  
+  state FairyChoose(statelabel s1, statelabel s2, statelabel s3, statelabel s4)
+  {
+   switch(attacktype)
    {
-   Height 3;
-   Radius 3;
-   Projectile;
-   RenderStyle "Add";
-   +BRIGHT
-   SeeSound "FB/BulletHellFire";
-   DeathSound "FB/BulletHellHit";
-   -NOBLOCKMAP
-   +FORCEXYBILLBOARD 
-   +ROLLSPRITE
-   +ROLLCENTER
+    case 1: return ResolveState(s1); break;
+	case 2: return ResolveState(s2); break;
+	case 3: return ResolveState(s3); break;
+	case 4: return ResolveState(s4); break;
    }
-   
-   override bool CanCollideWith(Actor other, bool passive)
-   { return !other.bISMONSTER && Super.CanCollideWith(other,passive); }
-}
+   return ResolveState(null);
+  }
 
-Class FB_FairyBall1 : FB_BHProjBase
-{
-   Default
-   {
-   Speed 15;
-   Damagefunction 10;
-   Scale 0.8;
-   Alpha 0.9;
-   }
-   States
-   {
-   Spawn:
-	  TNT1 A 0;
-	  TNT1 AA 0
-	  {
-	  A_SpawnParticleEx
-		(
-		"",
-		TexMan.CheckForTexture("DTPRB0"),
-		style: STYLE_Add,
-		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
-		lifetime: random(3,8),
-		size: random(40,80),
-		angle: 0,
-		xoff: 0,
-		yoff: 0,
-		zoff: 0,
-		startalphaf: 1,
-		fadestepf: -1,
-		sizestep: -6,
-		startroll: random(-180,180)
-		);
-	}
-   Go:
-      BH_B B 1 Bright A_SetRoll(roll+25);
+  States
+  {
+  Spawn:
+    FA_1 AB 5 A_Look();
     Loop;
-   Death:
-		TNT1 AA 0
-		{
-		A_SpawnParticleEx
-		(
-		"",
-		TexMan.CheckForTexture("DTPRB0"),
-		style: STYLE_Add,
-		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
-		lifetime: random(2,8),
-		size: random(60,150),
-		angle: 0,
-		xoff: 0,
-		yoff: 0,
-		zoff: 0,
-		startalphaf: 0.95,
-		fadestepf: -1,
-		sizestep: -15,
-		startroll: random(-180,180)
-		);
-		}
-	  TNT1 A 5 Light("SoulHarvesterBall7");
-      Stop;
-	  }
+  See:
+    FA_1 AABB 1 A_Chase();
+    Loop;
+  WanderAttack:
+	FA_1 AABBAABBAABBAABBAABB 1
+	{
+		A_Chase("Missile","Missile",CHF_DONTMOVE);
+		A_Wander();
+		A_FaceTarget();
+	}
+	FA_1 A 0 A_CheckSight("See");
+	Loop;
+  Realign:
+	FA_1 AABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABB 1 A_Wander();
+	Goto See;
+  Missile:
+	TNT1 A 0 A_CheckLOF("MissileProceed");
+    Goto Realign;
+  MissileProceed:
+  Bullet1:
+    TNT1 A 0 { attackloop = random(-2,0); }
+	FA_1 A 3 
+	{
+	if(attackloop <= 0)
+	SetStateLabel("Cooldown");
+	A_SpawnProjectile("FB_FairyBall1",10);
+	}
+	Loop;
+  Melee:
+    FA_1 AABB 1;
+    Goto CoolDown;
+  CoolDown:
+	FA_1 AABBAABBAABB 1 A_Wander();
+	Goto WanderAttack;
+  Pain:
+	FA_1 A 1;
+	FA_1 A 1 A_Pain();
+	FA_1 A 4; 
+	Goto See;
+  Death:
+    TNT1 A 0;
+	FA_1 A 1 A_Scream();
+	FA_1 A 1 A_NoBlocking();
+  DeathFade:
+	FA_1 A 1 A_FadeOut(0.1);
+    Loop;
+  }
 }
