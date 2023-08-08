@@ -1,5 +1,7 @@
-Class FB_Fairy : Actor
+Class FB_FairyBase : Actor
 {
+  int attacktype;
+  int attackloop;
   Default
   {
     Health 20;
@@ -11,13 +13,9 @@ Class FB_Fairy : Actor
     Speed 3;
     Scale 1;
 	Painchance 128;
-    SeeSound "";
-    DeathSound "FB/FairyDeath";
-    AttackSound "";
-	PainSound "FB/FairyPain";
     Tag "Fairy";
     Monster;
-    +DONTHURTSPECIES
+    +DONTHARMCLASS
     +NOGRAVITY
     +FLOAT
     +FLOATBOB
@@ -26,9 +24,20 @@ Class FB_Fairy : Actor
 	+AVOIDMELEE
 	FloatBobStrength 0.5;
 	//MinMissileChance 240;
-	Obituary "%o was swiftly destroyed by a possessed Fairy.";
 	//TeleFogSourceType "PM_SmallDemonicTeleportFog";
 	//TeleFogDestType "PM_SmallDemonicTeleportFog";
+  }
+  
+  state FairyChoose(statelabel s1, statelabel s2, statelabel s3, statelabel s4)
+  {
+   switch(attacktype)
+   {
+    case 1: return ResolveState(s1); break;
+	case 2: return ResolveState(s2); break;
+	case 3: return ResolveState(s3); break;
+	case 4: return ResolveState(s4); break;
+   }
+   return ResolveState(null);
   }
 
   States
@@ -56,14 +65,20 @@ Class FB_Fairy : Actor
     Goto Realign;
   MissileProceed:
   Bullet1:
-	FA_1 A 3 A_SpawnProjectile("FB_FairyBall1",10);
-	Goto CoolDown;
-  CoolDown:
-	FA_1 AABBAABBAABB 1 A_Wander();
-	Goto WanderAttack;
+    TNT1 A 0 { attackloop = random(-2,0); }
+	FA_1 A 3 
+	{
+	if(attackloop <= 0)
+	SetStateLabel("Cooldown");
+	A_SpawnProjectile("FB_FairyBall1",10);
+	}
+	Loop;
   Melee:
     FA_1 AABB 1;
     Goto CoolDown;
+  CoolDown:
+	FA_1 AABBAABBAABB 1 A_Wander();
+	Goto WanderAttack;
   Pain:
 	FA_1 A 1;
 	FA_1 A 1 A_Pain();

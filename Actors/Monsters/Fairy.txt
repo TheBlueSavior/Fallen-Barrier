@@ -1,4 +1,4 @@
-Class FB_Fairy : Actor
+Class FB_Fairy : FB_FairyBase
 {
   Default
   {
@@ -17,7 +17,7 @@ Class FB_Fairy : Actor
 	PainSound "FB/FairyPain";
     Tag "Fairy";
     Monster;
-    +DONTHURTSPECIES
+    +DONTHARMCLASS
     +NOGRAVITY
     +FLOAT
     +FLOATBOB
@@ -29,6 +29,12 @@ Class FB_Fairy : Actor
 	Obituary "%o was swiftly destroyed by a possessed Fairy.";
 	//TeleFogSourceType "PM_SmallDemonicTeleportFog";
 	//TeleFogDestType "PM_SmallDemonicTeleportFog";
+  }
+  
+  override void PostBeginPlay()
+  {
+   super.PostBeginPlay();
+   attacktype = random(1,4);
   }
 
   States
@@ -55,8 +61,36 @@ Class FB_Fairy : Actor
 	TNT1 A 0 A_CheckLOF("MissileProceed");
     Goto Realign;
   MissileProceed:
-  Bullet1:
-	FA_1 A 3 A_SpawnProjectile("FB_FairyBall1",10);
+    TNT1 A 0 FairyChoose("Bullets","BurstStraight","2Way","3Way");
+	Goto Bullets;
+  Bullets: //chooses between 3 shots or 1
+    TNT1 A 0 { attackloop = random(-2,0); }
+	FA_1 A 8 
+	{
+	if(attackloop <= 0)
+	SetStateLabel("Cooldown");
+	A_SpawnProjectile("FB_FairyBall1",10);
+	}
+	Loop;
+  BurstStraight:
+	FA_1 ABA 5 A_SpawnProjectile("FB_FairyBall1",10,angle:frandom(-2,2),flags:CMF_OFFSETPITCH,pitch:frandom(-2,2));
+	Goto CoolDown;
+  2Way:
+    FA_1 A 8 A_Recoil(5);
+	FA_1 B 3 
+	{
+	A_SpawnProjectile("FB_FairyBall1",10,angle:-5);
+	A_SpawnProjectile("FB_FairyBall1",10,angle:5);
+	}
+	Goto CoolDown;
+  3Way:
+    FA_1 A 8 A_Recoil(5);
+	FA_1 B 3 
+	{
+	A_SpawnProjectile("FB_FairyBall1",10,angle:-5);
+	A_SpawnProjectile("FB_FairyBall1",10,angle:5);
+	A_SpawnProjectile("FB_FairyBall1",10);
+	}
 	Goto CoolDown;
   CoolDown:
 	FA_1 AABBAABBAABB 1 A_Wander();
