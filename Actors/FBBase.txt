@@ -28,7 +28,7 @@ Class FB_FairyBase : Actor
 	//TeleFogDestType "PM_SmallDemonicTeleportFog";
   }
   
-  state FairyChoose(statelabel s1, statelabel s2, statelabel s3, statelabel s4, statelabel s5, statelabel s6, statelabel s7, statelabel s8, statelabel s9, statelabel s10, statelabel s11, statelabel s12, statelabel s13, statelabel s14)
+  state FairyChoose(statelabel s1, statelabel s2, statelabel s3, statelabel s4, statelabel s5, statelabel s6, statelabel s7, statelabel s8, statelabel s9, statelabel s10, statelabel s11)
   {
    switch(attacktype)
    {
@@ -43,9 +43,6 @@ Class FB_FairyBase : Actor
 	case 9: return ResolveState(s9); break;
 	case 10: return ResolveState(s10); break;
 	case 11: return ResolveState(s11); break;
-	case 12: return ResolveState(s12); break;
-	case 13: return ResolveState(s13); break;
-	case 14: return ResolveState(s14); break;
    }
    return ResolveState(null);
   }
