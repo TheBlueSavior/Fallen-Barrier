@@ -19,14 +19,14 @@ Class FB_BHProjBase : Actor
    { return !other.bISMONSTER && Super.CanCollideWith(other,passive); }
 }
 
-Class FB_FairyBall1 : FB_BHProjBase
+Class FB_FairyBall : FB_BHProjBase
 {
    Default
    {
    Speed 15;
    Damagefunction 10;
    Scale 0.8;
-   Alpha 0.9;
+   Alpha 0.95;
    }
    States
    {

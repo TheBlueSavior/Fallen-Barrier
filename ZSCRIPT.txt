@@ -4,5 +4,7 @@ version "4.10.0"
 #include "Actors/BulletBase.txt"
 #include "Actors/FBBase.txt"
 
+#include "Actors/FBProjectiles.txt"
+
 //Enemies
 #include "Actors/Monsters/Fairy.txt"

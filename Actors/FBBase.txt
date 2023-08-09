@@ -28,7 +28,7 @@ Class FB_FairyBase : Actor
 	//TeleFogDestType "PM_SmallDemonicTeleportFog";
   }
   
-  state FairyChoose(statelabel s1, statelabel s2, statelabel s3, statelabel s4, statelabel s5, statelabel s6)
+  state FairyChoose(statelabel s1, statelabel s2, statelabel s3, statelabel s4, statelabel s5, statelabel s6, statelabel s7, statelabel s8, statelabel s9, statelabel s10, statelabel s11, statelabel s12)
   {
    switch(attacktype)
    {
@@ -38,6 +38,12 @@ Class FB_FairyBase : Actor
 	case 4: return ResolveState(s4); break;
 	case 5: return ResolveState(s5); break;
 	case 6: return ResolveState(s6); break;
+	case 7: return ResolveState(s7); break;
+	case 8: return ResolveState(s8); break;
+	case 9: return ResolveState(s9); break;
+	case 10: return ResolveState(s10); break;
+	case 11: return ResolveState(s11); break;
+	case 12: return ResolveState(s12); break;
    }
    return ResolveState(null);
   }
@@ -46,9 +52,11 @@ Class FB_FairyBase : Actor
 	{
 	 tex[0] = TexMan.CheckForTexture("DTPRA0",TexMan.Type_Sprite);
 	 tex[1] = TexMan.CheckForTexture("DTPRB0",TexMan.Type_Sprite);
+	 tex[2] = TexMan.CheckForTexture("SPKOE0",TexMan.Type_Sprite);
+	 tex[3] = TexMan.CheckForTexture("SPKPE0",TexMan.Type_Sprite);
 	}
 	
-	TextureID tex[2];
+	TextureID tex[4];
 
   States
   {
