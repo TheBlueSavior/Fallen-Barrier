@@ -156,7 +156,7 @@ Class FB_FairyBall2 : FB_FairyBall
 		);
 	}
    Go:
-      BR_B A 1 Bright A_SetRoll(roll+25);
+      BR_B B 1 Bright A_SetRoll(roll+25);
     Loop;
    Death:
 		TNT1 AA 0
@@ -237,7 +237,7 @@ Class FB_FairyBeam : FB_FairyBall
 		);
 	}
    Go:
-      B_KU A 1 Bright;
+      B_KU A 1;
     Loop;
    Death:
 		TNT1 AA 0

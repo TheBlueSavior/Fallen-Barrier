@@ -43,28 +43,28 @@ Class FB_Fairy : FB_FairyBase
     FA_1 AB 5 A_Look();
     Loop;
   See:
-    FA_1 AABB 1 A_Chase();
+    "####" AABB 1 A_Chase();
     Loop;
   WanderAttack:
-	FA_1 AABBAABBAABBAABBAABB 1
+	"####" AABBAABBAABBAABBAABB 1
 	{
 		A_Chase("Missile","Missile",CHF_DONTMOVE);
 		A_Wander();
 		A_FaceTarget();
 	}
-	FA_1 A 0 A_CheckSight("See");
+	"####" A 0 A_CheckSight("See");
 	Loop;
   Realign:
-	FA_1 AABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABB 1 A_Wander();
+	"####" AABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABB 1 A_Wander();
 	Goto See;
   Missile:
-	TNT1 A 0 A_CheckLOF("MissileProceed");
+	"####" A 0 A_CheckLOF("MissileProceed");
     Goto Realign;
   MissileProceed:
-    TNT1 A 0 FairyChoose("Single","SingleSpread","Bullets","BurstStraight","2Way","3Way","Missile2","Missile3","Missile4","Missile5","MissileCystal","MissileBeam2","MissileCystal2","MissileCystal3");
+    "####" A 0 FairyChoose("Single","SingleSpread","Bullets","BurstStraight","2Way","3Way","Missile2","Missile3","Missile4","Missile5","MissileCystal","MissileBeam2","MissileCystal2","MissileCystal3");
 	Goto Bullets;
   Bullets: //chooses between 3 shots or 1
-  FA_1 ABABABAB 1
+	"####" ABABABAB 1
 		{
 		A_SpawnParticleEx
 		(
@@ -85,8 +85,8 @@ Class FB_Fairy : FB_FairyBase
 		);
 		}
   BulletsFire:
-    TNT1 A 0 { attackloop = random(-2,0); }
-	FA_1 A 8 
+    "####" A 0 { attackloop = random(-2,0); }
+	"####" A 8 
 	{
 	if(attackloop <= 0)
 	SetStateLabel("Cooldown");
@@ -94,7 +94,7 @@ Class FB_Fairy : FB_FairyBase
 	}
 	Loop;
   Single:
-	FA_1 ABABA 1
+	"####" ABABA 1
 		{
 		A_SpawnParticleEx
 		(
@@ -114,10 +114,10 @@ Class FB_Fairy : FB_FairyBase
 		startroll: random(-180,180)
 		);
 		}
-	FA_1 A 3 A_SpawnProjectile("FB_FairyBall1",10);
+	"####" A 3 A_SpawnProjectile("FB_FairyBall1",10);
 	Goto Cooldown;
   SingleSpread:
-	FA_1 ABAB 1
+	"####" ABAB 1
 		{
 		A_SpawnParticleEx
 		(
@@ -137,10 +137,10 @@ Class FB_Fairy : FB_FairyBase
 		startroll: random(-180,180)
 		);
 		}
-	FA_1 A 3 A_SpawnProjectile("FB_FairyBall1",10,angle:frandom(-8,8),flags:CMF_OFFSETPITCH,pitch:frandom(-8,8));
+	"####" A 3 A_SpawnProjectile("FB_FairyBall1",10,angle:frandom(-8,8),flags:CMF_OFFSETPITCH,pitch:frandom(-8,8));
 	Goto Cooldown;
   BurstStraight:
-    FA_1 ABABABAB 1
+    "####" ABABABAB 1
 		{
 		A_SpawnParticleEx
 		(
@@ -160,10 +160,10 @@ Class FB_Fairy : FB_FairyBase
 		startroll: random(-180,180)
 		);
 		}
-	FA_1 ABA 5 A_SpawnProjectile("FB_FairyBall1",10,angle:frandom(-2,2),flags:CMF_OFFSETPITCH,pitch:frandom(-2,2));
+	"####" ABA 5 A_SpawnProjectile("FB_FairyBall1",10,angle:frandom(-2,2),flags:CMF_OFFSETPITCH,pitch:frandom(-2,2));
 	Goto CoolDown;
   2Way:
-    FA_1 ABABABAB 1
+    "####" ABABABAB 1
 		{
 		A_SpawnParticleEx
 		(
@@ -183,14 +183,14 @@ Class FB_Fairy : FB_FairyBase
 		startroll: random(-180,180)
 		);
 		}
-	FA_1 B 3 
+	"####" B 3 
 		{
 		A_SpawnProjectile("FB_FairyBall1",10,angle:-5);
 		A_SpawnProjectile("FB_FairyBall1",10,angle:5);
 		}
 	Goto CoolDown;
   3Way:
-    FA_1 ABABABAB 1
+    "####" ABABABAB 1
 		{
 		A_SpawnParticleEx
 		(
@@ -210,7 +210,7 @@ Class FB_Fairy : FB_FairyBase
 		startroll: random(-180,180)
 		);
 		}
-	FA_1 B 3 
+	"####" B 3 
 		{
 		A_SpawnProjectile("FB_FairyBall1",10,angle:-5);
 		A_SpawnProjectile("FB_FairyBall1",10,angle:5);
@@ -218,12 +218,12 @@ Class FB_Fairy : FB_FairyBase
 		}
 	Goto CoolDown;
   Missile2:
-	FA_1 ABABABABAB 1
+	"####" ABABABABAB 1
 		{
 		A_SpawnParticleEx
 		(
 		"",
-		tex[2],
+		tex[4],
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(2,8),
@@ -232,13 +232,13 @@ Class FB_Fairy : FB_FairyBase
 		xoff: 10,
 		yoff: 0,
 		zoff: 10,
-		startalphaf: 0.85,
+		startalphaf: 0.95,
 		fadestepf: -1,
 		sizestep: -15,
 		startroll: random(-180,180)
 		);
 		}
-	FA_1 A 3
+	"####" A 3
 		{
 		A_SpawnProjectile("FB_FairyBall2",10,0,0);
 		A_SpawnProjectile("FB_FairyBall2",10,0,30);
@@ -246,12 +246,12 @@ Class FB_Fairy : FB_FairyBase
 		}
 	Goto CoolDown;
   Missile3:
-	FA_1 ABABABABABABABABABAB 1
+	"####" ABABABABABABABABABAB 1
 		{
 		A_SpawnParticleEx
 		(
 		"",
-		tex[2],
+		tex[4],
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(2,8),
@@ -260,13 +260,13 @@ Class FB_Fairy : FB_FairyBase
 		xoff: 10,
 		yoff: 0,
 		zoff: 10,
-		startalphaf: 0.85,
+		startalphaf: 0.95,
 		fadestepf: -1,
 		sizestep: -15,
 		startroll: random(-180,180)
 		);
 		}
-	FA_1 A 3
+	"####" A 3
 		{
 		A_SpawnProjectile("FB_FairyBall2_2",10,0,0);
 		A_SpawnProjectile("FB_FairyBall2_2",10,0,30);
@@ -276,12 +276,12 @@ Class FB_Fairy : FB_FairyBase
 		}
 	Goto CoolDown;
   Missile4:
-	FA_1 ABABABABABABABABAB 1
+	"####" ABABABABABABABABAB 1
 		{
 		A_SpawnParticleEx
 		(
 		"",
-		tex[2],
+		tex[4],
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(2,8),
@@ -290,13 +290,13 @@ Class FB_Fairy : FB_FairyBase
 		xoff: 10,
 		yoff: 0,
 		zoff: 10,
-		startalphaf: 0.85,
+		startalphaf: 0.95,
 		fadestepf: -1,
 		sizestep: -15,
 		startroll: random(-180,180)
 		);
 		}
-	FA_1 A 3
+	"####" A 3
 		{
 		A_SpawnProjectile("FB_FairyBall2",10,0,45);
 		A_SpawnProjectile("FB_FairyBall2",10,0,-45);
@@ -305,12 +305,12 @@ Class FB_Fairy : FB_FairyBase
 		}
 	Goto CoolDown;
   Missile5:
-	FA_1 ABABABABABABABABABABAB 1
+	"####" ABABABABABABABABABABAB 1
 		{
 		A_SpawnParticleEx
 		(
 		"",
-		tex[2],
+		tex[4],
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(2,8),
@@ -319,13 +319,13 @@ Class FB_Fairy : FB_FairyBase
 		xoff: 10,
 		yoff: 0,
 		zoff: 10,
-		startalphaf: 0.85,
+		startalphaf: 0.95,
 		fadestepf: -1,
 		sizestep: -15,
 		startroll: random(-180,180)
 		);
 		}
-	FA_1 A 3
+	"####" A 3
 		{
 		A_SpawnProjectile("FB_FairyBall2_3",10,0,0);
 		A_SpawnProjectile("FB_FairyBall2_3",10,0,30);
@@ -335,7 +335,7 @@ Class FB_Fairy : FB_FairyBase
 		}
 	Goto CoolDown;
   MissileCystal:
-	FA_1 ABABAB 1
+	"####" ABABAB 1
 		{
 		A_FaceTarget();
 		A_SpawnParticleEx
@@ -356,10 +356,10 @@ Class FB_Fairy : FB_FairyBase
 		startroll: random(-180,180)
 		);
 		}
-	FA_1 A 3 A_SpawnProjectile("FB_FairyCrystalShot",10);
+	"####" A 3 A_SpawnProjectile("FB_FairyCrystalShot",10);
 	Goto CoolDown;
   MissileCystal2:
-	FA_1 ABABABABABABAB 1
+	"####" ABABABABABABAB 1
 		{
 		A_FaceTarget();
 		A_SpawnParticleEx
@@ -380,12 +380,12 @@ Class FB_Fairy : FB_FairyBase
 		startroll: random(-180,180)
 		);
 		}
-	FA_1 A 0 A_SpawnProjectile("FB_FairyCrystalShot",10);
-	FA_1 A 0 A_SpawnProjectile("FB_FairyCrystalShot2",10);
-	FA_1 A 5 A_SpawnProjectile("FB_FairyCrystalShot3",10);
+	"####" A 0 A_SpawnProjectile("FB_FairyCrystalShot",10);
+	"####" A 0 A_SpawnProjectile("FB_FairyCrystalShot2",10);
+	"####" A 5 A_SpawnProjectile("FB_FairyCrystalShot3",10);
 	Goto CoolDown;
   MissileCystal3:
-	FA_2 ABABABABABABAB 1
+	"####" ABABABABABABAB 1
 		{
 		A_FaceTarget();
 		A_SpawnParticleEx
@@ -406,12 +406,12 @@ Class FB_Fairy : FB_FairyBase
 		startroll: random(-180,180)
 		);
 		}
-	FA_1 A 0 A_SpawnProjectile("FB_FairyCrystalSpreader",10);
-	FA_1 A 0 A_SpawnProjectile("FB_FairyCrystalSpreader2",10);
-	FA_1 A 5 A_SpawnProjectile("FB_FairyCrystalSpreader3",10);
+	"####" A 0 A_SpawnProjectile("FB_FairyCrystalSpreader",10);
+	"####" A 0 A_SpawnProjectile("FB_FairyCrystalSpreader2",10);
+	"####" A 5 A_SpawnProjectile("FB_FairyCrystalSpreader3",10);
 	Goto CoolDown;
   MissileBeam2:
-	FA_1 ABABABABABABABAB 1
+	"####" ABABABABABABABAB 1
 		{
 		A_FaceTarget();
 		A_SpawnParticleEx
@@ -432,32 +432,32 @@ Class FB_Fairy : FB_FairyBase
 		startroll: random(-180,180)
 		);
 		}
-	FA_1 A 0 A_FaceTarget(0.2,3,frandom(-70,70),0);
-	FA_1 A 1 A_SpawnProjectile("FB_FairyBeam",10,0,0,CMF_OFFSETPITCH|CMF_AIMDIRECTION,pitch*1);
-	FA_1 B 1 A_SpawnProjectile("FB_FairyBeam5",10,0,0,CMF_OFFSETPITCH|CMF_AIMDIRECTION,pitch*1);
-	FA_1 A 1 A_SpawnProjectile("FB_FairyBeam6",10,0,0,CMF_OFFSETPITCH|CMF_AIMDIRECTION,pitch*1);
-	FA_1 B 1 A_SpawnProjectile("FB_FairyBeam7",10,0,0,CMF_OFFSETPITCH|CMF_AIMDIRECTION,pitch*1);
-	FA_1 A 1 A_SpawnProjectile("FB_FairyBeam8",10,0,0,CMF_OFFSETPITCH|CMF_AIMDIRECTION,pitch*1);
-	FA_1 B 1 A_SpawnProjectile("FB_FairyBeam9",10,0,0,CMF_OFFSETPITCH|CMF_AIMDIRECTION,pitch*1);
-	FA_1 A 1 A_SpawnProjectile("FB_FairyBeam10",10,0,0,CMF_OFFSETPITCH|CMF_AIMDIRECTION,pitch*1);
+	"####" A 0 A_FaceTarget(0.2,3,frandom(-70,70),0);
+	"####" A 1 A_SpawnProjectile("FB_FairyBeam",10,0,0,CMF_OFFSETPITCH|CMF_AIMDIRECTION,pitch*1);
+	"####" B 1 A_SpawnProjectile("FB_FairyBeam5",10,0,0,CMF_OFFSETPITCH|CMF_AIMDIRECTION,pitch*1);
+	"####" A 1 A_SpawnProjectile("FB_FairyBeam6",10,0,0,CMF_OFFSETPITCH|CMF_AIMDIRECTION,pitch*1);
+	"####" B 1 A_SpawnProjectile("FB_FairyBeam7",10,0,0,CMF_OFFSETPITCH|CMF_AIMDIRECTION,pitch*1);
+	"####" A 1 A_SpawnProjectile("FB_FairyBeam8",10,0,0,CMF_OFFSETPITCH|CMF_AIMDIRECTION,pitch*1);
+	"####" B 1 A_SpawnProjectile("FB_FairyBeam9",10,0,0,CMF_OFFSETPITCH|CMF_AIMDIRECTION,pitch*1);
+	"####" A 1 A_SpawnProjectile("FB_FairyBeam10",10,0,0,CMF_OFFSETPITCH|CMF_AIMDIRECTION,pitch*1);
 	Goto CoolDown;
   CoolDown:
-	FA_1 AABBAABBAABB 1 A_Wander();
+	"####" AABBAABBAABB 1 A_Wander();
 	Goto WanderAttack;
   Melee:
-    FA_1 AABB 1;
+    "####" AABB 1;
     Goto CoolDown;
   Pain:
-	FA_1 A 1;
-	FA_1 A 1 A_Pain();
-	FA_1 A 4; 
+	"####" A 1;
+	"####" A 1 A_Pain();
+	"####" A 4; 
 	Goto See;
   Death:
-    TNT1 A 0;
-	FA_1 A 1 A_Scream();
-	FA_1 A 1 A_NoBlocking();
+    "####" A 0;
+	"####" A 1 A_Scream();
+	"####" A 1 A_NoBlocking();
   DeathFade:
-	FA_1 A 1 A_FadeOut(0.1);
+	"####" A 1 A_FadeOut(0.1);
     Loop;
   }
 }
