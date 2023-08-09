@@ -4,6 +4,18 @@ Color 0.0 0.0 0.8
 Size 24
 }
 
+Pointlight FB-BulletExplodeRed
+{
+Color 0.8 0.0 0.0
+Size 24
+}
+
+Pointlight FB-BulletExplodeGreen
+{
+Color 0.0 0.8 0.0
+Size 24
+}
+
 Pointlight FB-BulletExplodeYellow
 {
 Color 0.8 0.8 0.0

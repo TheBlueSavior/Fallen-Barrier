@@ -8,3 +8,4 @@ version "4.10.0"
 
 //Enemies
 #include "Actors/Monsters/Fairy.txt"
+#include "Actors/Monsters/PossessedFairy.txt"
