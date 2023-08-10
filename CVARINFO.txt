@@ -1,0 +1,2 @@
+//Weighted Spawns
+Server Float fb_fairychance = 0.50;

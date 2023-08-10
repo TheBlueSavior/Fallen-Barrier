@@ -1,0 +1,4 @@
+gameInfo
+{
+	addEventHandlers = "FB_ReplacerHandler"
+}

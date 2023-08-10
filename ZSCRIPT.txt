@@ -3,7 +3,7 @@ version "4.10.0"
 //Bases
 #include "Actors/BulletBase.txt"
 #include "Actors/FBBase.txt"
-
+#include "Actors/FBSpawns.txt"
 #include "Actors/FBProjectiles.txt"
 
 //Enemies

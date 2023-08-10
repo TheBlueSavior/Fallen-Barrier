@@ -1,0 +1,19 @@
+Class FB_ReplacerHandler : EventHandler
+{
+ protected float fb_fairyspawn;
+ override void CheckReplacement(ReplaceEvent e)
+ {
+  switch(e.Replacee.GetClassName())
+  {
+   case 'Zombieman': if(frandom(0.01, 1.00) <= CVar.GetCVar('fb_fairychance').GetFloat())
+    { e.Replacement = "FB_Fairy"; }
+	break;
+   case 'ShotgunGuy': if(frandom(0.01, 1.00) <= CVar.GetCVar('fb_fairychance').GetFloat())
+    { e.Replacement = "FB_Fairy"; }
+	break;
+   case 'DoomImp': if(frandom(0.01, 1.00) <= CVar.GetCVar('fb_fairychance').GetFloat())
+    { e.Replacement = "FB_Fairy"; }
+	break;
+  }
+ }
+}

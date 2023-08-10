@@ -1,0 +1,15 @@
+
+AddOptionMenu "OptionsMenu"
+{
+    StaticText ""
+    Submenu "Fallen Barrier", "fb_options"
+	StaticText ""
+}
+
+OptionMenu "fb_options"
+{
+	Title "Fallen Barrier Options"
+	StaticText ""
+	StaticText "Weighted Spawns", white
+	Slider "Fairy Spawns:", "fb_fairychance", 0.00, 1.00, 0.01, 2
+}
