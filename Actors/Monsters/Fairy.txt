@@ -31,16 +31,30 @@ Class FB_Fairy : FB_FairyBase
 	//TeleFogDestType "PM_SmallDemonicTeleportFog";
   }
   
+  void FairySprite()
+  {
+   switch(spritetype)
+   {
+    case 0: sprite = GetSpriteIndex("FA_1"); break;
+	case 1: sprite = GetSpriteIndex("FA_2"); break;
+   }
+  }
+  
   override void PostBeginPlay()
   {
    super.PostBeginPlay();
    attacktype = random(1,11);
+   spritetype = random(0,1);
+   FairySprite();
   }
 
   States
   {
+  LoadSprites:
+    FA_1 AB 0;
+	FA_2 AB 0;
   Spawn:
-    FA_1 AB 5 A_Look();
+    "####" AB 5 A_Look();
     Loop;
   See:
     "####" AABB 1 A_Chase();

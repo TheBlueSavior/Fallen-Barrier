@@ -1,5 +1,6 @@
 Class FB_FairyBase : Actor
 {
+	int spritetype;
   int attacktype;
   int attackloop;
   Default
