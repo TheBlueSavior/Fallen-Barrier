@@ -50,11 +50,8 @@ Class FB_Fairy : FB_FairyBase
 
   States
   {
-  LoadSprites:
-    FA_1 AB 0;
-	FA_2 AB 0;
   Spawn:
-    "####" AB 5 A_Look();
+    FA_1 AB 5 A_Look();
     Loop;
   See:
     "####" AABB 1 A_Chase();
