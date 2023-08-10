@@ -1,3 +1,14 @@
+OptionValue "HitflashEnable"
+{
+ 0, "No"
+ 1, "Yes"
+}
+
+OptionValue "HitflashSound"
+{
+ 0, "Old School (Raiden II)"
+ 1, "New School (Stardust Arena)"
+}
 
 AddOptionMenu "OptionsMenu"
 {
@@ -9,6 +20,10 @@ AddOptionMenu "OptionsMenu"
 OptionMenu "fb_options"
 {
 	Title "Fallen Barrier Options"
+	StaticText ""
+	StaticText "Hit Flashes", white
+	Option "Hitflash Enabled:", "fb_hitflash", "HitflashEnable"
+	Option "Hitflash Sound:", "fb_hitsfx", "HitflashSound"
 	StaticText ""
 	StaticText "Weighted Spawns", white
 	Slider "Fairy Spawns:", "fb_fairychance", 0.00, 1.00, 0.01, 2
