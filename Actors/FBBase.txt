@@ -17,7 +17,7 @@ Class FB_HitFlash : Actor
 
 Class FB_FairyBase : Actor
 {
-	int spritetype;
+  int spritetype;
   int attacktype;
   int attackloop;
   Default
