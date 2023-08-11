@@ -44,7 +44,7 @@ Class FB_Fairy : FB_FairyBase
   override void PostBeginPlay()
   {
    super.PostBeginPlay();
-   attacktype = random(1,11);
+   attacktype = random(1,12);
    spritetype = random(0,1);
    FairySprite();
   }
@@ -54,11 +54,15 @@ Class FB_Fairy : FB_FairyBase
   Spawn:
 	FA_1 A 0 NoDelay;
 	"####" A 0 A_SetHealth(random(20,70));
-	"####" A 0 A_SetSpeed(random(1,6));
+	"####" A 0 A_SetSpeed(random(1,9));
   Spawn1:
     "####" AB 5 A_Look();
     Loop;
   See:
+	"####" A 0 ThrustThingZ(0,random(0,8),0,1);
+	"####" ABABABAB random(1,5);
+	"####" A 0 A_ChangeVelocity(0,0,0,CVF_REPLACE);
+  See1:
     "####" AABB 1 A_Chase();
     Loop;
   WanderAttack:
@@ -68,16 +72,16 @@ Class FB_Fairy : FB_FairyBase
 		A_Wander();
 		A_FaceTarget();
 	}
-	"####" A 0 A_CheckSight("See");
+	"####" A 0 A_CheckSight("See1");
 	Loop;
   Realign:
 	"####" AABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABB 1 A_Wander();
-	Goto See;
+	Goto See1;
   Missile:
 	"####" A 0 A_CheckLOF("MissileProceed");
     Goto Realign;
   MissileProceed:
-    "####" A 0 FairyChoose("Single","SingleSpread","Bullets","BurstStraight","2Way","3Way","Missile2","MissileCystal","MissileBeam2","MissileCystal2","MissileCystal3");
+    "####" A 0 FairyChoose("Single","SingleSpread","Bullets","BurstStraight","2Way","3Way","Missile2","MissileCystal","MissileBeam2","MissileCystal2","MissileCystal3","Missile2");
 	Goto Bullets;
   Bullets: //chooses between 3 shots or 1
 	"####" ABABABAB 1
@@ -468,7 +472,7 @@ Class FB_Fairy : FB_FairyBase
 	"####" A 1;
 	"####" A 1 A_Pain();
 	"####" A 4; 
-	Goto See;
+	Goto See1;
   Death:
     "####" A 0;
 	"####" A 1 A_Scream();

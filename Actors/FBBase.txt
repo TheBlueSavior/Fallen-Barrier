@@ -10,7 +10,7 @@ Class FB_HitFlash : Actor
  States
   {
   Spawn:
-   "####" A 2 A_Warp(AAPTR_MASTER,frandom(-3,3),frandom(-3,3),frandom(-3,3),flags:WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE);
+  "####" A 2 A_Warp(AAPTR_MASTER,frandom(-3,3),frandom(-3,3),frandom(-3,3),flags:WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE);
    Stop;
   }
 }
@@ -78,7 +78,7 @@ Class FB_FairyBase : Actor
 	return dmg;
 	}
   
-  state FairyChoose(statelabel s1, statelabel s2, statelabel s3, statelabel s4, statelabel s5, statelabel s6, statelabel s7, statelabel s8, statelabel s9, statelabel s10, statelabel s11)
+  state FairyChoose(statelabel s1, statelabel s2, statelabel s3, statelabel s4, statelabel s5, statelabel s6, statelabel s7, statelabel s8, statelabel s9, statelabel s10, statelabel s11, statelabel s12)
   {
    switch(attacktype)
    {
@@ -93,6 +93,7 @@ Class FB_FairyBase : Actor
 	case 9: return ResolveState(s9); break;
 	case 10: return ResolveState(s10); break;
 	case 11: return ResolveState(s11); break;
+	case 12: return ResolveState(s12); break;
    }
    return ResolveState(null);
   }
