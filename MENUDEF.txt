@@ -6,7 +6,7 @@ OptionValue "HitflashEnable"
 
 OptionValue "HitflashSound"
 {
- 0, "Old School (Raiden II)"
+ 0, "Old School (Raizing/Eighting)"
  1, "New School (Stardust Arena)"
 }
 
@@ -21,7 +21,7 @@ OptionMenu "fb_options"
 {
 	Title "Fallen Barrier Options"
 	StaticText ""
-	StaticText "Hit Flashes", white
+	StaticText "Hit Flashing", white
 	Option "Hitflash Enabled:", "fb_hitflash", "HitflashEnable"
 	Option "Hitflash Sound:", "fb_hitsfx", "HitflashSound"
 	StaticText ""

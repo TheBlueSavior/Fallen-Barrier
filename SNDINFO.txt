@@ -1,8 +1,7 @@
 //Global
-FB/RaidenIIHit "Sounds/SFX/FBRaidenIIHit.ogg"
+FB/RaizingHit "Sounds/SFX/FBRaizingHit.ogg"
 FB/StardustArenaHit "Sounds/SFX/FBStardustArenaHit.ogg"
 
-//Enemies
 FB/FairyPain "Sounds/Monsters/Fairy/FairyPain.ogg"
 $pitchset FB/FairyPain 0.9 1.1
 
