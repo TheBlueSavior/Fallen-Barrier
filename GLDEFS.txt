@@ -1,6 +1,6 @@
 Flickerlight FB-FlickerWhiteLight
 {
-Color 1.0 1.0 1.0
+Color 0.5 0.5 0.5
 Size 20
 SecondarySize 17
 Chance 0.5
