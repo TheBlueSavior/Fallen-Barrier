@@ -17,7 +17,7 @@ Class FB_WhiteFairyExplode : Actor
   {
   Spawn:
 	TNT1 A 0;
-	BPX_ ABCDEFG 4;
+	BPX_ ABCDEFG 2;
 	Stop;
 	}
 }
