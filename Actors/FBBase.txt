@@ -41,6 +41,7 @@ Class FB_FairyBase : Actor
     +DONTFALL
     +NOICEDEATH
 	+AVOIDMELEE
+	  +NOBLOODDECALS
 	FloatBobStrength 0.5;
 	BloodType "FB_MagicBlood";
 	//MinMissileChance 240;
