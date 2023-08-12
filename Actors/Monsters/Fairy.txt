@@ -559,7 +559,7 @@ Class FB_Fairy : FB_FairyBase
 		A_SpawnParticleEx
 			(
 			"",
-			TexMan.CheckForTexture("DUST_0"),
+			TexMan.CheckForTexture("DUS_C0"),
 			style: STYLE_Normal,
 			flags: SPF_RELATIVE|SPF_ROLL|SPF_FULLBRIGHT,
 			lifetime: random(40,80),
