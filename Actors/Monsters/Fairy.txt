@@ -1,5 +1,6 @@
 Class FB_Fairy : FB_FairyBase
 {
+  int deathtimer;
   bool standoff;
   Default
   {
@@ -530,10 +531,21 @@ Class FB_Fairy : FB_FairyBase
 	Goto WanderAttack;
   Death:
     "####" A 0;
+	"####" A 0 { deathtimer = random(3,7); }
 	"####" A 1 A_Scream();
 	"####" A 1 A_NoBlocking();
+	"####" A 0 A_Jump(76,"DeathEnd");
   DeathFade:
-	"####" AA 3 A_SpawnItemEx("FB_WhiteFairyExplode",random(-15,15),random(-15,15),random(-15,15),0,0,0,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE,0);
+	"####" A 3 
+	{
+	if(deathtimer < 0)
+	SetStateLabel("DeathEnd");
+	A_SpawnItemEx("FB_WhiteFairyExplode",random(-15,15),random(-15,15),random(-15,15),0,0,0,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE,0);
+	A_StartSound("FB/DeathSFXSmall",15);
+	deathtimer--;
+	}
+	Loop;
+  DeathEnd:
 	TNT1 AAAA 0
 		{
 		A_SpawnParticleEx
@@ -574,6 +586,7 @@ Class FB_Fairy : FB_FairyBase
 			rollvel: random(0,4)
 			);
 		}
+	TNT1 A 0 A_StartSound("FB/DeathSFXMedium",14);
 	TNT1 A 0
 		{
 		A_SpawnParticleEx
@@ -614,7 +627,6 @@ Class FB_Fairy : FB_FairyBase
 			startroll: random(-180,180)
 			);
 		}
-	TNT1 AAAAAA 2 A_SpawnItemEx("FB_WhiteFairyExplode",random(-22,22),random(-22,22),random(-22,22),0,0,0,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE,0);
     Stop;
   }
 }

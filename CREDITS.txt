@@ -13,5 +13,6 @@ a1337spy - Rice and Kunai Sprites
 
 Sound Credits:
 	Touhou
+	Raiden Fighters/Gun Dogs
 	Raizing/Eighting
 	Stardust Arena
