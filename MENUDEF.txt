@@ -1,3 +1,9 @@
+OptionValue "ItemDropEnable"
+{
+ 0, "No"
+ 1, "Yes"
+}
+
 OptionValue "HitflashEnable"
 {
  0, "No"
@@ -20,6 +26,9 @@ AddOptionMenu "OptionsMenu"
 OptionMenu "fb_options"
 {
 	Title "Fallen Barrier Options"
+	StaticText ""
+	StaticText "Item Drops", white
+	Option "Enabled:", "fb_itemdrops", "ItemDropEnable"
 	StaticText ""
 	StaticText "Hit Flashing", white
 	Option "Hitflash Enabled:", "fb_hitflash", "HitflashEnable"

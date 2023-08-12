@@ -1,6 +1,7 @@
 //Global
 Server Int fb_hitsfx = 0;
 Server Int fb_hitflash = 1;
+Server Int fb_itemdrops = 1;
 
 //Weighted Spawns
 Server Float fb_fairychance = 0.50;

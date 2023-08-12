@@ -1,3 +1,17 @@
+Flickerlight FB-FlickerWhiteLight
+{
+Color 1.0 1.0 1.0
+Size 20
+SecondarySize 17
+Chance 0.5
+}
+
+Pointlight FB-WhiteLightExplode
+{
+Color 1.0 1.0 1.0
+Size 56
+}
+
 Pointlight FB-BulletExplodeBlue
 {
 Color 0.0 0.0 0.8
