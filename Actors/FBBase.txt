@@ -42,6 +42,7 @@ Class FB_FairyBase : Actor
     +NOICEDEATH
 	+AVOIDMELEE
 	FloatBobStrength 0.5;
+	BloodType "FB_MagicBlood";
 	//MinMissileChance 240;
 	//TeleFogSourceType "PM_SmallDemonicTeleportFog";
 	//TeleFogDestType "PM_SmallDemonicTeleportFog";
