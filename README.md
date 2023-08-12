@@ -1,2 +1,2 @@
 # Fallen-Barrier
-A danmaku themed enemy addon meant to be played with Project Malice
+A danmaku themed enemy mod that's compatible with Project Malice
