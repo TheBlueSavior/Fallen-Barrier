@@ -12,7 +12,9 @@ DarkOverlord - Touhou Sprite Ripper
 a1337spy - Rice and Kunai Sprites
 
 Sound Credits:
+    Doom 3
 	Touhou
 	Raiden Fighters/Gun Dogs
+	Raiden II
 	Raizing/Eighting
 	Stardust Arena
