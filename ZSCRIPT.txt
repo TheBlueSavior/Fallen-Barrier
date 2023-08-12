@@ -6,6 +6,7 @@ version "4.10.0"
 #include "Actors/FBSpawns.txt"
 #include "Actors/FBProjectiles.txt"
 #include "Actors/FBBlood.txt"
+#include "Actors/FBVFX.txt"
 
 //Enemies
 #include "Actors/Monsters/Fairy.txt"

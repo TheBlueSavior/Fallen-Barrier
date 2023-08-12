@@ -1,0 +1,23 @@
+//Actor Fx
+
+Class FB_WhiteFairyExplode : Actor
+{
+  Default
+  {
+  +NOINTERACTION
+  +CLIENTSIDEONLY
+  +ROLLSPRITE
+  +FORCEXYBILLBOARD
+  Renderstyle "Add";
+  Scale 1;
+  +Bright
+  }
+  
+  States
+  {
+  Spawn:
+	TNT1 A 0;
+	BPX_ ABCDEFG 4;
+	Stop;
+	}
+}
