@@ -58,8 +58,8 @@ Class FB_Fairy : FB_FairyBase
   {
    switch(spritetype)
    {
-    case 0: sprite = GetSpriteIndex("FA_1"); break;
-	case 1: sprite = GetSpriteIndex("FA_2"); break;
+    case 0: sprite = GetSpriteIndex("FA_2"); break;
+	case 1: sprite = GetSpriteIndex("FA_3"); break;
    }
   }
   

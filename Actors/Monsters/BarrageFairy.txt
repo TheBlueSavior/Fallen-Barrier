@@ -1,5 +1,6 @@
-Class FB_BarrageFairy : FB_Fairy
+Class FB_BarrageFairy : FB_FairyBase
 {
+  int deathtimer;
   Default
   {
     Health 200;
@@ -41,6 +42,15 @@ Class FB_BarrageFairy : FB_Fairy
    return ResolveState(null);
   }
   
+  void FairySprite()
+  {
+   switch(spritetype)
+   {
+    case 0: sprite = GetSpriteIndex("FB_1"); break;
+	case 1: sprite = GetSpriteIndex("FB_2"); break;
+   }
+  }
+  
   override void PostBeginPlay()
   {
    Super.PostBeginPlay();
@@ -52,14 +62,21 @@ Class FB_BarrageFairy : FB_Fairy
   States
   {
   Spawn:
-	FA_1 A 0 NoDelay;
+	FB_2 A 0 NoDelay;
 	"####" A 0 A_SetHealth(random(100,150));
 	"####" A 0 A_SetSpeed(random(1,4));
   Spawn1:
     "####" AB 5 A_Look();
     Loop;
+  See:
+	"####" A 0 ThrustThingZ(0,random(0,8),0,1);
+	"####" ABABABAB random(1,5);
+	"####" A 0 A_ChangeVelocity(0,0,0,CVF_REPLACE);
+	Goto See1;
+  See1:
+    "####" AABB 1 A_Chase();
+    Loop;
   Missile:
-	"####" A 0 A_Jump(40,"StandoffStart");
 	"####" A 0 A_CheckLOF("MissileProceed");
     Goto Realign;
   MissileProceed:
@@ -290,7 +307,7 @@ Class FB_BarrageFairy : FB_Fairy
 	"####" A 4; 
 	Goto WanderAttack;
   Death:
-  "####" A 0;
+    "####" A 0;
 	"####" A 0 A_StopSound(6);
 	"####" A 0 { deathtimer = random(3,7); }
 	"####" A 1 A_Scream();
