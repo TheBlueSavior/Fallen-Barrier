@@ -22,6 +22,29 @@ Class FB_WhiteFairyExplode : Actor
 	}
 }
 
+Class FB_WhiteFairyExplode2 : Actor
+{
+  Default
+  {
+  +NOINTERACTION
+  +CLIENTSIDEONLY
+  +ROLLSPRITE
+  +FORCEXYBILLBOARD
+  Renderstyle "Add";
+  Scale 1;
+  +Bright
+  }
+  
+  States
+  {
+  Spawn:
+	TNT1 A 0;
+	BX__ ABCDE 2;
+	BX__ FGHIJKLMNOPQRSTU 1;
+	Stop;
+	}
+}
+
 Class FB_FairyFall : Actor
 {
     Default

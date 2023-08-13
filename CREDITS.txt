@@ -10,7 +10,8 @@ ZUN - Touhou Project
 TH6:EOSD, TH10.5:SWR, TH11:SA, TH12.3:H, TH13:TD - Touhou Resources possibly taken from.
 DarkOverlord - Touhou Sprite Ripper
 a1337spy - Rice and Kunai Sprites
-Psikyo - Bullet sprites
+Psikyo - Bullet Sprites
+Seibu Kaihatsu - Explosion Sprites
 
 Sound Credits:
     Doom 3
