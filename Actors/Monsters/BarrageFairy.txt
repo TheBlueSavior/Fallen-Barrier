@@ -54,7 +54,6 @@ Class FB_BarrageFairy : FB_Fairy
    Super.PostBeginPlay();
    attacktype = random(0,4);
    sprite = GetSpriteIndex(bfairySprite[random(0,1)]);
-   BFairySprite();
   }
 
   States
