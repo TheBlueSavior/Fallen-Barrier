@@ -42,3 +42,8 @@ $random FB/BulletHellHit { FB/BulletHellHit1 FB/BulletHellHit2 FB/BulletHellHit3
 FB/BulletHellHit1 "Sounds/SFX/BulletHellHit1.ogg"
 FB/BulletHellHit2 "Sounds/SFX/BulletHellHit2.ogg"
 FB/BulletHellHit3 "Sounds/SFX/BulletHellHit3.ogg"
+
+FB/LaserStart "Sounds/SFX/BulletHellLaserStart.ogg"
+FB/LaserLoop "Sounds/SFX/BulletHellLaserLoop.ogg"
+$rolloff FB/LaserReady 400 2200
+$rolloff FB/LaserLoop 400 2200
