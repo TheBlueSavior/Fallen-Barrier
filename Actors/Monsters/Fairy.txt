@@ -1,6 +1,22 @@
 Class FB_Fairy : FB_FairyBase
 {
+  int deathtimer;
   bool standoff;
+  static const statelabel posStates[] =
+  {
+  	"Single",
+	"SingleSpread",
+	"Bullets",
+	"BurstStraight",
+	"2Way",
+	"3Way",
+	"Missile2",
+	"MissileCystal",
+	"MissileBeam2",
+	"MissileCystal2",
+	"MissileCystal3",
+	"Missile2"
+  };
   Default
   {
     Health 100;
@@ -27,50 +43,45 @@ Class FB_Fairy : FB_FairyBase
     +NOICEDEATH
 	+AVOIDMELEE
 	FloatBobStrength 0.5;
-	//MinMissileChance 240;
 	Obituary "%o was swiftly destroyed by a possessed Fairy.";
-	//TeleFogSourceType "PM_SmallDemonicTeleportFog";
-	//TeleFogDestType "PM_SmallDemonicTeleportFog";
   }
   
-  static const statelabel posStates[] =
+  private state FairyChoose()
   {
-     "Single",
-     "SingleSpread",
-     "Bullets",
-     "BurstStraight",
-     "2Way",
-     "3Way",
-     "Missile2",
-     "MissileCystal",
-     "MissileBeam2",
-     "MissileCystal2",
-     "MissileCystal3",
-     "Missile2"
-  };
-  
-  static const name fairySprite[] =
+   return ResolveState(attack);
+  }
+
+  override void start() {
+	//Push some possible sprites
+	possSprite.push("FA_1");
+	possSprite.push("FA_2");
+	//TODO: Dynamic Array support for possible attacks
+	attack = posStates[random(0, 11)];
+	//Hit Sounds
+	hitSounds.push("FA_1");
+	hitSounds.push("FA_2");
+	super.start();
+  }
+
+  void FairySprite()
   {
-   "FA_2",
-   "FA_3"
-  };
+   switch(spritetype)
+   {
+    case 0: sprite = GetSpriteIndex("FA_1"); break;
+	case 1: sprite = GetSpriteIndex("FA_2"); break;
+   }
+  }
   
   override void PostBeginPlay()
   {
    super.PostBeginPlay();
-   attacktype = random(0,11);
-   sprite = GetSpriteIndex( fairySprite[random(0,1)] );
-  }
-
-  private state FairyChoose()
-  {
-   return ResolveState(posstates[attacktype]);
+   attacktype = random(1,12);
   }
 
   States
   {
   Spawn:
-	TNT1 A 0 NoDelay;
+	FA_1 A 0 NoDelay;
 	"####" A 0 A_SetHealth(random(20,70));
 	"####" A 0 A_SetSpeed(random(1,8));
   Spawn1:
