@@ -428,3 +428,140 @@ Class FB_FairyCrystalSpreader : FB_FairyBall
 
 Class FB_FairyCrystalSpreader2 : FB_FairyCrystalSpreader { Default { Speed 40; } }
 Class FB_FairyCrystalSpreader3 : FB_FairyCrystalSpreader { Default { Speed 60; } }
+
+Class FB_FairyBlueBarrage : FB_FairyBall
+{
+   Default
+   {
+   Radius 2;
+   Height 2;
+   Speed 25;
+   Scale 0.45;
+   DamageFunction 5;
+   SeeSound "";
+   }
+   States
+   {
+   Spawn:
+	  TNT1 A 0;
+	  TNT1 AA 0
+	  {
+	  A_SpawnParticleEx
+		(
+		"",
+		TexMan.CheckForTexture("DTPRB0"),
+		style: STYLE_Add,
+		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+		lifetime: random(3,8),
+		size: random(50,120),
+		startalphaf: 1,
+		fadestepf: -1,
+		sizestep: -6,
+		startroll: random(-180,180)
+		);
+		A_SpawnParticleEx
+		(
+		"3d85c6",
+		TexMan.CheckForTexture("Graphics/Particles/fbparticlesquare.png"),
+		style: STYLE_Add,
+		flags: SPF_RELATIVE|SPF_FULLBRIGHT|SPF_ROLL,
+		lifetime: random(20,60),
+		size: frandom(3,12),
+		velx: frandom(1,5),
+		vely: frandom(-3,3),
+		velz: frandom(-4,4),
+		accelz: frandom(-0.1,-1.5),
+		startalphaf: 1.0,
+		fadestepf: -0.5,
+		sizestep: -0.2,
+		startroll: random(-180,180)
+		);
+	}
+   Go:
+      BR_B A 1 Bright;
+    Loop;
+   Death:
+		TNT1 AA 0
+		{
+		A_SpawnParticleEx
+		(
+		"",
+		TexMan.CheckForTexture("SPKBA0"),
+		style: STYLE_Add,
+		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+		lifetime: random(2,8),
+		size: random(30,100),
+		startalphaf: 0.95,
+		fadestepf: -1,
+		sizestep: -15,
+		startroll: random(-180,180)
+		);
+		}
+	  TNT1 A 5 Light("FB-BulletExplodeBlueTiny");
+      Stop;
+	  }
+}
+
+Class FB_FairyBallDestruct1 : FB_FairyBall
+{
+   Default
+   {
+   +SHOOTABLE
+   +NOBLOOD
+   +THRUSPECIES
+   Species "Destructible";
+   Health 1;
+   Radius 12;
+   Height 10;
+   Speed 15;
+   Scale 1.50;
+   }
+   States
+   {
+   Spawn:
+	  TNT1 A 0;
+	  TNT1 A 0 A_ScaleVelocity(frandom(0.65,1));
+	  TNT1 AA 0
+	  {
+	  A_SpawnParticleEx
+		(
+		"",
+		TexMan.CheckForTexture("DTPRB0"),
+		style: STYLE_Add,
+		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+		lifetime: random(3,8),
+		size: random(20,60),
+		startalphaf: 1,
+		fadestepf: -1,
+		sizestep: -6,
+		startroll: random(-180,180)
+		);
+	}
+   Go:
+      BH_B D 1 Bright A_SetRoll(roll+30);
+    Loop;
+   Death:
+		TNT1 AA 0
+		{
+		A_SpawnParticleEx
+		(
+		"",
+		TexMan.CheckForTexture("SPKBA0"),
+		style: STYLE_Add,
+		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+		lifetime: random(2,8),
+		size: random(30,100),
+		angle: 0,
+		xoff: 0,
+		yoff: 0,
+		zoff: 0,
+		startalphaf: 0.95,
+		fadestepf: -1,
+		sizestep: -15,
+		startroll: random(-180,180)
+		);
+		}
+	  TNT1 A 5 Light("FB-BulletExplodeBlueTiny");
+      Stop;
+	  }
+}

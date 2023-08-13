@@ -14,13 +14,26 @@ $rolloff FB/DeathSFXGround 550 2200
 $rolloff FB/DeathSFXSmall 440 2200
 
 //Fairies
+FB/GreatFairyPain "Sounds/Monsters/Fairy/GreatFairyPain.ogg"
 FB/FairyPain "Sounds/Monsters/Fairy/FairyPain.ogg"
 $pitchset FB/FairyPain 0.9 1.1
+$pitchset FB/GreatFairyPain 0.9 1.1
 
 FB/FairyDeath "Sounds/Monsters/Fairy/FairyDeath.ogg"
 $pitchset FB/FairyDeath 0.85 1.15
 $volume FB/FairyDeath 0.75
-
+FB/BarrageFairyReady "Sounds/Monsters/Fairy/BarrageFairyReady.ogg"
+$rolloff FB/BarrageFairyReady 500 3000
+$random FB/Barrage { FB/Barrage1 FB/Barrage2 FB/Barrage3 FB/Barrage4 FB/Barrage5 }
+FB/Barrage1 "Sounds/SFX/BulletHellBarrage1.ogg"
+FB/Barrage2 "Sounds/SFX/BulletHellBarrage2.ogg"
+FB/Barrage3 "Sounds/SFX/BulletHellBarrage3.ogg"
+FB/Barrage4 "Sounds/SFX/BulletHellBarrage4.ogg"
+FB/Barrage5 "Sounds/SFX/BulletHellBarrage5.ogg"
+$volume FB/Barrage 0.55
+$limit FB/Barrage 20
+$rolloff FB/Barrage 500 3000
+  
 FB/BulletHellFire "Sounds/SFX/BulletHellFire.ogg"
 $volume FB/BulletHellFire 0.4
 $limit FB/BulletHellFire 20
