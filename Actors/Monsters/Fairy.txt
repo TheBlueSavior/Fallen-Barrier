@@ -554,10 +554,7 @@ Class FB_Fairy : FB_FairyBase
   Death2:
     "####" A 0
 	{
-	if(spritetype == 1)
-	A_SpawnItemEx("FB_PFairyFall",xvel:random(-3,3),yvel:random(-3,3),zvel:frandom(1.0,5.0),flags:SXF_NOCHECKPOSITION|SXF_CLIENTSIDE,failchance:0);
-	else
-	A_SpawnItemEx("FB_FairyFall",xvel:random(-3,3),yvel:random(-3,3),zvel:frandom(1.0,5.0),flags:SXF_NOCHECKPOSITION|SXF_CLIENTSIDE,failchance:0);
+A_SpawnItemEx("FB_FairyFall",xvel:random(-3,3),yvel:random(-3,3),zvel:frandom(1.0,5.0),flags:SXF_TRANSFERSPRITEFRAME|SXF_TRANSFERSCALE|SXF_NOCHECKPOSITION|SXF_CLIENTSIDE,failchance:0);
 	for(int i=3;i>0;i--)
 	A_SpawnItemEx("FB_WhiteFairyExplode",random(-5,5),random(-5,5),random(-5,5),frandom(-0.3,0.3),frandom(-0.3,0.3),frandom(-0.3,0.3),0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE,0);
 	A_StartSound("FB/DeathSFXSmall",15);
