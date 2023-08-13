@@ -1,6 +1,5 @@
 Class FB_Fairy : FB_FairyBase
 {
-  int deathtimer;
   bool standoff;
   static const statelabel posStates[] =
   {
@@ -53,23 +52,11 @@ Class FB_Fairy : FB_FairyBase
 
   override void start() {
 	//Push some possible sprites
-	possSprite.push("FA_1");
 	possSprite.push("FA_2");
+	possSprite.push("FA_3");
 	//TODO: Dynamic Array support for possible attacks
 	attack = posStates[random(0, 11)];
-	//Hit Sounds
-	hitSounds.push("FA_1");
-	hitSounds.push("FA_2");
 	super.start();
-  }
-
-  void FairySprite()
-  {
-   switch(spritetype)
-   {
-    case 0: sprite = GetSpriteIndex("FA_1"); break;
-	case 1: sprite = GetSpriteIndex("FA_2"); break;
-   }
   }
   
   override void PostBeginPlay()

@@ -1,4 +1,4 @@
-Class FB_BarrageFairy : FB_Fairy
+Class FB_BarrageFairy : FB_FairyBase
 {
   static const statelabel posStates[] =
   {
@@ -38,13 +38,10 @@ Class FB_BarrageFairy : FB_Fairy
 
   override void start() {
 	//Push some possible sprites
-	possSprite.push("FA_1");
-	possSprite.push("FA_2");
+	possSprite.push("FB_1");
+	possSprite.push("FB_2");
 	//TODO: Dynamic Array support for possible attacks
 	attack = posStates[random(0, 4)];
-	//Hit Sounds
-	hitSounds.push("FA_1");
-	hitSounds.push("FA_2");
 	super.start();
   }
 
@@ -63,6 +60,30 @@ Class FB_BarrageFairy : FB_Fairy
   Spawn1:
     "####" AB 5 A_Look();
     Loop;
+  See:
+	"####" A 0 ThrustThingZ(0,random(0,8),0,1);
+	"####" ABABABAB random(1,5);
+	"####" A 0 A_ChangeVelocity(0,0,0,CVF_REPLACE);
+	Goto WanderAttack;
+  See1:
+    "####" AABB 1 A_Chase();
+    Loop;
+  WanderAttack:
+	"####" AABBAABBAABBAABBAABB 1
+	{
+		A_Chase("Missile","Missile",CHF_DONTMOVE);
+		A_Wander();
+		A_FaceTarget();
+	}
+	"####" A 0 A_CheckSight("See1");
+	Loop;
+  Realign:
+	"####" AABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABB 1 A_Wander();
+	Goto See1;
+  CoolDown:
+    "####" A 0;
+	"####" AABBAABBAABB 1 A_Wander();
+	Goto WanderAttack;
   Missile:
 	"####" A 0 A_Jump(40,"StandoffStart");
 	"####" A 0 A_CheckLOF("MissileProceed");

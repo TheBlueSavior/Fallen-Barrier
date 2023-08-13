@@ -20,12 +20,13 @@ Class FB_FairyBase : Actor
   array<String> possSprite;
   array<StateLabel> possAtk;
   array<String> particles;
-  array<String> hitSounds;
+  //array<name> hitSounds;
 
 
   StateLabel attack;
   TextureID tex[6];
 
+  int deathtimer;
   int spritetype;
   int attacktype;
   int attackloop;
@@ -63,11 +64,11 @@ Class FB_FairyBase : Actor
   virtual void start() {
 	// Override this method and input possible logic such as sprite choosing
 	// But make sure super is called last to ensure states and sprites and can be assigned.
-	if(hitSounds.size() < 1) {
+	/*if(hitSounds.size() < 1) {
 		// If there are no hit sounds push defaults
 		hitSounds.push("FB/RaizingHit");
 		hitSounds.push("FB/StardustArenaHit");
-	}
+	}*/
    	if(possSprite.size() < 1) {
 		//If there is no sprite pushed, then default to some other ones
 		console.printf("Aint got no gas!\n");
@@ -78,18 +79,22 @@ Class FB_FairyBase : Actor
 	sprite = GetSpriteIndex(possSprite[random(0, possSprite.size()-1)]);
 	if(particles.size() < 1) {
 		// If there are no particle textures then default to standard particles
-		// tex[0] = TexMan.CheckForTexture("DTPRA0",TexMan.Type_Sprite);
-		// tex[1] = TexMan.CheckForTexture("DTPRB0",TexMan.Type_Sprite);
-		// tex[2] = TexMan.CheckForTexture("SPKOE0",TexMan.Type_Sprite);
-		// tex[3] = TexMan.CheckForTexture("SPKPE0",TexMan.Type_Sprite);
-		// tex[4] = TexMan.CheckForTexture("DTPRR0",TexMan.Type_Sprite);
-		// tex[5] = TexMan.CheckForTexture("SPKGE0",TexMan.Type_Sprite);
+		tex[0] = TexMan.CheckForTexture("DTPRA0",TexMan.Type_Sprite);
+		tex[1] = TexMan.CheckForTexture("DTPRB0",TexMan.Type_Sprite);
+		tex[2] = TexMan.CheckForTexture("SPKOE0",TexMan.Type_Sprite);
+		tex[3] = TexMan.CheckForTexture("SPKPE0",TexMan.Type_Sprite);
+		tex[4] = TexMan.CheckForTexture("DTPRR0",TexMan.Type_Sprite);
+		tex[5] = TexMan.CheckForTexture("SPKGE0",TexMan.Type_Sprite);
 	}
   }
 
   protected void HitSound()
   {
-	A_StartSound(hitSounds[random(0, hitSounds.size()-1)], CHAN_AUTO, 0, 0.9);
+   switch(fb_hitsfx)
+   {
+    case 0: A_StartSound("FB/RaizingHit",CHAN_AUTO,0,0.9); break;
+	case 1: A_StartSound("FB/StardustArenaHit",CHAN_AUTO,0,0.9); break;
+   }
   }
 
   override int DamageMobj(Actor inflictor, Actor source, int damage, Name mod, int flags, double angle)
@@ -113,7 +118,11 @@ Class FB_FairyBase : Actor
   }
   states {
 	LoadSprites:
-    FA_1 AB 0; FA_2 AB 0;
+    FA_1 AB 0; 
+	FA_2 AB 0; 
+	FA_3 AB 0; 
+	FB_1 AB 0;
+	FB_2 AB 0;
   }
 }
 
