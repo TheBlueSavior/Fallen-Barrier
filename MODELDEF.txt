@@ -1,9 +1,22 @@
-Model FB_FairyBlueBarrage
+Model FB_FairyBlueBarrage1
 { 
   Path "Models"
   Skin 0 "barrierbluebullet.png"
   Model 0 "tracer.md3"
   Scale 1.0 1.0 1.0
+  PITCHFROMMOMENTUM
+  ROTATING
+  Rotation-Vector 1.0 0.0 0.0
+  Rotation-Speed 15.0
+  FrameIndex BR_B A 0 0
+}
+
+Model FB_FairyBlueBarrage2
+{ 
+  Path "Models"
+  Skin 0 "barrierbluebullet.png"
+  Model 0 "tracer.md3"
+  Scale 1.0 1.0 0.5
   PITCHFROMMOMENTUM
   ROTATING
   Rotation-Vector 1.0 0.0 0.0

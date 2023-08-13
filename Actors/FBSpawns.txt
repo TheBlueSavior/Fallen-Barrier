@@ -5,6 +5,7 @@ Class FB_ReplacerHandler : EventHandler
  {
   switch(e.Replacee.GetClassName())
   {
+   //Tier 1
    case 'Zombieman': if(frandom(0.01, 1.00) <= CVar.GetCVar('fb_fairychance').GetFloat())
     { e.Replacement = "FB_Fairy"; }
 	break;
@@ -14,6 +15,9 @@ Class FB_ReplacerHandler : EventHandler
    case 'DoomImp': if(frandom(0.01, 1.00) <= CVar.GetCVar('fb_fairychance').GetFloat())
     { e.Replacement = "FB_Fairy"; }
 	break;
+   case 'ChaingunGuy': if(frandom(0.01, 1.00) <= CVar.GetCVar('fb_fairychance').GetFloat())
+    { e.Replacement = "FB_BarrageFairy"; }
+    break;
   }
  }
 }
