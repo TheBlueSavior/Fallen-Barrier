@@ -1,6 +1,5 @@
-Class FB_BarrageFairy : FB_FairyBase
+Class FB_BarrageFairy : FB_Fairy
 {
-  int deathtimer;
   Default
   {
     Health 200;
@@ -29,40 +28,39 @@ Class FB_BarrageFairy : FB_FairyBase
 	Obituary "%o was riddled with curtain fire by a Barrage Fairy.";
   }
 
-  private state BarrageFairyChoose(statelabel s1, statelabel s2, statelabel s3, statelabel s4, stateLabel s5)
+  static const statelabel posStates[] =
   {
-   switch(attacktype)
-   {
-    case 1: return ResolveState(s1); break;
-	case 2: return ResolveState(s2); break;
-	case 3: return ResolveState(s3); break;
-	case 4: return ResolveState(s4); break;
-	case 5: return ResolveState(s5); break;
-   }
-   return ResolveState(null);
+   "RegularBarrage",
+   "SuperBurst",
+   "DestructibleBullets",
+   "WeaverBullets",
+   "RedLaser"
+  };
+
+  static const name bfairySprite[] =
+  {
+   "FB_1",
+   "FB_2"
+  };
+
+  private state BarrageFairyChoose()
+  {
+   return ResolveState(posStates[attackType]);
   }
   
-  void FairySprite()
-  {
-   switch(spritetype)
-   {
-    case 0: sprite = GetSpriteIndex("FB_1"); break;
-	case 1: sprite = GetSpriteIndex("FB_2"); break;
-   }
-  }
   
   override void PostBeginPlay()
   {
    Super.PostBeginPlay();
-   attacktype = random(1,5);
-   spritetype = random(0,1);
-   FairySprite();
+   attacktype = random(0,4);
+   sprite = GetSpriteIndex(bfairySprite[random(0,1)]);
+   BFairySprite();
   }
 
   States
   {
   Spawn:
-	FB_2 A 0 NoDelay;
+	TNT1 A 0 NoDelay;
 	"####" A 0 A_SetHealth(random(100,150));
 	"####" A 0 A_SetSpeed(random(1,4));
   Spawn1:
@@ -80,7 +78,7 @@ Class FB_BarrageFairy : FB_FairyBase
 	"####" A 0 A_CheckLOF("MissileProceed");
     Goto Realign;
   MissileProceed:
-    "####" A 0 BarrageFairyChoose("RegularBarrage","SuperBurst","DestructibleBullets","WeaverBullets","RedLaser");
+    "####" A 0 BarrageFairyChoose();
 	Goto RegularBarrage;
   RegularBarrage:
     "####" A 0;
