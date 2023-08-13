@@ -40,6 +40,7 @@ Class FB_BarrageFairy : FB_FairyBase
 	//Push some possible sprites
 	possSprite.push("FB_1");
 	possSprite.push("FB_2");
+	possSprite.push("FB_3");
 	//TODO: Dynamic Array support for possible attacks
 	attack = posStates[random(0, 4)];
 	super.start();

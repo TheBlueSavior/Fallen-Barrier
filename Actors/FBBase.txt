@@ -120,9 +120,12 @@ Class FB_FairyBase : Actor
 	LoadSprites:
     FA_1 AB 0; 
 	FA_2 AB 0; 
-	FA_3 AB 0; 
+	FA_3 AB 0;
+	FA_4 AB 0; 
+	FA_5 AB 0; 
 	FB_1 AB 0;
 	FB_2 AB 0;
+	FB_3 AB 0;
   }
 }
 
