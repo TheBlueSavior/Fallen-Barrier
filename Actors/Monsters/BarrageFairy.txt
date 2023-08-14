@@ -8,6 +8,8 @@ Class FB_BarrageFairy : FB_FairyBase
   	"WeaverBullets",
   	"RedLaser"
   };
+  
+  int projangle;
   Default
   {
     Health 200;
@@ -312,12 +314,35 @@ Class FB_BarrageFairy : FB_FairyBase
 	 startroll: random(-180,180)
 	 );
 	}
-	"####" A 0 
-	{
-	if(random(1,2) == 1)
-	ThrustThing(random(-360,360),2,0,0);
-	A_StartSound("FB/LaserLoop",CHAN_6,CHANF_LOOPING,volume:0.75);
-	}
+	"####" A 0 	A_StartSound("FB/LaserLoop",CHAN_6,CHANF_LOOPING,volume:0.75);
+  "####" A 0 A_Jump(98,"RedLaserLeft","RedLaserRight"); //[NERU] i have to confess. i do not know which is which
+    Goto RedLaserGo;
+  RedLaserLeft:
+   "####" A 0;
+   "####" A 0 { projangle = random(-30,-35); }
+  RedLaserLeftGo:
+   "####" AB 1
+   {
+    if(projangle > random(35,45))
+	SetStateLabel("RedLaserEnd");
+	A_SpawnProjectile("FB_FairySmallRedLaser",10,0,projangle,CMF_AIMDIRECTION|CMF_OFFSETPITCH,pitch);
+	projangle++;
+   }
+   "####" A 0;
+   Loop;
+  RedLaserRight:
+   "####" A 0;
+   "####" A 0 { projangle = random(30,35); }
+  RedLaserRightGo:
+   "####" AB 1
+   {
+    if(projangle < random(-35,-45))
+	SetStateLabel("RedLaserEnd");
+	A_SpawnProjectile("FB_FairySmallRedLaser",10,0,projangle,CMF_AIMDIRECTION|CMF_OFFSETPITCH,pitch);
+	projangle--;
+   }
+   "####" A 0;
+   Loop;
   RedLaserGo:
    "####" AB 2
    {
