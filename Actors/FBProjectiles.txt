@@ -557,6 +557,7 @@ Class FB_FairyBlueBarrage1 : FB_FairyBall
    Scale 0.45;
    DamageFunction 5;
    SeeSound "";
+   DeathSound "FB/BarrageHit";
    }
    States
    {
@@ -612,6 +613,24 @@ Class FB_FairyBlueBarrage1 : FB_FairyBall
 		startalphaf: 0.95,
 		fadestepf: -1,
 		sizestep: -15,
+		startroll: random(-180,180)
+		);
+		for(int i=2;i>0;i--)
+		A_SpawnParticleEx
+		(
+		"3d85c6",
+		TexMan.CheckForTexture("Graphics/Particles/fbparticlesquare.png"),
+		style: STYLE_Add,
+		flags: SPF_RELATIVE|SPF_FULLBRIGHT|SPF_ROLL,
+		lifetime: random(10,55),
+		size: frandom(3,10),
+		velx: frandom(-4,4),
+		vely: frandom(-4,4),
+		velz: frandom(-4,4),
+		accelz: frandom(-0.1,-0.9),
+		startalphaf: frandom(0.45,0.95),
+		fadestepf: -0.5,
+		sizestep: -0.5,
 		startroll: random(-180,180)
 		);
 		}

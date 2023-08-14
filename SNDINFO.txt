@@ -33,6 +33,16 @@ FB/Barrage5 "Sounds/SFX/BulletHellBarrage5.ogg"
 $volume FB/Barrage 0.55
 $limit FB/Barrage 20
 $rolloff FB/Barrage 500 3000
+
+$random FB/BarrageHit { FB/BarrageHit1 FB/BarrageHit2 FB/BarrageHit3 FB/BarrageHit4 FB/BarrageHit5 }
+FB/BarrageHit1 "Sounds/SFX/BulletHellBarrageHit1.ogg"
+FB/BarrageHit2 "Sounds/SFX/BulletHellBarrageHit2.ogg"
+FB/BarrageHit3 "Sounds/SFX/BulletHellBarrageHit3.ogg"
+FB/BarrageHit4 "Sounds/SFX/BulletHellBarrageHit4.ogg"
+FB/BarrageHit5 "Sounds/SFX/BulletHellBarrageHit5.ogg"
+$volume FB/BarrageHit 0.85
+$limit FB/BarrageHit 15
+$rolloff FB/BarrageHit 150 800
   
 FB/BulletHellFire "Sounds/SFX/BulletHellFire.ogg"
 $volume FB/BulletHellFire 0.4
