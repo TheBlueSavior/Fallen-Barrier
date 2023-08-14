@@ -2,7 +2,9 @@
 FB/RaizingHit "Sounds/SFX/FBRaizingHit.ogg"
 FB/StardustArenaHit "Sounds/SFX/FBStardustArenaHit.ogg"
 FB/DeathSFXSmall "Sounds/SFX/DeathSFXSmall.ogg"
+FB/DeathSFXSmallSubdued "Sounds/SFX/DeathSFXSmallSubdued.ogg"
 FB/DeathSFXGround "Sounds/SFX/DeathSFXGround.ogg"
+FB/DeathSFXMediumRefleX "Sounds/SFX/DeathSFXMediumRefleX.ogg"
 
 $random FB/DeathSFXMedium { FB/DeathSFXMedium1 FB/DeathSFXMedium2 FB/DeathSFXMedium3 }
 FB/DeathSFXMedium1 "Sounds/SFX/DeathSFXMedium1.ogg"
@@ -10,8 +12,10 @@ FB/DeathSFXMedium2 "Sounds/SFX/DeathSFXMedium2.ogg"
 FB/DeathSFXMedium3 "Sounds/SFX/DeathSFXMedium3.ogg"
 
 $rolloff FB/DeathSFXMedium 550 2200
+$rolloff FB/DeathSFXMediumRefleX 550 2200
 $rolloff FB/DeathSFXGround 550 2200
 $rolloff FB/DeathSFXSmall 440 2200
+$rolloff FB/DeathSFXSmallSubdued 440 2200
 
 //Fairies
 FB/GreatFairyPain "Sounds/Monsters/Fairy/GreatFairyPain.ogg"
