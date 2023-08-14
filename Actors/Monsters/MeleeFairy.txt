@@ -1,0 +1,364 @@
+Class FB_MeleeFairy : FB_FairyBase
+{
+  static const statelabel posStates[] =
+  {
+  	"BurstStab",
+	"ComboStab"
+  };
+  bool seeskip;
+  Default
+  {
+    Health 200;
+    Radius 20;
+    Height 35;
+    Mass 50;
+    MeleeRange 100;
+	MeleeThreshold 180;
+	MaxTargetRange 550;
+    Speed 3;
+    Scale 1.35;
+	Painchance 128;
+    SeeSound "";
+    DeathSound "";
+    AttackSound "";
+	PainSound "FB/GreatFairyPain";
+    Tag "Melee Fairy";
+    Monster;
+    +DONTHARMCLASS
+    +NOGRAVITY
+    +FLOAT
+    +FLOATBOB
+    +DONTFALL
+    +NOICEDEATH
+	-AVOIDMELEE
+	+THRUSPECIES
+	FloatBobStrength 0.5;
+	Obituary "%o was turned into a pincushion by a Melee Fairy.";
+  }
+
+  override void start() {
+	//Push some possible sprites
+	possSprite.push("FA_2");
+	possSprite.push("FA_3");
+	possSprite.push("FA_4");
+	possSprite.push("FA_5");
+	//TODO: Dynamic Array support for possible attacks
+	attack = posStates[random(0,1)];
+	super.start();
+  }
+
+  //TODO: Have this be chosen in start() method 
+  private state MeleeFairyChoose()
+  {
+   return ResolveState(attack);
+  }
+
+  States
+  {
+  Spawn:
+	FA_1 A 0 NoDelay;
+	"####" A 0 A_SetHealth(random(100,150));
+	"####" A 0 A_SetSpeed(random(1,6));
+  Spawn1:
+    "####" AB 5 A_Look();
+    Loop;
+  See:
+    "####" A 0 { if(seeskip) SetStateLabel("CoolDown");}
+	"####" A 0 ThrustThingZ(0,random(0,8),0,1);
+	"####" ABABABAB random(1,5) A_FaceTarget();
+	"####" A 0 A_ChangeVelocity(0,0,0,CVF_REPLACE);
+	"####" A 0
+	{
+	 A_StartSound("FB/MeleeFairyUnsheathe");
+	 A_SpawnParticleEx
+	 (
+	  "",
+	  tex[3],
+	  style: STYLE_Add,
+	  flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+	  lifetime: random(2,8),
+	  size: 50,
+	  xoff: 15,
+	  yoff: -20,
+	  zoff: 10,
+	  startalphaf: 0.85,
+	  fadestepf: -1,
+	  sizestep: -15,
+	  startroll: random(-180,180)
+	 );
+	 A_SpawnParticleEx
+	 (
+	  "",
+	  TexMan.CheckForTexture("B_KUA7A3"),
+	  style: STYLE_Add,
+	  flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+	  lifetime: 30,
+	  size: 15,
+	  xoff: 15,
+	  yoff: -12,
+	  zoff: 10,
+	  startalphaf: 0.85,
+	  fadestepf: -1,
+	  sizestep: 0.5,
+	  startroll: 125
+	 );
+	}
+	"####" ABABABABAB 1;
+	"####" A 0 { seeskip = true; }
+	Goto ChaseAttack;
+  See1:
+    "####" AABB 1 A_Chase();
+    Loop;
+  Realign:
+	"####" AABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABB 1 A_Wander();
+	Goto See1;
+  ChaseAttack:
+	"####" AABBAABBAABBAABBAABB 1
+	{
+		A_Chase("Missile","Missile");
+		A_FaceTarget();
+	}
+	"####" A 0 A_CheckSight("See1");
+	Loop;
+  CoolDown:
+    "####" A 0;
+	"####" AABBAABBAABB 1 A_Wander();
+	Goto ChaseAttack;
+  Missile:
+	"####" A 0 A_CheckLOF("MissileProceed");
+    Goto Realign;
+  MissileProceed:
+    "####" A 0 MeleeFairyChoose();
+	Goto BurstStab;
+  BurstStab:
+    "####" A 0;
+    "####" A 0;
+	"####" ABABABABA 1
+		{
+		A_FaceTarget();
+		A_SpawnParticleEx
+		(
+		"",
+		tex[3],
+		style: STYLE_Add,
+		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+		lifetime: random(2,8),
+		size: random(40,120),
+		xoff: 10,
+		zoff: 10,
+		startalphaf: 0.85,
+		fadestepf: -1,
+		sizestep: -15,
+		startroll: random(-180,180)
+		);
+		}
+	"####" A 0 
+	{
+	if(target && Distance3D(target) > 550)
+	A_SkullAttack(17);
+	if(target && Distance3D(target) > 330)
+	A_SkullAttack(15);
+	else
+	A_SkullAttack(8);
+	}
+  BurstStabGo:
+    "####" A 0;
+	"####" ABABAB 3 
+	{
+	A_FaceTarget(0.95,3);
+	A_SpawnProjectile("FB_FairyMeleeKunai",random(2,30),random(-15,15),0,CMF_AIMDIRECTION|CMF_OFFSETPITCH,pitch);
+	}
+	"####" A 0;
+    "####" A 0 A_Stop();
+	Goto Cooldown;
+  ComboStab:
+    "####" A 0;
+    "####" A 0;
+	"####" ABABABABA 1
+		{
+		A_FaceTarget();
+		A_SpawnParticleEx
+		(
+		"",
+		tex[3],
+		style: STYLE_Add,
+		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+		lifetime: random(2,8),
+		size: random(40,120),
+		xoff: 10,
+		zoff: 10,
+		startalphaf: 0.85,
+		fadestepf: -1,
+		sizestep: -15,
+		startroll: random(-180,180)
+		);
+		}
+   ComboStab2:
+    "####" A 0;
+	"####" A 0 
+	{
+	if(target && Distance3D(target) > 550)
+	A_SkullAttack(17);
+	if(target && Distance3D(target) > 330)
+	A_SkullAttack(15);
+	else
+	A_SkullAttack(8);
+	}
+	"####" A 0 { attackloop = random(2,4); }
+  ComboStabGo:
+    "####" A 0;
+	"####" ABA 3 
+	{
+	A_FaceTarget(0.95,3);
+	A_SpawnProjectile("FB_FairyMeleeKunai",random(2,30),random(-15,15),0,CMF_AIMDIRECTION|CMF_OFFSETPITCH,pitch);
+	}
+	"####" A 0;
+    "####" A 0 A_ChangeVelocity(random(-1,1),random(-1,1),random(-1,1),CVF_RELATIVE);
+	"####" ABABABABABABABABABABABABABA 1 A_FaceTarget();
+	"####" A 0 A_Stop();
+	"####" A 0 { if(attackloop < 0) SetStateLabel("Cooldown"); attackloop--; }
+	Goto ComboStab2;
+  Pain:
+	"####" A 1;
+	"####" A 1 A_Pain();
+	"####" A 4; 
+	Goto ChaseAttack;
+  Death:
+  "####" A 0;
+	"####" A 0 A_StopSound(6);
+	"####" A 0 { deathtimer = random(2,5); }
+	"####" A 1 A_Scream();
+	"####" A 1 A_NoBlocking();
+	"####" A 0 A_Jump(76,"DeathEnd");
+	"####" A 0 A_Jump(80,"Death2");
+	Goto DeathFade;
+  Death2:
+    "####" A 0
+	{
+  A_SpawnItemEx("FB_FairyFall",xvel:random(-3,3),yvel:random(-3,3),zvel:frandom(1.0,5.0),flags:SXF_TRANSFERSPRITEFRAME|SXF_TRANSFERSCALE|SXF_NOCHECKPOSITION|SXF_CLIENTSIDE,failchance:0);
+	for(int i=3;i>0;i--)
+	A_SpawnItemEx("FB_WhiteFairyExplode2",random(-20,20),random(-20,20),random(-20,20),frandom(-1.5,1.5),frandom(-1.5,1.5),frandom(-1.5,1.5),0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE,0);
+	A_StartSound("FB/DeathSFXMediumRefleX",15);
+	}
+	Stop;
+  DeathFade:
+	"####" A 3 
+	{
+	if(deathtimer < 0)
+	SetStateLabel("DeathEnd");
+	A_SpawnItemEx("FB_WhiteFairyExplode2",random(-20,20),random(-20,20),random(-20,20),frandom(-0.5,0.5),frandom(-0.5,0.5),frandom(-0.5,0.5),0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE,0);
+	A_StartSound("FB/DeathSFXSmall",15);
+	deathtimer--;
+	}
+	Loop;
+  DeathEnd:
+  "####" AAAAA 2
+  {
+   A_SpawnItemEx("FB_WhiteFairyExplode2",random(-20,20),random(-20,20),random(-20,20),frandom(-0.5,0.5),frandom(-0.5,0.5),frandom(-0.5,0.5),0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE,0);
+   A_StartSound("FB/DeathSFXSmall",15);
+  }
+  TNT1 A 0
+	{
+	 if(fb_itemdrops)
+	 {
+	  for(int i=random(0,3);i>0;i--)
+	  A_SpawnItemEx("FB_GiftOrb",flags:SXF_NOCHECKPOSITION);
+	 }
+	 else
+	 A_Jump(256,1);
+	}
+	TNT1 A 0
+		{
+		A_SpawnParticleEx
+			(   
+			"",
+			TexMan.CheckForTexture("SPKWE0"),
+			style: STYLE_Add,
+			flags: SPF_ROLL|SPF_RELATIVE|SPF_FULLBRIGHT,
+			lifetime: random(200,300),
+			size: 20,
+			zoff: 5,
+			accelx: frandom(-0.05,0.05),
+			accely: frandom(-0.05,0.05),
+			accelz: frandom(-0.05,0.2),
+			startalphaf: frandom(0.8,1),
+			fadestepf: 0,
+			sizestep: -0.01,
+			startroll: random(-180,180)
+			);
+		for(int i=random(5,8);i>0;i--)
+		A_SpawnParticleEx
+			(
+			"",
+			TexMan.CheckForTexture("GNSMK0"),
+			style: STYLE_Add,
+			flags: SPF_RELATIVE|SPF_ROLL|SPF_FULLBRIGHT,
+			lifetime: random(40,85),
+			size: frandom(8,25),
+			velx: frandom(-1,1),
+			vely: frandom(-1,1),
+			velz: frandom(-1,1),
+			startalphaf: frandom(0.6,0.95),
+			fadestepf: -1,
+			sizestep: frandom(0.2,4),
+			startroll: random(-180,180),
+			rollvel: frandom(-1,1)
+			);
+		for(int i=random(7,12);i>0;i--)
+		A_SpawnParticleEx
+			(
+			"",
+			TexMan.CheckForTexture("DUS_C0"),
+			style: STYLE_Normal,
+			flags: SPF_RELATIVE|SPF_ROLL|SPF_FULLBRIGHT,
+			lifetime: random(40,80),
+			size: frandom(8,20),
+			velx: frandom(-4,4),
+			vely: frandom(-4,4),
+			velz: frandom(-4,8),
+			accelz: frandom(-0.1,-0.6),
+			startalphaf: 1.0,
+			sizestep: -0.15,
+			startroll: random(-180,180),
+			rollvel: random(0,4)
+			);
+        A_StartSound("FB/DeathSFXMediumRefleX",14);
+		A_SpawnParticleEx
+		(
+			"",
+			TexMan.CheckForTexture("SPKWC0"),
+			style: STYLE_Add,
+			flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+			lifetime: 15,
+			size: 550,
+			angle: 0,
+			xoff: 0,
+			yoff: 0,
+			zoff: 0,
+			startalphaf: 1,
+			fadestepf: -1,
+			sizestep: -15,
+			startroll: random(-180,180)
+			);
+		for(int i=random(12,15);i>0;i--)
+		A_SpawnParticleEx
+			(
+			"",
+			TexMan.CheckForTexture("Graphics/Particles/fbparticlesquare.png"),
+			style: STYLE_Add,
+			flags: SPF_RELATIVE|SPF_FULLBRIGHT|SPF_ROLL,
+			lifetime: random(20,60),
+			size: frandom(3,12),
+			velx: frandom(-8,8),
+			vely: frandom(-8,8),
+			velz: frandom(-8,10),
+			accelz: frandom(-0.0,-0.8),
+			startalphaf: 1.0,
+			fadestepf: -0.5,
+			sizestep: -0.2,
+			startroll: random(-180,180)
+			);
+		}
+    Stop;
+  }
+}

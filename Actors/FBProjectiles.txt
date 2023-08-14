@@ -16,7 +16,7 @@ Class FB_FairyBall1 : FB_FairyBall
 	  A_SpawnParticleEx
 		(
 		"",
-		TexMan.CheckForTexture("DTPRB0"),
+		tex[0], //DTPRB0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(3,8),
@@ -40,7 +40,7 @@ Class FB_FairyBall1 : FB_FairyBall
 		A_SpawnParticleEx
 		(
 		"",
-		TexMan.CheckForTexture("SPKBA0"),
+		tex[1], //SPKBA0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(2,8),
@@ -78,7 +78,7 @@ Class FB_RedFairyBall1 : FB_FairyBall
 	  A_SpawnParticleEx
 		(
 		"",
-		TexMan.CheckForTexture("DTPRR0"),
+		tex[2], //DTPRR0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(3,8),
@@ -102,7 +102,7 @@ Class FB_RedFairyBall1 : FB_FairyBall
 		A_SpawnParticleEx
 		(
 		"",
-		TexMan.CheckForTexture("SPKRA0"),
+		tex[3], //SPKRA0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(2,8),
@@ -140,7 +140,7 @@ Class FB_FairyBall2 : FB_FairyBall
 	  A_SpawnParticleEx
 		(
 		"",
-		TexMan.CheckForTexture("SPKOE0"),
+		tex[4], //SPKOE0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(3,8),
@@ -164,7 +164,7 @@ Class FB_FairyBall2 : FB_FairyBall
 		A_SpawnParticleEx
 		(
 		"",
-		TexMan.CheckForTexture("SPKOA0"),
+		tex[5], //SPKOA0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(2,8),
@@ -221,7 +221,7 @@ Class FB_FairyBeam : FB_FairyBall
 	  A_SpawnParticleEx
 		(
 		"",
-		TexMan.CheckForTexture("SPKPB0"),
+		tex[6], //SPKPB0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(3,8),
@@ -244,8 +244,8 @@ Class FB_FairyBeam : FB_FairyBall
 		{
 		A_SpawnParticleEx
 		(
-		"",
-		TexMan.CheckForTexture("SPKPA0"),
+		"", 
+		tex[7], //SPKPA0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(2,8),
@@ -306,16 +306,6 @@ Class FB_FairySmallRedLaser : FB_FairyBall
    Scale 0.85;
    }
    
-   override void PostBeginPlay()
-   {
-    Super.PostBeginPlay();
-	tex[0] = TexMan.CheckForTexture("BL_RA0",TexMan.Type_Sprite);
-	tex[1] = TexMan.CheckForTexture("Graphics/Particles/fbparticlesquare.png",TexMan.Type_Sprite);
-	tex[2] = TexMan.CheckForTexture("DTPRR0",TexMan.Type_Sprite);
-   }
-   
-   TextureID tex[3];
-   
    override void Tick()
    {
     Super.Tick();
@@ -324,7 +314,7 @@ Class FB_FairySmallRedLaser : FB_FairyBall
 		A_SpawnParticleEx
 		(
 		"cc0000",
-		tex[1],
+		tex[10], //Graphics/Particles/fbparticlesquare.png
 		style: STYLE_Add,
 		flags: SPF_RELATIVE|SPF_FULLBRIGHT|SPF_ROLL,
 		lifetime: random(1,15),
@@ -345,7 +335,7 @@ Class FB_FairySmallRedLaser : FB_FairyBall
 	 A_SpawnParticleEx
 	 (
 	 "",
-	 tex[2],
+	 tex[2], //DTPRR0
 	 style: STYLE_Add,
 	 flags: SPF_RELATIVE|SPF_FULLBRIGHT|SPF_ROLL,
 	 lifetime: random(1,8),
@@ -364,7 +354,7 @@ Class FB_FairySmallRedLaser : FB_FairyBall
 	 A_SpawnParticleEx
 	 (
 	 "cc0000",
-	 tex[1],
+	 tex[10], //Graphics/Particles/fbparticlesquare.png
 	 style: STYLE_Add,
 	 flags: SPF_RELATIVE|SPF_FULLBRIGHT|SPF_ROLL,
 	 lifetime: random(1,20),
@@ -390,7 +380,7 @@ Class FB_FairySmallRedLaser : FB_FairyBall
 	    A_SpawnParticleEx
 		(
 		"",
-		tex[2],
+		tex[2], //DTPRR0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(3,8),
@@ -429,7 +419,7 @@ Class FB_FairyCrystalShot : FB_FairyBall
 	  A_SpawnParticleEx
 		(
 		"",
-		TexMan.CheckForTexture("SPKGE0"),
+		tex[8], //SPKGE0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(3,8),
@@ -453,7 +443,7 @@ Class FB_FairyCrystalShot : FB_FairyBall
 		A_SpawnParticleEx
 		(
 		"",
-		TexMan.CheckForTexture("SPKGA0"),
+		tex[9], //SPKGA0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(2,8),
@@ -495,7 +485,7 @@ Class FB_FairyCrystalSpreader : FB_FairyBall
 	  A_SpawnParticleEx
 		(
 		"",
-		TexMan.CheckForTexture("SPKGE0"),
+		tex[8], //SPKGE0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(3,8),
@@ -524,7 +514,7 @@ Class FB_FairyCrystalSpreader : FB_FairyBall
 		A_SpawnParticleEx
 		(
 		"",
-		TexMan.CheckForTexture("SPKGA0"),
+		tex[9], //SPKGA0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(2,8),
@@ -568,7 +558,7 @@ Class FB_FairyBlueBarrage1 : FB_FairyBall
 	  A_SpawnParticleEx
 		(
 		"",
-		TexMan.CheckForTexture("DTPRB0"),
+		tex[0], //DTPRB0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(3,8),
@@ -581,7 +571,7 @@ Class FB_FairyBlueBarrage1 : FB_FairyBall
 		A_SpawnParticleEx
 		(
 		"3d85c6",
-		TexMan.CheckForTexture("Graphics/Particles/fbparticlesquare.png"),
+		tex[10], //Graphics/Particles/fbparticlesquare.png
 		style: STYLE_Add,
 		flags: SPF_RELATIVE|SPF_FULLBRIGHT|SPF_ROLL,
 		lifetime: random(20,60),
@@ -605,7 +595,7 @@ Class FB_FairyBlueBarrage1 : FB_FairyBall
 		A_SpawnParticleEx
 		(
 		"",
-		TexMan.CheckForTexture("SPKBA0"),
+		tex[1], //SPKBA0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(2,8),
@@ -619,7 +609,7 @@ Class FB_FairyBlueBarrage1 : FB_FairyBall
 		A_SpawnParticleEx
 		(
 		"3d85c6",
-		TexMan.CheckForTexture("Graphics/Particles/fbparticlesquare.png"),
+		tex[10], //Graphics/Particles/fbparticlesquare.png
 		style: STYLE_Add,
 		flags: SPF_RELATIVE|SPF_FULLBRIGHT|SPF_ROLL,
 		lifetime: random(10,55),
@@ -681,7 +671,7 @@ Class FB_FairyBallWeaver1 : FB_FairyBall
 	  A_SpawnParticleEx
 		(
 		"",
-		TexMan.CheckForTexture("DTPRB0"),
+		tex[0], //DTPRB0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(3,8),
@@ -709,7 +699,7 @@ Class FB_FairyBallWeaver1 : FB_FairyBall
 		A_SpawnParticleEx
 		(
 		"",
-		TexMan.CheckForTexture("SPKBA0"),
+		tex[1], //SPKBA0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(2,8),
@@ -749,7 +739,7 @@ Class FB_FairyBallDestruct1 : FB_FairyBall
 	  A_SpawnParticleEx
 		(
 		"",
-		TexMan.CheckForTexture("DTPRB0"),
+		tex[0], //DTPRB0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(3,8),
@@ -769,7 +759,7 @@ Class FB_FairyBallDestruct1 : FB_FairyBall
 		A_SpawnParticleEx
 		(
 		"",
-		TexMan.CheckForTexture("SPKBA0"),
+		tex[1], //SPKBA0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(2,8),
@@ -787,4 +777,41 @@ Class FB_FairyBallDestruct1 : FB_FairyBall
 	  TNT1 A 5 Light("FB-BulletExplodeBlueTiny");
       Stop;
 	  }
+}
+
+Class FB_FairyMeleeKunai : FB_FairyBall
+{
+   Default
+   {
+   DamageFunction random(2,4);
+   Speed 30;
+   Scale 0.75;
+   SeeSound "FB/MeleeSwing";
+   }
+   States
+   {
+  Spawn:
+    TNT1 A 0;
+    B_KU AAA 1 Bright;
+    B_KU A 1 Bright A_FadeOut(0.555);
+    Wait;
+  Death:
+    TNT1 A 0
+	{
+	 A_SpawnParticleEx
+	 (
+	 "",
+	 tex[7], //SPKPA0
+	 style: STYLE_Add,
+	 flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+	 lifetime: random(2,8),
+	 size: random(60,170),
+	 startalphaf: 0.95,
+	 fadestepf: -1,
+	 sizestep: -15,
+	 startroll: random(-180,180)
+	 );
+	}
+    Stop;
+   }
 }

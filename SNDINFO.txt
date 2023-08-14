@@ -61,3 +61,9 @@ FB/LaserStart "Sounds/SFX/BulletHellLaserStart.ogg"
 FB/LaserLoop "Sounds/SFX/BulletHellLaserLoop.ogg"
 $rolloff FB/LaserReady 400 2200
 $rolloff FB/LaserLoop 400 2200
+
+FB/MeleeFairyUnsheathe "Sounds/Monsters/Fairy/MeleeFairySchwing.ogg" //average day in london
+FB/MeleeSwing "Sounds/SFX/MeleeSwing.ogg"
+$pitchset FB/MeleeSwing 0.8 1.5 
+$limit FB/MeleeSwing 15
+$volume FB/MeleeSwing 0.85

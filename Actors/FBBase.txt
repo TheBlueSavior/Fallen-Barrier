@@ -30,6 +30,7 @@ Class FB_FairyBase : Actor
   int spritetype;
   int attacktype;
   int attackloop;
+  int projangle;
 
   Default
   {
@@ -45,6 +46,7 @@ Class FB_FairyBase : Actor
     Tag "Fairy";
     Monster;
     StencilColor "White";
+    Species "Fae";
     +DONTHARMCLASS
     +NOGRAVITY
     +FLOAT
@@ -52,7 +54,6 @@ Class FB_FairyBase : Actor
     +DONTFALL
     +NOICEDEATH
 	+AVOIDMELEE
-	+NOINFIGHTING
 	+NOBLOODDECALS
 	FloatBobStrength 0.5;
 	BloodType "FB_MagicBlood";

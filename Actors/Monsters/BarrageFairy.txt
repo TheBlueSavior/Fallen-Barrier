@@ -9,7 +9,7 @@ Class FB_BarrageFairy : FB_FairyBase
   	"RedLaser"
   };
   
-  int projangle;
+  
   Default
   {
     Health 200;

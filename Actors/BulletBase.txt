@@ -13,10 +13,8 @@ Class FB_BHProjBase : Actor
    +FORCEXYBILLBOARD 
    +ROLLSPRITE
    +ROLLCENTER
+   +MTHRUSPECIES
    }
-   
-   override bool CanCollideWith(Actor other, bool passive)
-   { return !other.bISMONSTER && Super.CanCollideWith(other,passive); }
 }
 
 Class FB_FairyBall : FB_BHProjBase
@@ -28,6 +26,25 @@ Class FB_FairyBall : FB_BHProjBase
    Scale 0.8;
    Alpha 0.95;
    }
+   
+   override void PostBeginPlay()
+   {
+    Super.PostBeginPlay();
+    tex[0] = TexMan.CheckForTexture("DTPRB0",TexMan.Type_Sprite);
+	tex[1] = TexMan.CheckForTexture("SPKBA0",TexMan.Type_Sprite);
+	tex[2] = TexMan.CheckForTexture("DTPRR0",TexMan.Type_Sprite);
+	tex[3] = TexMan.CheckForTexture("SPKRA0",TexMan.Type_Sprite);
+	tex[4] = TexMan.CheckForTexture("SPKOE0",TexMan.Type_Sprite);
+	tex[5] = TexMan.CheckForTexture("SPKOA0",TexMan.Type_Sprite);
+	tex[6] = TexMan.CheckForTexture("SPKPB0",TexMan.Type_Sprite);
+	tex[7] = TexMan.CheckForTexture("SPKPA0",TexMan.Type_Sprite);
+	tex[8] = TexMan.CheckForTexture("SPKGE0",TexMan.Type_Sprite);
+	tex[9] = TexMan.CheckForTexture("SPKGA0",TexMan.Type_Sprite);
+	tex[10] = TexMan.CheckForTexture("Graphics/Particles/fbparticlesquare.png",TexMan.Type_Sprite);
+   }
+   
+   TextureID tex[11];
+   
    States
    {
    Spawn:
