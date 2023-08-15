@@ -1,5 +1,32 @@
 //Actor Fx
 
+Class FB_SmallFlame : Actor
+{
+  Default
+  {
+  Height 0;
+  Radius 0;
+  RenderStyle "Add";
+  Scale 1.0;
+  Alpha 1.0;
+  +NOINTERACTION;
+  +BRIGHT;
+  +THRUACTORS;
+  +DONTSPLASH;
+  +CLIENTSIDEONLY
+  +FORCEXYBILLBOARD
+  }
+  
+  States
+  {
+  Spawn:
+	TNT1 A 0 NoDelay A_SetScale(frandompick(Scale.X, -Scale.X), Scale.Y);
+	FAR0 ABC 3;
+	FAR0 DE 2;
+	Stop;
+  }
+}
+
 Class FB_WhiteFairyExplode : Actor
 {
   Default

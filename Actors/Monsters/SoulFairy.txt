@@ -1,0 +1,293 @@
+Class FB_SoulFairy : FB_FairyBase
+{
+  bool seeskip;
+  Default
+  {
+    Health 70;
+    Radius 16;
+    Height 30;
+    Mass 50;
+    MeleeRange 100;
+	MeleeThreshold 180;
+	MaxTargetRange 850;
+    Speed 5;
+    Scale 1;
+	Alpha 0.9;
+	DamageFunction 10;
+	Painchance 256;
+    SeeSound "FB/FairySight";
+    DeathSound "";
+    //AttackSound "FB/SoulFairySkree";
+	PainSound "FB/FairyPain";
+    Tag "Soul Fairy";
+    Monster;
+    +DONTHARMCLASS
+    +NOGRAVITY
+    +FLOAT
+    +FLOATBOB
+    +DONTFALL
+    +NOICEDEATH
+	-AVOIDMELEE
+	+THRUSPECIES
+	FloatBobStrength 0.3;
+	Obituary "%o was scorched in hellfire by a corrupted Soul Fairy.";
+  }
+    override void start() {
+	//Push some possible sprites
+	possSprite.push("FS_1");
+	}
+  States
+  {
+  Spawn:
+	FS_1 A 0 NoDelay;
+	"####" A 0 { if(seeskip) SetStateLabel("Spawn1");}
+  Spawn1:
+    "####" AB 5 A_Look();
+    Loop;
+  See:
+	"####" A 0 { seeskip = true; }
+	Goto See1;
+  See1:
+    "####" AABB 2 A_Chase();
+    Loop;
+  CoolDown:
+    "####" A 0;
+    "####" A 0 A_Stop();
+	"####" AAACCCBBBCCC 1 A_Wander();
+	Goto See1;
+  Missile:
+	"####" A 0 A_CheckLOF("Charge");
+    Goto Realign;
+  Charge:
+	"####" ABABABAB 3 Light("FB-BulletExplodeOrange")
+	{
+	A_Facetarget();
+	A_SpawnItemEx("FB_SmallFlame",frandom(-5.0, 5.0),frandom(-5.0,5.0),frandom(-5.0,20.0),0,0,frandom(0,1),0,SXF_NOCHECKPOSITION);
+	}
+	"####" A 0 A_StartSound("FB/SoulCharge",CHAN_6);
+	"####" A 0 A_StartSound("FB/SoulFairySkree",CHAN_7,CHANF_DEFAULT,0.6,ATTN_NORM,frandom(0.95,1.25));
+	"####" CC 1 Light("FB-BulletExplodeOrange")
+	{
+	A_SkullAttack();
+	A_SpawnParticleEx
+	 (
+	 "FF8700",
+	 TexMan.CheckForTexture("SPKWE0"),
+	 style: STYLE_Add,
+	 flags: SPF_ROLL|SPF_RELATIVE,
+	 lifetime: random(30,40),
+	 size: 78.0,
+	 xoff: -5,
+	 zoff: 8,
+	 startalphaf: frandom(0.5,0.8),
+	 fadestepf: -1,
+	 sizestep: -0.2,
+	 startroll: random(-180,180)
+	 );
+	A_SpawnParticleEx
+	 (
+	 "FFAE00",
+	 TexMan.CheckForTexture("Graphics/Particles/fbparticlesquare.png"),
+	 style: STYLE_Add,
+	 flags: SPF_RELATIVE|SPF_FULLBRIGHT|SPF_ROLL,
+	 lifetime: random(60,95),
+	 size: frandom(3,12),
+	 xoff: frandom(-10,10),
+	 yoff: frandom(-13,13),
+	 zoff: frandom(0,29),
+	 startalphaf: frandom(0.45,0.95),
+	 fadestepf: -0.5,
+	 sizestep: -0.4,
+	 startroll: random(-180,180)
+	 );
+	A_SpawnItemEx("FB_SmallFlame",frandom(-5.0, 5.0),frandom(-5.0,5.0),frandom(-5.0,20.0),0,0,frandom(0,1),0,SXF_NOCHECKPOSITION,50);
+	}
+    "####" DDCCDDCCDDCCDDCCDDCCDDCCDDCCDDCCDDCCDDCCDDCCDDCCDDCCDDCCDDCCDDCC 1 Light("FB-BulletExplodeOrange")
+	{
+	A_SpawnParticleEx
+	 (
+	 "FF8700",
+	 TexMan.CheckForTexture("SPKWE0"),
+	 style: STYLE_Add,
+	 flags: SPF_ROLL|SPF_RELATIVE,
+	 lifetime: random(30,40),
+	 size: 78.0,
+	 xoff: -5,
+	 zoff: 8,
+	 startalphaf: frandom(0.5,0.8),
+	 fadestepf: -1,
+	 sizestep: -0.2,
+	 startroll: random(-180,180)
+	 );
+	A_SpawnParticleEx
+	 (
+	 "FFAE00",
+	 TexMan.CheckForTexture("Graphics/Particles/fbparticlesquare.png"),
+	 style: STYLE_Add,
+	 flags: SPF_RELATIVE|SPF_FULLBRIGHT|SPF_ROLL,
+	 lifetime: random(60,95),
+	 size: frandom(3,12),
+	 xoff: frandom(-10,10),
+	 yoff: frandom(-13,13),
+	 zoff: frandom(0,29),
+	 startalphaf: frandom(0.45,0.95),
+	 fadestepf: -0.5,
+	 sizestep: -0.4,
+	 startroll: random(-180,180)
+	 );
+	 A_SpawnProjectile("FB_SoulFairyFireBall",random(10,20),0,frandom(0,360),CMF_OFFSETPITCH,frandom(-70,70));
+	 A_SpawnItemEx("FB_SmallFlame",frandom(-5.0, 5.0),frandom(-5.0,5.0),frandom(-5.0,20.0),0,0,frandom(0,1),0,SXF_NOCHECKPOSITION,50);
+	 }
+	 "####" A 0 A_ChangeVelocity(0,0,0,CVF_REPLACE);
+	Goto See1;
+    //Goto Charge+12;
+  Realign:
+	"####" AABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABB 1 A_Wander();
+	Goto See1;
+  Pain:
+	"####" A 1;
+	"####" A 1 A_Pain();
+	"####" A 4; 
+	Goto See1;
+  Death:
+    "####" A 0;
+	"####" A 0 { deathtimer = random(3,7); }
+	"####" A 1 A_Scream();
+	"####" A 1 A_NoBlocking();
+	"####" A 0 A_Jump(76,"DeathEnd");
+	"####" A 0 A_Jump(80,"Death2");
+	Goto DeathFade;
+  Death2:
+    "####" A 0
+	{
+	A_SpawnItemEx("FB_FairyFall",xvel:random(-3,3),yvel:random(-3,3),zvel:frandom(1.0,5.0),flags:SXF_TRANSFERSPRITEFRAME|SXF_TRANSFERSCALE|SXF_NOCHECKPOSITION|SXF_CLIENTSIDE,failchance:0);
+	for(int i=3;i>0;i--)
+	A_SpawnItemEx("FB_WhiteFairyExplode",random(-5,5),random(-5,5),random(-5,5),frandom(-0.3,0.3),frandom(-0.3,0.3),frandom(-0.3,0.3),0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE,0);
+	A_StartSound("FB/DeathSFXSmall",15);
+	}
+	Stop;
+  DeathFade:
+	"####" A 3 
+	{
+	if(deathtimer < 0)
+	SetStateLabel("DeathEnd");
+	A_SpawnItemEx("FB_WhiteFairyExplode",random(-15,15),random(-15,15),random(-15,15),0,0,0,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE,0);
+	A_StartSound("FB/DeathSFXSmallSubdued",15);
+	deathtimer--;
+	}
+	Loop;
+  DeathEnd:
+  TNT1 A 0
+	{
+	 if(fb_itemdrops)
+	 {
+	  for(int i=random(0,3);i>0;i--)
+	  A_SpawnItemEx("FB_GiftOrb",flags:SXF_NOCHECKPOSITION);
+	 }
+	 else
+	 A_Jump(256,1);
+	}
+	TNT1 A 0
+		{
+		A_SpawnParticleEx
+			(   
+			"",
+			TexMan.CheckForTexture("SPKWE0"),
+			style: STYLE_Add,
+			flags: SPF_ROLL|SPF_RELATIVE|SPF_FULLBRIGHT,
+			lifetime: random(200,300),
+			size: 20,
+			zoff: 5,
+			accelx: frandom(-0.05,0.05),
+			accely: frandom(-0.05,0.05),
+			accelz: frandom(-0.05,0.2),
+			startalphaf: frandom(0.8,1),
+			fadestepf: 0,
+			sizestep: -0.01,
+			startroll: random(-180,180)
+			);
+		}
+	TNT1 AAAA 0
+		{
+		A_SpawnParticleEx
+			(
+			"",
+			TexMan.CheckForTexture("GNSMK0"),
+			style: STYLE_Add,
+			flags: SPF_RELATIVE|SPF_ROLL|SPF_FULLBRIGHT,
+			lifetime: random(40,75),
+			size: frandom(8,25),
+			velx: frandom(-1,1),
+			vely: frandom(-1,1),
+			velz: frandom(-1,1),
+			startalphaf: frandom(0.6,0.95),
+			fadestepf: -1,
+			sizestep: frandom(0.2,4),
+			startroll: random(-180,180),
+			rollvel: frandom(-1,1)
+			);
+		}
+	TNT1 AAAAAAAA 0
+		{
+		A_SpawnParticleEx
+			(
+			"",
+			TexMan.CheckForTexture("DUS_C0"),
+			style: STYLE_Normal,
+			flags: SPF_RELATIVE|SPF_ROLL|SPF_FULLBRIGHT,
+			lifetime: random(40,80),
+			size: frandom(8,20),
+			velx: frandom(-4,4),
+			vely: frandom(-4,4),
+			velz: frandom(-4,8),
+			accelz: frandom(-0.1,-0.6),
+			startalphaf: 1.0,
+			sizestep: -0.15,
+			startroll: random(-180,180),
+			rollvel: random(0,4)
+			);
+		}
+	TNT1 A 0 A_StartSound("FB/DeathSFXMedium",14);
+	TNT1 A 0
+		{
+		A_SpawnParticleEx
+		(
+			"",
+			TexMan.CheckForTexture("SPKWC0"),
+			style: STYLE_Add,
+			flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+			lifetime: 10,
+			size: 350,
+			angle: 0,
+			xoff: 0,
+			yoff: 0,
+			zoff: 0,
+			startalphaf: 1,
+			fadestepf: -1,
+			sizestep: -15,
+			startroll: random(-180,180)
+			);
+		}
+	TNT1 AAAAAAAAAAAA 0
+		{
+		A_SpawnParticleEx
+			(
+			"",
+			TexMan.CheckForTexture("Graphics/Particles/fbparticlesquare.png"),
+			style: STYLE_Add,
+			flags: SPF_RELATIVE|SPF_FULLBRIGHT|SPF_ROLL,
+			lifetime: random(20,60),
+			size: frandom(3,12),
+			velx: frandom(-8,8),
+			vely: frandom(-8,8),
+			velz: frandom(-8,10),
+			accelz: frandom(-0.0,-0.8),
+			startalphaf: 1.0,
+			fadestepf: -0.5,
+			sizestep: -0.2,
+			startroll: random(-180,180)
+			);
+		}
+    Stop;
+  }
+}

@@ -21,6 +21,12 @@ Class FB_ReplacerHandler : EventHandler
    case 'Demon': if(frandom(0.01, 1.00) <= CVar.GetCVar('fb_fairychance').GetFloat())
     { e.Replacement = "FB_MeleeFairy"; }
     break;
+   case 'Spectre': if(frandom(0.01, 1.00) <= CVar.GetCVar('fb_fairychance').GetFloat())
+    { e.Replacement = "FB_GhostFairy"; }
+    break;
+   case 'LostSoul': if(frandom(0.01, 1.00) <= CVar.GetCVar('fb_fairychance').GetFloat())
+    { e.Replacement = "FB_SoulFairy"; }
+    break;
   }
  }
 }

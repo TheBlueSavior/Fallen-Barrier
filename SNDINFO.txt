@@ -85,3 +85,10 @@ $pitchset FB/MeleeFairyUnsheathe 1.0 1.5
 $pitchset FB/MeleeSwing 0.8 1.5 
 $limit FB/MeleeSwing 15
 $volume FB/MeleeSwing 0.85
+
+FB/SoulCharge "Sounds/Monsters/Fairy/SoulFairyCharge.ogg"
+$random FB/SoulFairySkree { FB/SoulFairySkree1 FB/SoulFairySkree2 }
+FB/SoulFairySkree1 "Sounds/Monsters/Fairy/SoulFairySkree1.ogg"
+FB/SoulFairySkree2 "Sounds/Monsters/Fairy/SoulFairySkree2.ogg"
+$volume FB/SoulFairySkree 0.6
+$pitchset FB/SoulFairySkree 0.95 0.9
