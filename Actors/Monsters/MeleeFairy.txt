@@ -39,7 +39,6 @@ Class FB_MeleeFairy : FB_FairyBase
   override void start() {
 	//Push some possible sprites
 	possSprite.push("FZ_1");
-	possSprite.push("FZ_2");
 	//TODO: Dynamic Array support for possible attacks
 	attack = posStates[random(0,1)];
 	super.start();
