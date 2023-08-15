@@ -47,4 +47,16 @@ Model FB_FairyMeleeKunai
   Rotation-Vector 1.0 0.0 0.0
   Rotation-Speed 15.0
   FrameIndex B_KU A 0 0
-}    
+}
+
+Model FB_GFairyKunai
+{ 
+  Path "Models"
+  Skin 0 "barrierkunaitracer.png"
+  Model 0 "tracer.md3"
+  Scale 1.0 1.0 1.5
+  PITCHFROMMOMENTUM
+  Rotation-Vector 1.0 0.0 0.0
+  Rotation-Speed 15.0
+  FrameIndex B_KU A 0 0
+}           

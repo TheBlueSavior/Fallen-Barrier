@@ -815,3 +815,174 @@ Class FB_FairyMeleeKunai : FB_FairyBall
     Stop;
    }
 }
+
+Class FB_GFairyKunai : FB_FairyBall //BIIIIG
+{
+   Default
+   {
+   Radius 20;
+   DamageFunction 25;
+   Speed 31;
+   Scale 0.95;
+   SeeSound "";
+   }
+   States
+   {
+  Spawn:
+    TNT1 A 0;
+    B_KU AAA 1 Bright;
+    B_KU A 1 Bright A_FadeOut(0.125);
+    Wait;
+  Death:
+    TNT1 A 0
+	{
+	 A_SpawnParticleEx
+	 (
+	 "",
+	 tex[7], //SPKPA0
+	 style: STYLE_Add,
+	 flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+	 lifetime: random(2,8),
+	 size: random(100,200),
+	 startalphaf: 0.95,
+	 fadestepf: -1,
+	 sizestep: -15,
+	 startroll: random(-180,180)
+	 );
+	}
+    Stop;
+   }
+}
+
+Class FB_GFairyHomingSoul : FB_FairyBall
+{
+   int accel;
+   Default
+   {
+   Radius 8;
+   Height 8;
+   Speed 10;
+   Scale 0.45;
+   SeeSound "";
+   +SEEKERMISSILE
+   }
+   
+   override void Tick()
+   {
+    Super.Tick();
+	if(!IsFrozen())
+	{
+	A_SpawnParticleEx
+	 (
+	 "0B3D94",
+	 TexMan.CheckForTexture("GNSMK0"),
+	 style: STYLE_Add,
+	 flags: SPF_ROLL|SPF_RELATIVE,
+	 lifetime: random(15,50),
+	 size: 27.0,
+	 xoff: -5,
+	 startalphaf: frandom(0.35,0.65),
+	 fadestepf: -1,
+	 sizestep: -2,
+	 startroll: random(-180,180)
+	 );
+	 A_SpawnParticleEx
+	 (
+	 "143B76",
+	 TexMan.CheckForTexture("GNSMK0"),
+	 style: STYLE_Add,
+	 flags: SPF_ROLL|SPF_RELATIVE,
+	 lifetime: random(6,40),
+	 size: 35.0,
+	 xoff: -5,
+	 startalphaf: frandom(0.8,1.0),
+	 fadestepf: -1,
+	 startroll: random(-180,180)
+	 );
+	A_SpawnParticleEx
+	 (
+	 "61A9FF",
+	 tex[10],
+	 style: STYLE_Add,
+	 flags: SPF_RELATIVE|SPF_FULLBRIGHT|SPF_ROLL,
+	 lifetime: random(10,70),
+	 size: frandom(0.1,8),
+	 xoff: random(-4,0),
+	 yoff: random(-3,3),
+	 zoff: random(-3,3),
+	 velx: frandom(-0.6,0.6),
+	 vely: frandom(-0.6,0.6),
+	 velz: frandom(-0.6,1),
+	 startalphaf: 1.0,
+	 fadestepf: -0.5,
+	 sizestep: -0.1,
+	 startroll: random(-180,180)
+	 );
+	 A_SpawnParticleEx
+	 (
+	 "",
+	 tex[0],
+	 style: STYLE_Add,
+	 flags: SPF_RELATIVE|SPF_FULLBRIGHT|SPF_ROLL,
+	 lifetime: random(1,2),
+	 size: frandom(10.0,140.0),
+	 angle: 0,
+	 xoff: -8,
+	 startalphaf: frandom(0.2,0.85),
+	 startroll: random(-180,180)
+	 );
+	}
+   }
+   States
+   {
+   Spawn:
+	  TNT1 A 0;
+	  TNT1 A 0 { accel = 2; }
+	  TNT1 AA 0
+	  {
+	  A_SpawnParticleEx
+		(
+		"",
+		tex[0], //DTPRB0
+		style: STYLE_Add,
+		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+		lifetime: random(3,8),
+		size: random(50,140),
+		startalphaf: 1,
+		fadestepf: -1,
+		sizestep: -6,
+		startroll: random(-180,180)
+		);
+	}
+   Go:
+      BS_A AAABBB 1 Bright A_SetSpeed(accel);
+	  BS_A AAABBBAAABBBAAABBB 1 Bright 
+	  {
+	  A_SetSpeed(accel);
+	  A_SeekerMissile(3,3);
+	  accel++;
+	  }
+   Go2:
+      BS_A AABB 1 A_SeekerMissile(1,2);
+	  Loop;
+   Death:
+		TNT1 AA 0
+		{
+		A_SpawnParticleEx
+		(
+		"",
+		tex[1], //SPKBA0
+		style: STYLE_Add,
+		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+		lifetime: random(2,8),
+		size: random(30,100),
+		startalphaf: 0.95,
+		fadestepf: -1,
+		sizestep: -15,
+		startroll: random(-180,180)
+		);
+		}
+	  TNT1 A 5 Light("FB-BulletExplodeBlueTiny");
+      Stop;
+	  }
+}

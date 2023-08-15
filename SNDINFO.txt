@@ -70,11 +70,15 @@ FB/BulletHellHit1 "Sounds/SFX/BulletHellHit1.ogg"
 FB/BulletHellHit2 "Sounds/SFX/BulletHellHit2.ogg"
 FB/BulletHellHit3 "Sounds/SFX/BulletHellHit3.ogg"
 
+FB/HomingLaser "Sounds/SFX/BulletHellHomingLaser.ogg"
+$limit FB/HomingLaser 20
+
 FB/LaserStart "Sounds/SFX/BulletHellLaserStart.ogg"
 FB/LaserLoop "Sounds/SFX/BulletHellLaserLoop.ogg"
 $rolloff FB/LaserReady 400 2200
 $rolloff FB/LaserLoop 400 2200
 
+FB/MeleePowerSwing "Sounds/SFX/MeleePowerSwing.ogg"
 FB/MeleeFairyUnsheathe "Sounds/Monsters/Fairy/MeleeFairySchwing.ogg" //average day in london
 FB/MeleeSwing "Sounds/SFX/MeleeSwing.ogg"
 $pitchset FB/MeleeFairyUnsheathe 1.0 1.5

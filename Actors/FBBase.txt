@@ -6,6 +6,7 @@ Class FB_HitFlash : Actor
    +NOINTERACTION
    +FORCEXYBILLBOARD
    RenderStyle "Stencil";
+   StencilColor "White";
   }
  States
   {
@@ -45,7 +46,6 @@ Class FB_FairyBase : Actor
 	Painchance 128;
     Tag "Fairy";
     Monster;
-    StencilColor "White";
     Species "Fae";
     +DONTHARMCLASS
     +NOGRAVITY
