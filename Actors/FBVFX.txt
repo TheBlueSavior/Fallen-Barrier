@@ -186,3 +186,20 @@ Class FB_FairyFall : Actor
     Stop;
    }
 }
+
+Class FB_GenericPhaseGhost : Actor
+{
+Default
+{
++CLIENTSIDEONLY
++NOINTERACTION
+RenderStyle "Translucent";
+Alpha 0.60;
+}
+States
+{
+Spawn:
+    TNT1 A 3;
+    "----" A 1 A_FadeOut(0.003);
+    }
+}

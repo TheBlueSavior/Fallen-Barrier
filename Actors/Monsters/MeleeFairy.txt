@@ -14,8 +14,8 @@ Class FB_MeleeFairy : FB_FairyBase
     Mass 50;
     MeleeRange 100;
 	MeleeThreshold 180;
-	MaxTargetRange 550;
-    Speed 3;
+	//MaxTargetRange 550;
+    Speed 5;
     Scale 1.35;
 	Painchance 128;
     SeeSound "";
@@ -38,10 +38,8 @@ Class FB_MeleeFairy : FB_FairyBase
 
   override void start() {
 	//Push some possible sprites
-	possSprite.push("FA_2");
-	possSprite.push("FA_3");
-	possSprite.push("FA_4");
-	possSprite.push("FA_5");
+	possSprite.push("FZ_1");
+	possSprite.push("FZ_2");
 	//TODO: Dynamic Array support for possible attacks
 	attack = posStates[random(0,1)];
 	super.start();
@@ -58,14 +56,13 @@ Class FB_MeleeFairy : FB_FairyBase
   Spawn:
 	FA_1 A 0 NoDelay;
 	"####" A 0 A_SetHealth(random(100,150));
-	"####" A 0 A_SetSpeed(random(2,6));
   Spawn1:
-    "####" AB 5 A_Look();
+    "####" AAACCCBBBCCC 5 A_Look();
     Loop;
   See:
     "####" A 0 { if(seeskip) SetStateLabel("CoolDown");}
 	"####" A 0 ThrustThingZ(0,random(0,8),0,1);
-	"####" ABABABAB random(1,5) A_FaceTarget();
+	"####" AAAACCCCBBBB random(1,5) A_FaceTarget();
 	"####" A 0 A_ChangeVelocity(0,0,0,CVF_REPLACE);
 	"####" A 0
 	{
@@ -103,17 +100,18 @@ Class FB_MeleeFairy : FB_FairyBase
 	  startroll: 125
 	 );
 	}
-	"####" ABABABABAB 1;
+	"####" AAACCCBBBCCC 1;
 	"####" A 0 { seeskip = true; }
 	Goto ChaseAttack;
   See1:
-    "####" AABB 1 A_Chase();
+    "####" AACCBBCC 1 A_Chase();
     Loop;
   Realign:
-	"####" AABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABB 1 A_Wander();
+	"####" AAACCCBBBCCCAAACCCBBBCCCAAACCCBBBCCCAAACCCBBBCCC 1 A_Wander();
 	Goto See1;
   ChaseAttack:
-	"####" AABBAABBAABBAABBAABB 1
+	"####" A 0 A_SetSpeed(5);
+	"####" AAACCCBBBCCCAAACCCBBBCCCAAACCCBBBCCC 1
 	{
 		A_Chase("Missile","Missile");
 		A_FaceTarget();
@@ -123,18 +121,44 @@ Class FB_MeleeFairy : FB_FairyBase
   CoolDown:
     "####" A 0;
     "####" A 0 A_Stop();
-	"####" AABBAABBAABB 1 A_Wander();
+	"####" AAACCCBBBCCC 1 A_Wander();
 	Goto ChaseAttack;
   Missile:
-	"####" A 0 A_CheckLOF("MissileProceed");
+	"####" A 0 A_CheckLOF("MeleerChoose");
     Goto Realign;
+  MeleerChoose:
+    "####" A 0 A_JumpIfCloser(240,"MissileProceed");
+	"####" A 0 A_Jump(256,"RandomDodge","Charge");
   MissileProceed:
     "####" A 0 MeleeFairyChoose();
 	Goto BurstStab;
+  RandomDodge:
+	"####" A 0;
+	"####" A 0 ThrustThing(random(0,360),random(0,20));
+	"####" A 0 ThrustThingZ(0,random(0,20),random(0,1),1);
+	"####" AACCBBCCAACCBBCCAACCBBCC 1
+		{
+		A_SpawnItemEx("FB_GenericPhaseGhost",0,0,0,0,0,0,0,SXF_TRANSFERSTENCILCOL|SXF_TRANSFERSPRITEFRAME|SXF_TRANSFERSCALE);
+		A_Chase(null,null,CHF_DONTMOVE);
+		A_FaceTarget();
+		}
+	"####" A 0 A_ChangeVelocity(0,0,0,CVF_REPLACE);
+	Goto ChaseAttack;
+  Charge:
+	"####" A 0 A_SetSpeed(15);
+	"####" AACCBBCCAACCBBCCAACCBBCCAACCBBCCAACCBBCC 1
+	{
+		A_SpawnItemEx("FB_GenericPhaseGhost",0,0,0,0,0,0,0,SXF_TRANSFERSTENCILCOL|SXF_TRANSFERSPRITEFRAME|SXF_TRANSFERSCALE);
+		A_Chase(null,"Missile");
+		A_FaceTarget();
+	}
+	"####" A 0 A_SetSpeed(5);
+	"####" A 0 A_CheckSight("See1");
+	Goto ChaseAttack;
   BurstStab:
     "####" A 0;
     "####" A 0;
-	"####" ABABABABA 1
+	"####" ACBCACBC 1
 		{
 		A_FaceTarget();
 		A_SpawnParticleEx
@@ -164,7 +188,7 @@ Class FB_MeleeFairy : FB_FairyBase
 	}
   BurstStabGo:
     "####" A 0;
-	"####" ABABAB 3 
+	"####" ACBCAC 3 
 	{
 	A_FaceTarget(0.95,3);
 	A_SpawnProjectile("FB_FairyMeleeKunai",random(2,30),random(-15,15),0,CMF_AIMDIRECTION|CMF_OFFSETPITCH,pitch);
@@ -174,7 +198,7 @@ Class FB_MeleeFairy : FB_FairyBase
   ComboStab:
     "####" A 0;
     "####" A 0 { attackloop = random(2,4); }
-	"####" ABABABABA 1
+	"####" ACBCACBC 1
 		{
 		A_FaceTarget();
 		A_SpawnParticleEx
@@ -206,7 +230,7 @@ Class FB_MeleeFairy : FB_FairyBase
 	}
   ComboStabGo:
     "####" A 0;
-	"####" ABA 3 
+	"####" ACB 3 
 	{
 	A_FaceTarget(0.95,3);
 	A_SpawnProjectile("FB_FairyMeleeKunai",random(2,30),random(-15,15),0,CMF_AIMDIRECTION|CMF_OFFSETPITCH,pitch);
@@ -214,7 +238,7 @@ Class FB_MeleeFairy : FB_FairyBase
 	"####" A 0;
     "####" A 0;
 	"####" A 0 { if(attackloop < 0) SetStateLabel("Cooldown"); attackloop--; }
-	"####" ABABABABABABABABABABAB 1 
+	"####" AAABBBAAABBBAAABBBAAABBB 1 
 	{
 	A_ChangeVelocity(frandom(-0.5,0.5),frandom(-0.5,0.5),frandom(-0.5,0.5));
 	A_FaceTarget();
