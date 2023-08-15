@@ -27,8 +27,8 @@ Class FB_Fairy : FB_FairyBase
     Speed 3;
     Scale 1;
 	Painchance 128;
-    SeeSound "";
-    DeathSound "FB/FairyDeath";
+    SeeSound "FB/FairySight";
+    DeathSound "";
     AttackSound "";
 	PainSound "FB/FairyPain";
     Tag "Fairy";

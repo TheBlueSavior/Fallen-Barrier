@@ -20,7 +20,7 @@ Class FB_BarrageFairy : FB_FairyBase
     Speed 3;
     Scale 1.35;
 	Painchance 128;
-    SeeSound "";
+    SeeSound "FB/GreatFairySight";
     DeathSound "";
     AttackSound "";
 	PainSound "FB/GreatFairyPain";
