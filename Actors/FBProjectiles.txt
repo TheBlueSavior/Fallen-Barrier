@@ -856,7 +856,7 @@ Class FB_GFairyKunai : FB_FairyBall //BIIIIG
 
 Class FB_GFairyHomingSoul : FB_FairyBall
 {
-   int accel;
+   float accel;
    Default
    {
    Radius 8;
@@ -985,6 +985,57 @@ Class FB_GFairyHomingSoul : FB_FairyBall
 	  TNT1 A 5 Light("FB-BulletExplodeBlueTiny");
       Stop;
 	  }
+}
+
+Class FB_GFairySniperSoul : FB_GFairyHomingSoul
+{
+  Default
+  {
+   Speed 30;
+  }
+  States
+  {
+   Spawn:
+	  TNT1 A 0;
+	  TNT1 AA 0
+	  {
+	  A_SpawnParticleEx
+		(
+		"",
+		tex[0], //DTPRB0
+		style: STYLE_Add,
+		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+		lifetime: random(3,8),
+		size: random(50,140),
+		startalphaf: 1,
+		fadestepf: -1,
+		sizestep: -6,
+		startroll: random(-180,180)
+		);
+	}
+   Go:
+	  BS_A AAABBB 1 Bright;
+	  Loop;
+   Death:
+		TNT1 AA 0
+		{
+		A_SpawnParticleEx
+		(
+		"",
+		tex[1], //SPKBA0
+		style: STYLE_Add,
+		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+		lifetime: random(2,8),
+		size: random(30,100),
+		startalphaf: 0.95,
+		fadestepf: -1,
+		sizestep: -15,
+		startroll: random(-180,180)
+		);
+		}
+	  TNT1 A 5 Light("FB-BulletExplodeBlueTiny");
+      Stop;
+  }
 }
 
 Class FB_SoulFairyFireBall : FB_FairyBall

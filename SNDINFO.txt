@@ -72,6 +72,7 @@ FB/BulletHellHit3 "Sounds/SFX/BulletHellHit3.ogg"
 
 FB/HomingLaser "Sounds/SFX/BulletHellHomingLaser.ogg"
 $limit FB/HomingLaser 20
+$rolloff FB/HomingLaser 500 2500
 
 FB/LaserStart "Sounds/SFX/BulletHellLaserStart.ogg"
 FB/LaserLoop "Sounds/SFX/BulletHellLaserLoop.ogg"
