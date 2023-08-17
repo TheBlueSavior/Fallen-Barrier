@@ -642,6 +642,19 @@ Class FB_FairyBlueBarrage2 : FB_FairyBlueBarrage1
    }
 }
 
+Class FB_FairyBlueBarrage3 : FB_FairyBlueBarrage1
+{
+   Default
+   {
+   Radius 2;
+   Height 2;
+   Speed 15;
+   Scale 0.45;
+   DamageFunction 5;
+   SeeSound "";
+   }
+}
+
 Class FB_FairyBallWeaver1 : FB_FairyBall
 {
    int ballhdist;

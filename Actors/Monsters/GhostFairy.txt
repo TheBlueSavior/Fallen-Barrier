@@ -303,12 +303,33 @@ Class FB_GhostFairy : FB_FairyBase
 		startroll: random(-180,180)
 		);
 	}
-	"####" A 1 
+	"####" A 6
 	{
 	 A_StartSound("FB/Barrage");
-	 A_FaceTarget(0.95,3);
+	 A_FaceTarget(0.95,3,0,0);
 	 for(int i=3;i>0;i--)
-	 A_SpawnProjectile("FB_FairyBlueBarrage1",10,0,frandom(-3,3),CMF_AIMDIRECTION|CMF_OFFSETPITCH,pitch+frandom(-2,2));
+	 A_SpawnProjectile("FB_FairyBlueBarrage3",10,0,frandom(-6,6),CMF_AIMDIRECTION,pitch+frandom(-6,6));
+	}
+	"####" B 6 
+	{
+	 A_StartSound("FB/Barrage");
+	 A_FaceTarget(0.95,3,0,0);
+	 for(int i=3;i>0;i--)
+	 A_SpawnProjectile("FB_FairyBlueBarrage3",10,0,frandom(-6,4),CMF_AIMDIRECTION,pitch+frandom(-6,6));
+	}
+	"####" A 6 
+	{
+	 A_StartSound("FB/Barrage");
+	 A_FaceTarget(0.95,3,0,0);
+	 for(int i=3;i>0;i--)
+	 A_SpawnProjectile("FB_FairyBlueBarrage3",10,0,frandom(-6,6),CMF_AIMDIRECTION,pitch+frandom(-6,6));
+	}
+	"####" B 6 
+	{
+	 A_StartSound("FB/Barrage");
+	 A_FaceTarget(0.95,3,0,0);
+	 for(int i=3;i>0;i--)
+	 A_SpawnProjectile("FB_FairyBlueBarrage3",10,0,frandom(-6,6),CMF_AIMDIRECTION,pitch+frandom(-6,6));
 	}
 	"####" A 0 A_Jump(85,"Phase");
 	Goto Cooldown;
