@@ -27,7 +27,7 @@ Class FB_GhostFairy : FB_FairyBase
     DeathSound "";
     AttackSound "";
 	PainSound "FB/GreatFairyPain";
-    Tag "Melee Fairy";
+    Tag "Ghost Fairy";
     Monster;
     +DONTHARMCLASS
     +NOGRAVITY

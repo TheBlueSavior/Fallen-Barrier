@@ -24,7 +24,7 @@ Class FB_BarrageFairy : FB_FairyBase
     DeathSound "";
     AttackSound "";
 	PainSound "FB/GreatFairyPain";
-    Tag "Barrage Fairy";
+    Tag "Makai Fairy";
     Monster;
     +DONTHARMCLASS
     +NOGRAVITY

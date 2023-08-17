@@ -31,7 +31,7 @@ Class FB_Fairy : FB_FairyBase
     DeathSound "";
     AttackSound "";
 	PainSound "FB/FairyPain";
-    Tag "Fairy";
+    Tag "Enthralled Fairy";
 	StencilColor "White";
     Monster;
     +DONTHARMCLASS

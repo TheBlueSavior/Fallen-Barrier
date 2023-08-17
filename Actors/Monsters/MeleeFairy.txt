@@ -22,7 +22,7 @@ Class FB_MeleeFairy : FB_FairyBase
     DeathSound "";
     AttackSound "";
 	PainSound "FB/GreatFairyPain";
-    Tag "Melee Fairy";
+    Tag "Fairy Assassin";
     Monster;
     +DONTHARMCLASS
     +NOGRAVITY
@@ -33,7 +33,7 @@ Class FB_MeleeFairy : FB_FairyBase
 	-AVOIDMELEE
 	+THRUSPECIES
 	FloatBobStrength 0.5;
-	Obituary "%o was turned into a pincushion by a Melee Fairy.";
+	Obituary "%o was turned into a pincushion by a Fairy Assassin.";
   }
 
   override void start() {
