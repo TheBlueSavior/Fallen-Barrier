@@ -97,7 +97,7 @@ Class FB_GhostFairy : FB_FairyBase
 	"####" A 0 { if(phased) FB_GhostFairyPhaseStop(); }
 	"####" A 0 A_SetSpeed(4);
 	"####" A 0 A_Jump(23,"Phase");
-	"####" AAABBAABBAABB 1
+	"####" AAABBBAAABBBAAABBB 1
 	{
 		A_Chase("Missile","Missile",CHF_DONTMOVE);
 		A_Wander();
@@ -107,7 +107,7 @@ Class FB_GhostFairy : FB_FairyBase
 	Loop;
   PhaseChase:
     "####" A 0 { bFRIGHTENED = false; }
-	"####" AAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAA 1
+	"####" AABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABB 1
 	{
 		A_Wander();
 		A_SpawnItemEx("FB_GenericPhaseGhost",flags:SXF_TRANSFERRENDERSTYLE|SXF_TRANSFERSPRITEFRAME|SXF_TRANSFERSCALE|SXF_TRANSFERSTENCILCOL,failchance:185);
@@ -129,7 +129,7 @@ Class FB_GhostFairy : FB_FairyBase
     "####" A 0;
 	"####" A 0 { bFRIGHTENED = true; } 
     "####" A 0 A_Stop();
-	"####" AAABBBAAABBBAAABBBAAABBBAAABBBAAA 1 
+	"####" AAABBBAAABBBAAABBBAAABBBAAABBB 1 
 	{
 	if(phased)
 	A_SpawnItemEx("FB_GenericPhaseGhost",flags:SXF_TRANSFERRENDERSTYLE|SXF_TRANSFERSPRITEFRAME|SXF_TRANSFERSCALE|SXF_TRANSFERSTENCILCOL,failchance:185);
@@ -166,7 +166,7 @@ Class FB_GhostFairy : FB_FairyBase
   HomingSouls:
     "####" A 0;
     "####" A 0 A_StartSound("FB/BarrageFairyReady",13);
-	"####" ABABABABABABABABABABABABABABABABABABABABABABABA 1
+	"####" AABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABB 1
 		{
 		if(target && CheckSight(target) && Distance3D(target) < 200)
 		SetStateLabel("PanicMG");
@@ -204,7 +204,7 @@ Class FB_GhostFairy : FB_FairyBase
     "####" A 0;
 	"####" A 0 A_Recoil(4);
     "####" A 0 A_StartSound("FB/BarrageFairyReady",13);
-	"####" ABABABABABABABABABABABABABABABABABABABABABABABA 1
+	"####" AABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABB 1
 		{
 		if(target && CheckSight(target) && Distance3D(target) < 200)
 		SetStateLabel("PanicMG");
@@ -242,7 +242,7 @@ Class FB_GhostFairy : FB_FairyBase
     "####" A 0;
 	"####" A 0;
     "####" A 0 A_StartSound("FB/BarrageFairyReady",13);
-	"####" ABABABABABABABABABABABABABABABABABABABABABABABA 1
+	"####" AABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABB 1
 		{
 		if(target && CheckSight(target) && Distance3D(target) < 200)
 		SetStateLabel("PanicMG");
@@ -273,7 +273,7 @@ Class FB_GhostFairy : FB_FairyBase
 	 A_SetRenderStyle(Alpha-0.1,STYLE_AddStencil);
 	}
   AmbushSGProceed2:
-    "####" AAABBBAAABBBAAABBBAAABBBAAA 1 
+    "####" AABBAABBAABBAABBAABBAABBAABB 1 
 	{
 	if(target && CheckSight(target) && Distance3D(target) < 200)
 	SetStateLabel("AmbushSGGo");
@@ -355,7 +355,7 @@ Class FB_GhostFairy : FB_FairyBase
     "####" A 0;
 	"####" A 0;
     "####" A 0 A_StartSound("FB/BarrageFairyReady",13);
-	"####" ABABABABABABABABABABABABABABABABABABABABABABABA 1
+	"####" AABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABB 1
 		{
 		A_FaceTarget();
 		A_SpawnParticleEx
