@@ -284,7 +284,8 @@ Class FB_GhostFairy : FB_FairyBase
 	Loop;
   AmbushSGGo:
     "####" A 0;
-	"####" A 20
+	"####" A 0 A_StartSound("FB/GhostFairyCharge");
+	"####" AABBAABBAABBAABBAABB 1
 	{
 	    A_FaceTarget();
 		A_SpawnParticleEx
@@ -294,7 +295,7 @@ Class FB_GhostFairy : FB_FairyBase
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: 20,
-		size: random(100,200),
+		size: random(80,200),
 		xoff: 10,
 		zoff: 10,
 		startalphaf: 0.85,
@@ -305,28 +306,28 @@ Class FB_GhostFairy : FB_FairyBase
 	}
 	"####" A 6
 	{
-	 A_StartSound("FB/Barrage");
+	 A_StartSound("FB/GhostFairyFire");
 	 A_FaceTarget(0.95,3,0,0);
 	 for(int i=3;i>0;i--)
 	 A_SpawnProjectile("FB_FairyBlueBarrage3",10,0,frandom(-6,6),CMF_AIMDIRECTION,pitch+frandom(-6,6));
 	}
 	"####" B 6 
 	{
-	 A_StartSound("FB/Barrage");
+	 A_StartSound("FB/GhostFairyBlast");
 	 A_FaceTarget(0.95,3,0,0);
 	 for(int i=3;i>0;i--)
 	 A_SpawnProjectile("FB_FairyBlueBarrage3",10,0,frandom(-6,4),CMF_AIMDIRECTION,pitch+frandom(-6,6));
 	}
 	"####" A 6 
 	{
-	 A_StartSound("FB/Barrage");
+	 A_StartSound("FB/GhostFairyBlast");
 	 A_FaceTarget(0.95,3,0,0);
 	 for(int i=3;i>0;i--)
 	 A_SpawnProjectile("FB_FairyBlueBarrage3",10,0,frandom(-6,6),CMF_AIMDIRECTION,pitch+frandom(-6,6));
 	}
 	"####" B 6 
 	{
-	 A_StartSound("FB/Barrage");
+	 A_StartSound("FB/GhostFairyBlast");
 	 A_FaceTarget(0.95,3,0,0);
 	 for(int i=3;i>0;i--)
 	 A_SpawnProjectile("FB_FairyBlueBarrage3",10,0,frandom(-6,6),CMF_AIMDIRECTION,pitch+frandom(-6,6));

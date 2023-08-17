@@ -87,6 +87,16 @@ $pitchset FB/MeleeSwing 0.8 1.5
 $limit FB/MeleeSwing 15
 $volume FB/MeleeSwing 0.85
 
+$random FB/GhostFairyCharge { FB/GhostFairyCharge1 FB/GhostFairyCharge2 FB/GhostFairyCharge3 }
+FB/GhostFairyCharge1 "Sounds/Monsters/Fairy/GhostFairyCharge1.ogg"
+FB/GhostFairyCharge2 "Sounds/Monsters/Fairy/GhostFairyCharge2.ogg"
+FB/GhostFairyCharge3 "Sounds/Monsters/Fairy/GhostFairyCharge3.ogg"
+
+$random FB/GhostFairyBlast { FB/GhostFairyBlast1 FB/GhostFairyBlast2 FB/GhostFairyBlast3 }
+FB/GhostFairyBlast1 "Sounds/Monsters/Fairy/GhostFairyBlast1.ogg"
+FB/GhostFairyBlast2 "Sounds/Monsters/Fairy/GhostFairyBlast2.ogg"
+FB/GhostFairyBlast3 "Sounds/Monsters/Fairy/GhostFairyBlast3.ogg"
+
 FB/SoulCharge "Sounds/Monsters/Fairy/SoulFairyCharge.ogg"
 $random FB/SoulFairySkree { FB/SoulFairySkree1 FB/SoulFairySkree2 }
 FB/SoulFairySkree1 "Sounds/Monsters/Fairy/SoulFairySkree1.ogg"
