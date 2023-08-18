@@ -472,7 +472,7 @@ Class FB_FairyCrystalSpreader : FB_FairyBall
    {
    Radius 2;
    Height 4;
-   Speed 20;
+   Speed 5;
    Scale 0.9;
    Alpha 1;
    }
@@ -501,6 +501,7 @@ Class FB_FairyCrystalSpreader : FB_FairyBall
 		);
 	}
    Go:
+	  B_RC A 4 Bright;
       B_RC AAAAAAAAAAAA 2 Bright A_ScaleVelocity(0.8);
 	  B_RC AAA 4 Bright A_Stop();
 	  B_RC A 0 A_SetAngle(frandom(0,360));
@@ -534,8 +535,8 @@ Class FB_FairyCrystalSpreader : FB_FairyBall
 	  }
 }
 
-Class FB_FairyCrystalSpreader2 : FB_FairyCrystalSpreader { Default { Speed 40; } }
-Class FB_FairyCrystalSpreader3 : FB_FairyCrystalSpreader { Default { Speed 60; } }
+Class FB_FairyCrystalSpreader2 : FB_FairyCrystalSpreader { Default { Speed 25; } }
+Class FB_FairyCrystalSpreader3 : FB_FairyCrystalSpreader { Default { Speed 45; } }
 
 Class FB_FairyBlueBarrage1 : FB_FairyBall
 {
@@ -875,11 +876,11 @@ Class FB_GreatFairyRiseLaser : FB_FairyBall
       TRCR AAAAAAAAAAAAAAAAAAAAAAAAA 1 Bright;
 	  TNT1 A 0 A_StartSound("FB/StraightLaser",attenuation:0.3);
 	  TRCR AAAA 0 Bright A_SeekerMissile(99,99,SMF_LOOK|SMF_PRECISE);
-	  TNT1 A 1 Light("FB-BulletExplodePurple");
+	  TNT1 A 1 Light("FB-BulletExplodePurple")
 	  {
-	  bBOUNCEONCEILINGS = false;
-	  bBOUNCEONWALLS = false;
-	  bBOUNCEONFLOORS = false;
+	  bBOUNCEONCEILINGS=false;
+	  bBOUNCEONWALLS=false;
+	  bBOUNCEONFLOORS=false;
 	  A_SetScale(0.85);
 	  A_SpawnParticleEx
 		(
