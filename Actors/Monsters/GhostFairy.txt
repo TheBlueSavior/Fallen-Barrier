@@ -4,6 +4,7 @@ Class FB_GhostFairy : FB_FairyBase
   {
 	"HomingSouls",
 	"SniperShot",
+	"RiseLasers",
 	"AmbushSG"
   };
 
@@ -46,7 +47,7 @@ Class FB_GhostFairy : FB_FairyBase
 	//Push some possible sprites
 	possSprite.push("FG_1");
 	//TODO: Dynamic Array support for possible attacks
-	attack = posStates[random(0,2)];
+	attack = posStates[random(0,3)];
 	super.start();
   }
 
@@ -331,6 +332,62 @@ Class FB_GhostFairy : FB_FairyBase
 	 A_FaceTarget(0.95,3,0,0);
 	 for(int i=3;i>0;i--)
 	 A_SpawnProjectile("FB_FairyBlueBarrage3",10,0,frandom(-6,6),CMF_AIMDIRECTION,pitch+frandom(-6,6));
+	}
+	"####" A 0 A_Jump(85,"Phase");
+	Goto Cooldown;
+  RiseLasers:
+    "####" A 0;
+	"####" A 0;
+    "####" A 0 A_StartSound("FB/BarrageFairyReady",13);
+	"####" AABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABB 1
+		{
+		A_FaceTarget();
+		A_SpawnParticleEx
+		(
+		"",
+		tex[3],
+		style: STYLE_Add,
+		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+		lifetime: random(2,8),
+		size: random(40,120),
+		xoff: 10,
+		zoff: 10,
+		startalphaf: 0.85,
+		fadestepf: -1,
+		sizestep: -15,
+		startroll: random(-180,180)
+		);
+		}
+	"####" A 0 A_StopSound(13);
+  RiseLaserGo:
+    "####" A 0;
+	"####" A 3 
+	{
+	A_FaceTarget();
+	A_StartSound("FB/RiseLaser");
+	A_SpawnProjectile("FB_GreatFairyRiseLaser",10,0,-70,CMF_AIMDIRECTION|CMF_OFFSETPITCH,-40);
+	A_SpawnProjectile("FB_GreatFairyRiseLaser",10,0,70,CMF_AIMDIRECTION|CMF_OFFSETPITCH,-40);
+	}
+	"####" B 3 
+	{
+	A_FaceTarget();
+	A_StartSound("FB/RiseLaser");
+	A_SpawnProjectile("FB_GreatFairyRiseLaser",10,0,-60,CMF_AIMDIRECTION|CMF_OFFSETPITCH,-35);
+	A_SpawnProjectile("FB_GreatFairyRiseLaser",10,0,60,CMF_AIMDIRECTION|CMF_OFFSETPITCH,-35);
+	}
+	"####" A 3 
+	{
+	A_FaceTarget();
+	A_StartSound("FB/RiseLaser");
+	A_SpawnProjectile("FB_GreatFairyRiseLaser",10,0,-50,CMF_AIMDIRECTION|CMF_OFFSETPITCH,-25);
+	A_SpawnProjectile("FB_GreatFairyRiseLaser",10,0,50,CMF_AIMDIRECTION|CMF_OFFSETPITCH,-25);
+	}
+	"####" B 3 
+	{
+	A_FaceTarget();
+	A_StartSound("FB/RiseLaser");
+	A_SpawnProjectile("FB_GreatFairyRiseLaser",10,0,-40,CMF_AIMDIRECTION|CMF_OFFSETPITCH,-20);
+	A_SpawnProjectile("FB_GreatFairyRiseLaser",10,0,40,CMF_AIMDIRECTION|CMF_OFFSETPITCH,-20);
 	}
 	"####" A 0 A_Jump(85,"Phase");
 	Goto Cooldown;

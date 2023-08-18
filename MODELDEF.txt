@@ -48,7 +48,20 @@ Model FB_FairySmallRedLaser
   Rotation-Vector 1.0 0.0 0.0
   Rotation-Speed 15.0
   FrameIndex BL_R A 0 0
-}     
+}
+
+Model FB_GreatFairyRiseLaser
+{ 
+  Path "Models"
+  Skin 0 "barrierpurplebullet.png"
+  Model 0 "tracer.md3"
+  Scale 1.0 1.0 1.5
+  PITCHFROMMOMENTUM
+  ROTATING
+  Rotation-Vector 1.0 0.0 0.0
+  Rotation-Speed 15.0
+  FrameIndex TRCR A 0 0
+}          
 
 Model FB_FairyMeleeKunai
 { 

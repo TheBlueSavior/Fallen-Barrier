@@ -70,9 +70,17 @@ FB/BulletHellHit1 "Sounds/SFX/BulletHellHit1.ogg"
 FB/BulletHellHit2 "Sounds/SFX/BulletHellHit2.ogg"
 FB/BulletHellHit3 "Sounds/SFX/BulletHellHit3.ogg"
 
+FB/StraightLaser "Sounds/SFX/BulletHellStraightLaser.ogg"
+$limit FB/StraightLaser 20
+$rolloff FB/StraightLaser 400 2200
+
 FB/HomingLaser "Sounds/SFX/BulletHellHomingLaser.ogg"
 $limit FB/HomingLaser 20
 $rolloff FB/HomingLaser 500 2500
+
+FB/RiseLaser "Sounds/SFX/BulletHellRiseLaser.ogg"
+$limit FB/RiseLaser 20
+$rolloff FB/RiseLaser 400 2500
 
 FB/LaserStart "Sounds/SFX/BulletHellLaserStart.ogg"
 FB/LaserLoop "Sounds/SFX/BulletHellLaserLoop.ogg"

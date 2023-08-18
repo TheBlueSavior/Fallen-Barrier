@@ -829,6 +829,97 @@ Class FB_FairyMeleeKunai : FB_FairyBall
    }
 }
 
+Class FB_GreatFairyRiseLaser : FB_FairyBall
+{
+   Default
+   {
+   Radius 8;
+   Height 8;
+   Speed 28;
+   Scale 0.85;
+   SeeSound "";
+   +SEEKERMISSILE
+   +BOUNCEONCEILINGS
+   +BOUNCEONWALLS
+   +BOUNCEONFLOORS
+   }
+   
+   override bool CanCollideWith(Actor other, bool passive)
+   {
+    if(other is "FB_BHProjBase" && other is "FB_FairyBase") return false;
+	else return Super.CanCollideWith(other,passive);
+   }
+   
+   States
+   {
+   Spawn:
+	  TNT1 A 0;
+	  TNT1 A 0 A_SetScale(0.35);
+	  TNT1 AA 0
+	  {
+	  A_SpawnParticleEx
+		(
+		"",
+		tex[6], //DTPRB0
+		style: STYLE_Add,
+		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+		lifetime: random(3,8),
+		size: random(50,140),
+		startalphaf: 1,
+		fadestepf: -1,
+		sizestep: -6,
+		startroll: random(-180,180)
+		);
+	}
+   Go:
+      TRCR AAAAAAAAAAAAAAAAAAAAAAAAA 1 Bright;
+	  TNT1 A 0 A_StartSound("FB/StraightLaser",attenuation:0.3);
+	  TRCR AAAA 0 Bright A_SeekerMissile(99,99,SMF_LOOK|SMF_PRECISE);
+	  TNT1 A 1 Light("FB-BulletExplodePurple");
+	  {
+	  bBOUNCEONCEILINGS = false;
+	  bBOUNCEONWALLS = false;
+	  bBOUNCEONFLOORS = false;
+	  A_SetScale(0.85);
+	  A_SpawnParticleEx
+		(
+		"",
+		tex[6], //DTPRB0
+		style: STYLE_Add,
+		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+		lifetime: random(3,8),
+		size: random(100,200),
+		startalphaf: 1,
+		fadestepf: -1,
+		sizestep: -6,
+		startroll: random(-180,180)
+		);
+	  }
+   Go2:
+      TRCR A 1;
+	  Loop;
+   Death:
+		TNT1 AA 0
+		{
+		A_SpawnParticleEx
+		(
+		"",
+		tex[7], //SPKBA0
+		style: STYLE_Add,
+		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+		lifetime: random(2,8),
+		size: random(30,100),
+		startalphaf: 0.95,
+		fadestepf: -1,
+		sizestep: -15,
+		startroll: random(-180,180)
+		);
+		}
+	  TNT1 A 5 Light("FB-BulletExplodePurple");
+      Stop;
+	  }
+}
+
 Class FB_GFairyKunai : FB_FairyBall //BIIIIG
 {
    Default
