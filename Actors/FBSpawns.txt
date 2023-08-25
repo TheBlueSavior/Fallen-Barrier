@@ -27,6 +27,15 @@ Class FB_ReplacerHandler : EventHandler
    case 'LostSoul': if(frandom(0.01, 1.00) <= CVar.GetCVar('fb_fairychance').GetFloat())
     { e.Replacement = "FB_SoulFairy"; }
     break;
+   case 'Cacodemon': if(frandom(0.01, 1.00) <= CVar.GetCVar('fb_fairychance').GetFloat())
+    { e.Replacement = "FB_T2Fairy"; }
+    break;
+   case 'Hellknight': if(frandom(0.01, 1.00) <= CVar.GetCVar('fb_fairychance').GetFloat())
+    { e.Replacement = "FB_T2Fairy"; }
+    break;
+   case 'Revenant': if(frandom(0.01, 1.00) <= CVar.GetCVar('fb_fairychance').GetFloat())
+    { e.Replacement = "FB_T2Fairy"; }
+    break;
   }
  }
 }

@@ -4,7 +4,6 @@ Class FB_GhostFairy : FB_FairyBase
   {
 	"HomingSouls",
 	"SniperShot",
-	"RiseLasers",
 	"AmbushSG"
   };
 
@@ -47,7 +46,7 @@ Class FB_GhostFairy : FB_FairyBase
 	//Push some possible sprites
 	possSprite.push("FG_1");
 	//TODO: Dynamic Array support for possible attacks
-	attack = posStates[random(0,3)];
+	attack = posStates[random(0,2)];
 	super.start();
   }
 

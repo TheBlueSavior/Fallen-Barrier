@@ -128,6 +128,10 @@ Class FB_FairyBase : Actor
 	FB_2 AB 0;
 	FB_3 AB 0;
 	FZ_1 ABC 0;
+	F2_1 AB 0;
+	F2_2 AB 0;
+	F2_3 AB 0;
+	F2_4 AB 0;
   }
 }
 
