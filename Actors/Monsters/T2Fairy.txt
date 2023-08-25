@@ -71,10 +71,10 @@ Class FB_T2Fairy : FB_FairyBase
 	"####" A 0 A_ChangeVelocity(0,0,0,CVF_REPLACE);
 	Goto WanderAttack;
   See1:
-    "####" AABB 1 A_Chase();
+    "####" AAABBB 1 A_Chase();
     Loop;
   WanderAttack:
-	"####" AABBAABBAABBAABBAABB 1
+	"####" AAABBBAAABBBAAABBBAAABBBAAABBB 1
 	{
 		A_Chase("Missile","Missile",CHF_DONTMOVE);
 		A_Wander();
@@ -83,11 +83,11 @@ Class FB_T2Fairy : FB_FairyBase
 	"####" A 0 A_CheckSight("See1");
 	Loop;
   Realign:
-	"####" AABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABB 1 A_Wander();
+	"####" AAABBBAAABBBAAABBBAAABBBAAABBBAAABBBAAABBBAAABBB 1 A_Wander();
 	Goto See1;
   CoolDown:
     "####" A 0;
-	"####" AABBAABBAABB 1 A_Wander();
+	"####" AAABBBAAABBBAAABBB 1 A_Wander();
 	Goto WanderAttack;
   Missile:
 	"####" A 0 A_Jump(40,"StandoffStart");
