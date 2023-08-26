@@ -21,7 +21,7 @@ Class FB_T2Fairy : FB_FairyBase
     Speed 3;
     Scale 1.45;
 	Painchance 128;
-    SeeSound "FB/GreatFairySight";
+    SeeSound "FB/GreaterFairySight";
     DeathSound "";
     AttackSound "";
 	PainSound "FB/GreatFairyPain";
@@ -98,7 +98,7 @@ Class FB_T2Fairy : FB_FairyBase
 	Goto RegularBarrage;
   RegularBarrage:
     "####" A 0;
-    "####" A 0 A_StartSound("FB/BarrageFairyReady",13);
+    "####" A 0 A_StartSound("FB/GreaterFairyReady",13);
 	"####" ABABABABABABABABABABABABABAB 1
 		{
 		A_FaceTarget(0.75,3);
@@ -134,7 +134,7 @@ Class FB_T2Fairy : FB_FairyBase
   RiseLasers:
     "####" A 0;
 	"####" A 0;
-    "####" A 0 A_StartSound("FB/BarrageFairyReady",13);
+    "####" A 0 A_StartSound("FB/GreaterFairyReady",13);
 	"####" AABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABB 1
 		{
 		A_FaceTarget();
@@ -189,7 +189,7 @@ Class FB_T2Fairy : FB_FairyBase
 	Goto Cooldown;
   SuperBurst:
     "####" A 0;
-	"####" A 0 A_StartSound("FB/BarrageFairyReady",13,pitch:1.25);
+	"####" A 0 A_StartSound("FB/GreaterFairyReady",13,pitch:1.25);
     "####" A 0 { attackloop = random(12,20); }
 	"####" ABABABABABABABABABABABABABABABABABABABA 1
 		{
@@ -245,7 +245,7 @@ Class FB_T2Fairy : FB_FairyBase
    Goto Cooldown;
   DestructibleBullets:
     "####" A 0;
-    "####" A 0 A_StartSound("FB/BarrageFairyReady",13);
+    "####" A 0 A_StartSound("FB/GreaterFairyReady",13);
 	"####" ABABABABABABABABABABABABABAB 1
 		{
 		A_FaceTarget(0.75,3);
@@ -279,7 +279,7 @@ Class FB_T2Fairy : FB_FairyBase
 	Loop;
   WeaverBullets:
     "####" A 0;
-    "####" A 0 A_StartSound("FB/BarrageFairyReady",13);
+    "####" A 0 A_StartSound("FB/GreaterFairyReady",13);
 	"####" ABABABABABABABABABABABABABAB 1
 		{
 		A_FaceTarget(0.75,3);
@@ -314,7 +314,7 @@ Class FB_T2Fairy : FB_FairyBase
   RedLaser:
     "####" A 0;
 	"####" A 0 { attackloop = random(45,65); }
-    "####" A 0 A_StartSound("FB/BarrageFairyReady",13,pitch:0.85);
+    "####" A 0 A_StartSound("FB/GreaterFairyReady",13,pitch:0.85);
 	"####" ABABABABABABABABABABABABABABABABABABA 1
 		{
 		A_FaceTarget(15,15);

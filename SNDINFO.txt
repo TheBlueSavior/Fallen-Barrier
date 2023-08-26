@@ -111,3 +111,10 @@ FB/SoulFairySkree1 "Sounds/Monsters/Fairy/SoulFairySkree1.ogg"
 FB/SoulFairySkree2 "Sounds/Monsters/Fairy/SoulFairySkree2.ogg"
 $volume FB/SoulFairySkree 0.6
 $pitchset FB/SoulFairySkree 0.95 0.9
+
+$random FB/GreaterFairySight { FB/GreaterFairySight1 FB/GreaterFairySight2 FB/GreaterFairySight3 FB/GreaterFairySight4 }
+FB/GreaterFairySight1 "Sounds/Monsters/GreaterFairy/GreaterFairySight1.ogg"
+FB/GreaterFairySight2 "Sounds/Monsters/GreaterFairy/GreaterFairySight2.ogg"
+FB/GreaterFairySight3 "Sounds/Monsters/GreaterFairy/GreaterFairySight3.ogg"
+FB/GreaterFairySight4 "Sounds/Monsters/GreaterFairy/GreaterFairySight4.ogg"
+FB/GreaterFairyReady "Sounds/Monsters/GreaterFairy/GreaterFairyReady.ogg"
