@@ -3,7 +3,8 @@ Class FB_T2Fairy : FB_FairyBase
   static const statelabel posStates[] =
   {
   	"ReflectiveLaserBurst",
-  	"ReflectiveLaser"
+  	"ReflectiveLaser",
+	"RiseLasers"
   };
  
   Default
@@ -42,7 +43,7 @@ Class FB_T2Fairy : FB_FairyBase
 	possSprite.push("F2_3");
 	possSprite.push("F2_4");
 	//TODO: Dynamic Array support for possible attacks
-	attack = posStates[random(0,1)];
+	attack = posStates[random(0,2)];
 	super.start();
   }
 
@@ -58,7 +59,7 @@ Class FB_T2Fairy : FB_FairyBase
   {
   Spawn:
 	FA_1 A 0 NoDelay;
-	"####" A 0 A_SetHealth(random(280,500));
+	"####" A 0 A_SetHealth(random(260,500));
 	"####" A 0 A_SetSpeed(random(1,8));
   Spawn1:
   Idle:
@@ -96,6 +97,61 @@ Class FB_T2Fairy : FB_FairyBase
   MissileProceed:
     "####" A 0 BarrageFairyChoose();
 	Goto ReflectiveLaserBurst;
+  RiseLasers:
+    "####" A 0;
+	"####" A 0;
+    "####" A 0 A_StartSound("FB/BarrageFairyReady",13);
+	"####" AABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABB 1
+		{
+		A_FaceTarget();
+		A_SpawnParticleEx
+		(
+		"",
+		tex[3],
+		style: STYLE_Add,
+		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+		lifetime: random(2,8),
+		size: random(40,120),
+		xoff: 10,
+		zoff: 10,
+		startalphaf: 0.85,
+		fadestepf: -1,
+		sizestep: -15,
+		startroll: random(-180,180)
+		);
+		}
+	"####" A 0 A_StopSound(13);
+  RiseLaserGo:
+    "####" A 0;
+	"####" A 3 
+	{
+	A_FaceTarget();
+	A_StartSound("FB/RiseLaser");
+	A_SpawnProjectile("FB_GreatFairyRiseLaser",10,0,-70,CMF_AIMDIRECTION|CMF_OFFSETPITCH,-40);
+	A_SpawnProjectile("FB_GreatFairyRiseLaser",10,0,70,CMF_AIMDIRECTION|CMF_OFFSETPITCH,-40);
+	}
+	"####" B 3 
+	{
+	A_FaceTarget();
+	A_StartSound("FB/RiseLaser");
+	A_SpawnProjectile("FB_GreatFairyRiseLaser",10,0,-60,CMF_AIMDIRECTION|CMF_OFFSETPITCH,-35);
+	A_SpawnProjectile("FB_GreatFairyRiseLaser",10,0,60,CMF_AIMDIRECTION|CMF_OFFSETPITCH,-35);
+	}
+	"####" A 3 
+	{
+	A_FaceTarget();
+	A_StartSound("FB/RiseLaser");
+	A_SpawnProjectile("FB_GreatFairyRiseLaser",10,0,-50,CMF_AIMDIRECTION|CMF_OFFSETPITCH,-25);
+	A_SpawnProjectile("FB_GreatFairyRiseLaser",10,0,50,CMF_AIMDIRECTION|CMF_OFFSETPITCH,-25);
+	}
+	"####" B 3 
+	{
+	A_FaceTarget();
+	A_StartSound("FB/RiseLaser");
+	A_SpawnProjectile("FB_GreatFairyRiseLaser",10,0,-40,CMF_AIMDIRECTION|CMF_OFFSETPITCH,-20);
+	A_SpawnProjectile("FB_GreatFairyRiseLaser",10,0,40,CMF_AIMDIRECTION|CMF_OFFSETPITCH,-20);
+	}
+	Goto Cooldown;
   ReflectiveLaserBurst:
     "####" A 0;
     "####" A 0 A_StartSound("FB/GreaterFairyReady",13);

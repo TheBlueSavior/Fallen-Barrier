@@ -72,7 +72,7 @@ FB/BulletHellHit3 "Sounds/SFX/BulletHellHit3.ogg"
 
 FB/StraightLaser "Sounds/SFX/BulletHellStraightLaser.ogg"
 $limit FB/StraightLaser 20
-$rolloff FB/StraightLaser 400 2200
+$rolloff FB/StraightLaser 200 2200
 
 FB/HomingLaser "Sounds/SFX/BulletHellHomingLaser.ogg"
 $limit FB/HomingLaser 20
@@ -80,7 +80,7 @@ $rolloff FB/HomingLaser 500 2500
 
 FB/RiseLaser "Sounds/SFX/BulletHellRiseLaser.ogg"
 $limit FB/RiseLaser 20
-$rolloff FB/RiseLaser 400 2500
+$rolloff FB/RiseLaser 200 2500
 
 FB/LaserStart "Sounds/SFX/BulletHellLaserStart.ogg"
 FB/LaserLoop "Sounds/SFX/BulletHellLaserLoop.ogg"
@@ -120,6 +120,7 @@ FB/GreaterFairySight4 "Sounds/Monsters/GreaterFairy/GreaterFairySight4.ogg"
 FB/GreaterFairyReady "Sounds/Monsters/GreaterFairy/GreaterFairyReady.ogg"
 
 FB/BurstFire "Sounds/SFX/FBSpreadFire.ogg"
+$rolloff FB/BurstFire 200 2000
 FB/SniperFire "Sounds/SFX/FBSniperFire.ogg"
 $alias FB/LaserReflect FB/Barrage
 $pitchset FB/LaserReflect 1.3 1.3
