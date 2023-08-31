@@ -178,9 +178,9 @@ Class FB_T2Fairy : FB_FairyBase
 		{
 			A_QuakeEx(2, 2, 2, 40, 0, 500, "", QF_SCALEDOWN|QF_3D);
 			A_StartSound("FB/SHockwave",15,attenuation:0.5);
-			for (int i = 0; i < 360; i += 10) A_SpawnProjectile("FB_FairyCrystalShotNoSound", 10, 0, i, CMF_AIMDIRECTION);
-			for (int i = 0; i < 360; i += 15) A_SpawnProjectile("FB_FairyCrystalShotNoSound2", 10, 0, i, CMF_AIMDIRECTION);
-			for (int i = 0; i < 360; i += 25) A_SpawnProjectile("FB_FairyCrystalShotNoSound3", 10, 0, i, CMF_AIMDIRECTION);
+			for (int i = 0; i < 360; i += 30) A_SpawnProjectile("FB_FairyCrystalShotNoSound", 10, 0, i, CMF_AIMDIRECTION);
+			for (int i = 0; i < 360; i += 20) A_SpawnProjectile("FB_FairyCrystalShotNoSound2", 10, 0, i, CMF_AIMDIRECTION);
+			for (int i = 0; i < 360; i += 15) A_SpawnProjectile("FB_FairyCrystalShotNoSound3", 10, 0, i, CMF_AIMDIRECTION);
 			
 			if (target && checksight(target) && !(target is "FB_FairyBase") && distance3D(target) < 150)
 			{
