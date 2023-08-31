@@ -41,9 +41,11 @@ Class FB_FairyBall : FB_BHProjBase
 	tex[8] = TexMan.CheckForTexture("SPKGE0",TexMan.Type_Sprite);
 	tex[9] = TexMan.CheckForTexture("SPKGA0",TexMan.Type_Sprite);
 	tex[10] = TexMan.CheckForTexture("Graphics/Particles/fbparticlesquare.png",TexMan.Type_Sprite);
+	tex[11] = TexMan.CheckForTexture("SPKYE0",TexMan.Type_Sprite);
+	tex[12] = TexMan.CheckForTexture("SPKYA0",TexMan.Type_Sprite);
    }
    
-   TextureID tex[11];
+   TextureID tex[13];
    
    States
    {

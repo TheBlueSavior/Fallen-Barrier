@@ -42,6 +42,7 @@ Class FB_SoulFairy : FB_FairyBase
 	FS_1 A 0 NoDelay;
 	"####" A 0 { if(seeskip) SetStateLabel("Spawn1");}
   Spawn1:
+  Idle:
     "####" AB 5 A_Look();
     Loop;
   See:

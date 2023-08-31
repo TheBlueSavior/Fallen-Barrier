@@ -25,7 +25,7 @@ Class FB_FairyBase : Actor
 
 
   StateLabel attack;
-  TextureID tex[6];
+  TextureID tex[7];
 
   int deathtimer;
   int spritetype;
@@ -86,6 +86,7 @@ Class FB_FairyBase : Actor
 		tex[3] = TexMan.CheckForTexture("SPKPE0",TexMan.Type_Sprite);
 		tex[4] = TexMan.CheckForTexture("DTPRR0",TexMan.Type_Sprite);
 		tex[5] = TexMan.CheckForTexture("SPKGE0",TexMan.Type_Sprite);
+		tex[6] = TexMan.CheckForTexture("SPKYE0",TexMan.Type_Sprite);
 	}
   }
 

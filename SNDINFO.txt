@@ -118,3 +118,12 @@ FB/GreaterFairySight2 "Sounds/Monsters/GreaterFairy/GreaterFairySight2.ogg"
 FB/GreaterFairySight3 "Sounds/Monsters/GreaterFairy/GreaterFairySight3.ogg"
 FB/GreaterFairySight4 "Sounds/Monsters/GreaterFairy/GreaterFairySight4.ogg"
 FB/GreaterFairyReady "Sounds/Monsters/GreaterFairy/GreaterFairyReady.ogg"
+
+FB/BurstFire "Sounds/SFX/FBSpreadFire.ogg"
+FB/SniperFire "Sounds/SFX/FBSniperFire.ogg"
+$alias FB/LaserReflect FB/Barrage
+$pitchset FB/LaserReflect 1.3 1.3
+
+FB/ShockwaveReady "Sounds/Monsters/GreaterFairy/FairyShockwaveReady.ogg"
+FB/Shockwave "Sounds/Monsters/GreaterFairy/FairyShockwave.ogg"
+$pitchset FB/ShockwaveReady 1.28 1.3
