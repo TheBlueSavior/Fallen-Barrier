@@ -1350,6 +1350,6 @@ Class FB_ReflectiveLaser : FB_FairyBall
   }
 }
 
-Class FB_FairyCrystalShotNoSound : FB_FairyCrystalShot3 { Default { SeeSound ""; } }
+Class FB_FairyCrystalShotNoSound : FB_FairyCrystalShot { Default { SeeSound ""; } }
 Class FB_FairyCrystalShotNoSound2 : FB_FairyCrystalShot2 { Default { SeeSound ""; } }
 Class FB_FairyCrystalShotNoSound3 : FB_FairyCrystalShot3 { Default { SeeSound ""; } }
