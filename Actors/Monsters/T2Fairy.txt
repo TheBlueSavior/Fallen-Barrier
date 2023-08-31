@@ -157,7 +157,6 @@ Class FB_T2Fairy : FB_FairyBase
 	"####" A 0
 	{
 		A_StopSound(13);
-		A_StartSound("FB/BurstFire",12);
 		if (random(0, 3)) Vel3DFromAngle(8, frandom(0, 360), 0);
 	}
 	"####" ABA random(7, 10)
