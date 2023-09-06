@@ -4,7 +4,7 @@ Class FB_FairyBall1 : FB_FairyBall
    {
    Radius 2;
    Height 2;
-   Speed 15;
+   Speed 12;
    Scale 1.0;
    }
    States
@@ -128,7 +128,7 @@ Class FB_FairyBall2 : FB_FairyBall
    {
    Radius 4;
    Height 4;
-   Speed 12;
+   Speed 10;
    Scale 0.85;
    }
    States
@@ -535,8 +535,8 @@ Class FB_FairyCrystalSpreader : FB_FairyBall
 	  }
 }
 
-Class FB_FairyCrystalSpreader2 : FB_FairyCrystalSpreader { Default { Speed 25; } }
-Class FB_FairyCrystalSpreader3 : FB_FairyCrystalSpreader { Default { Speed 45; } }
+Class FB_FairyCrystalSpreader2 : FB_FairyCrystalSpreader { Default { Speed 10; } }
+Class FB_FairyCrystalSpreader3 : FB_FairyCrystalSpreader { Default { Speed 15; } }
 
 Class FB_FairyBlueBarrage1 : FB_FairyBall
 {
