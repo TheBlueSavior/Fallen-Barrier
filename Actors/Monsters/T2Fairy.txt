@@ -59,7 +59,7 @@ Class FB_T2Fairy : FB_FairyBase
   {
   Spawn:
 	FA_1 A 0 NoDelay;
-	"####" A 0 A_SetHealth(random(260,500));
+	"####" A 0 A_SetHealth(random(210,500));
 	"####" A 0 A_SetSpeed(random(1,8));
   Spawn1:
   Idle:
