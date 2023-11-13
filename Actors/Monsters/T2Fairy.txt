@@ -4,7 +4,8 @@ Class FB_T2Fairy : FB_FairyBase
   {
   	"ReflectiveLaserBurst",
   	"ReflectiveLaser",
-	"RiseLasers"
+	"RiseLasers",
+	"GreenQuad"
   };
  
   Default
@@ -43,7 +44,7 @@ Class FB_T2Fairy : FB_FairyBase
 	possSprite.push("F2_3");
 	possSprite.push("F2_4");
 	//TODO: Dynamic Array support for possible attacks
-	attack = posStates[random(0,2)];
+	attack = posStates[random(0,3)];
 	super.start();
   }
 
@@ -187,7 +188,7 @@ Class FB_T2Fairy : FB_FairyBase
 	A_SpawnProjectile("FB_ReflectiveLaser",10,0,frandom(-5,5),CMF_AIMDIRECTION|CMF_OFFSETPITCH,pitch+frandom(-5,5));
 	}
 	"####" A 0 A_Stop();
-	Goto See;
+	Goto CoolDown;
   ReflectiveLaser:
     "####" A 0;
     "####" A 0 A_StartSound("FB/GreaterFairyReady",13);
@@ -222,7 +223,38 @@ Class FB_T2Fairy : FB_FairyBase
 	A_SpawnProjectile("FB_ReflectiveLaser",10,0,frandom(-3,3),CMF_AIMDIRECTION|CMF_OFFSETPITCH,pitch+frandom(-1,1));
 	}
 	"####" A 0 A_Stop();
-	Goto See;
+	Goto CoolDown;
+  GreenQuad:
+    "####" A 0;
+    "####" A 0 A_StartSound("FB/GreaterFairyReady",13);
+	"####" ABABABABAB 1
+	{
+		A_FaceTarget();
+		A_SpawnParticleEx
+		(
+		"",
+		tex[5],
+		style: STYLE_Add,
+		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
+		lifetime: random(2,8),
+		size: random(40,120),
+		xoff: 10,
+		zoff: 10,
+		startalphaf: 0.85,
+		fadestepf: -1,
+		sizestep: -15,
+		startroll: random(-180,180)
+		);
+	}
+	"####" A 1
+	{
+	A_FaceTarget();
+	A_SpawnProjectile("FB_GreenFairyBall2",10,0,1);
+	A_SpawnProjectile("FB_GreenFairyBall2",10,0,-1);
+	A_SpawnProjectile("FB_GreenFairyBall2",10,0,3);
+	A_SpawnProjectile("FB_GreenFairyBall2",10,0,-3);
+	}
+	Goto CoolDown;
   Shockwave:
   Melee:
     "####" A 0 { projscale = 0; }
