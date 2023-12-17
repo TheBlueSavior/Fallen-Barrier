@@ -18,7 +18,7 @@ Class FB_BarrageFairy : FB_FairyBase
     MeleeRange 100;
 	MeleeThreshold 180;
     Speed 3;
-    Scale 1.35;
+    Scale 1.30;
 	Painchance 128;
     SeeSound "FB/GreatFairySight";
     DeathSound "";

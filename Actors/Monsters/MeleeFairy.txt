@@ -16,7 +16,7 @@ Class FB_MeleeFairy : FB_FairyBase
 	MeleeThreshold 180;
 	//MaxTargetRange 550;
     Speed 5;
-    Scale 1.35;
+    Scale 1.20;
 	Painchance 128;
     SeeSound "FB/GreatFairySight";
     DeathSound "";
