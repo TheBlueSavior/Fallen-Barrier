@@ -30,6 +30,7 @@ Class FB_SoulFairy : FB_FairyBase
 	-AVOIDMELEE
 	+THRUSPECIES
 	FloatBobStrength 0.3;
+	StencilColor "White";
 	Obituary "%o was scorched in hellfire by a corrupted Soul Fairy.";
   }
     override void start() {

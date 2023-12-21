@@ -29,6 +29,7 @@ Class FB_LesserFairy : FB_FairyBase
 	-AVOIDMELEE
 	+THRUSPECIES
 	FloatBobStrength 0.3;
+	StencilColor "White";
 	Obituary "%o was knocked down by a lucky Lesser Fairy.";
   }
     override void start() {

@@ -1,28 +1,21 @@
-Class FB_MeleeFairy : FB_FairyBase
+Class FB_Restbringer : FB_FairyBase
 {
-  static const statelabel posStates[] =
-  {
-  	"BurstStab",
-	"ComboStab"
-  };
-  bool seeskip;
   Default
   {
-    Health 200;
+    Health 250;
     Radius 20;
     Height 35;
     Mass 50;
     MeleeRange 100;
 	MeleeThreshold 180;
-	//MaxTargetRange 550;
-    Speed 5;
+    Speed 3;
     Scale 1.20;
 	Painchance 128;
     SeeSound "FB/GreatFairySight";
     DeathSound "";
     AttackSound "";
 	PainSound "FB/GreatFairyPain";
-    Tag "Fairy Assassin";
+    Tag "Restbringer Fairy";
     Monster;
     +DONTHARMCLASS
     +NOGRAVITY
@@ -30,242 +23,65 @@ Class FB_MeleeFairy : FB_FairyBase
     +FLOATBOB
     +DONTFALL
     +NOICEDEATH
-	-AVOIDMELEE
-	+THRUSPECIES
+	+AVOIDMELEE
 	FloatBobStrength 0.5;
 	StencilColor "White";
-	Obituary "%o was turned into a pincushion by a Fairy Assassin.";
+	Obituary "%o was put to rest.";
   }
 
   override void start() {
 	//Push some possible sprites
-	possSprite.push("FZ_1");
-	//TODO: Dynamic Array support for possible attacks
-	attack = posStates[random(0,1)];
-	super.start();
-  }
-
-  //TODO: Have this be chosen in start() method 
-  private state MeleeFairyChoose()
-  {
-   return ResolveState(attack);
-  }
-
+	possSprite.push("RA_1");
+	}
+	
   States
   {
   Spawn:
 	FA_1 A 0 NoDelay;
-	"####" A 0 A_SetHealth(random(100,150));
+	"####" A 0;
   Spawn1:
   Idle:
-    "####" AAACCCBBBDDD 5 A_Look();
+    "####" AB 5 A_Look();
     Loop;
   See:
-    "####" A 0 { if(seeskip) SetStateLabel("CoolDown");}
 	"####" A 0 ThrustThingZ(0,random(0,8),0,1);
-	"####" AAAACCCCBBBBDDDD random(1,5) A_FaceTarget();
+	"####" ABABABAB random(1,5);
 	"####" A 0 A_ChangeVelocity(0,0,0,CVF_REPLACE);
-	"####" A 0
-	{
-	 A_StartSound("FB/MeleeFairyUnsheathe");
-	 A_SpawnParticleEx
-	 (
-	  "",
-	  tex[3],
-	  style: STYLE_Add,
-	  flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
-	  lifetime: random(2,8),
-	  size: 50,
-	  xoff: 15,
-	  yoff: -20,
-	  zoff: 10,
-	  startalphaf: 0.85,
-	  fadestepf: -1,
-	  sizestep: -15,
-	  startroll: random(-180,180)
-	 );
-	 A_SpawnParticleEx
-	 (
-	  "",
-	  TexMan.CheckForTexture("B_KUA7A3"),
-	  style: STYLE_Add,
-	  flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
-	  lifetime: 30,
-	  size: 15,
-	  xoff: 15,
-	  yoff: -12,
-	  zoff: 10,
-	  startalphaf: 0.85,
-	  fadestepf: -1,
-	  sizestep: 0.5,
-	  startroll: 125
-	 );
-	}
-	"####" AAACCCBBBDDD 1;
-	"####" A 0 { seeskip = true; }
-	Goto ChaseAttack;
+	Goto WanderAttack;
   See1:
-    "####" AACCBBCC 1 A_Chase();
+    "####" AABB 1 A_Chase();
     Loop;
-  Realign:
-	"####" AAACCCBBBDDDAAACCCBBBDDDAAACCCBBBDDDAAACCCBBBDDD 1 A_Wander();
-	Goto See1;
-  ChaseAttack:
-	"####" A 0 A_SetSpeed(4);
-	"####" AAACCCBBBDDDAAACCCBBBDDDAAACCCBBBDDD 1
+  WanderAttack:
+	"####" AABBAABBAABBAABBAABB 1
 	{
-		A_Chase("Missile","Missile");
+		A_Chase("Missile","Missile",CHF_DONTMOVE);
+		A_Wander();
 		A_FaceTarget();
 	}
 	"####" A 0 A_CheckSight("See1");
 	Loop;
+  Realign:
+	"####" AABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABBAABB 1 A_Wander();
+	Goto See1;
   CoolDown:
     "####" A 0;
-    "####" A 0 A_Stop();
-	"####" AAACCCBBBDDD 1 A_Wander();
-	Goto ChaseAttack;
+	"####" AABBAABBAABB 1 A_Wander();
+	Goto WanderAttack;
   Missile:
-	"####" A 0 A_CheckLOF("MeleerChoose");
+	"####" A 0 A_Jump(40,"StandoffStart");
+	"####" A 0 A_CheckLOF("MissileProceed");
     Goto Realign;
-  MeleerChoose:
-    "####" A 0 A_JumpIfCloser(240,"MissileProceed");
-	"####" A 0 A_Jump(256,"RandomDodge","Charge");
   MissileProceed:
-    "####" A 0 MeleeFairyChoose();
-	Goto BurstStab;
-  RandomDodge:
-	"####" A 0;
-	"####" A 0 ThrustThing(random(0,360),random(0,20));
-	"####" A 0 ThrustThingZ(0,random(0,20),random(0,1),1);
-	"####" AACCBBDDAACCBBDDAACCBBDD 1
-		{
-		A_SpawnItemEx("FB_GenericPhaseGhost",0,0,0,0,0,0,0,SXF_TRANSFERSTENCILCOL|SXF_TRANSFERSPRITEFRAME|SXF_TRANSFERSCALE);
-		A_Chase(null,null,CHF_DONTMOVE);
-		A_FaceTarget();
-		}
-	"####" A 0 A_ChangeVelocity(0,0,0,CVF_REPLACE);
-	Goto ChaseAttack;
-  Charge:
-	"####" A 0 A_SetSpeed(15);
-	"####" AACCBBDDAACCBBDDAACCBBDDAACCBBDDAACCBBDD 1
-	{
-		A_SpawnItemEx("FB_GenericPhaseGhost",0,0,0,0,0,0,0,SXF_TRANSFERSTENCILCOL|SXF_TRANSFERSPRITEFRAME|SXF_TRANSFERSCALE);
-		A_Chase(null,"Missile");
-		A_FaceTarget();
-	}
-	"####" A 0 A_SetSpeed(4);
-	"####" A 0 A_CheckSight("See1");
-	Goto ChaseAttack;
-  BurstStab:
     "####" A 0;
+	Goto RegularBarrage;
+  RegularBarrage:
     "####" A 0;
-	"####" ACBDACBD 1
-		{
-		A_FaceTarget();
-		A_SpawnParticleEx
-		(
-		"",
-		tex[3],
-		style: STYLE_Add,
-		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
-		lifetime: random(2,8),
-		size: random(40,120),
-		xoff: 10,
-		zoff: 10,
-		startalphaf: 0.85,
-		fadestepf: -1,
-		sizestep: -15,
-		startroll: random(-180,180)
-		);
-		}
-	"####" A 0 
-	{
-	if(target && Distance3D(target) > 550)
-	A_SkullAttack(17);
-	if(target && Distance3D(target) > 330)
-	A_SkullAttack(15);
-	else
-	A_SkullAttack(9);
-	}
-  BurstStabGo:
-    "####" A 0;
-	"####" ACBDACBD 3 
-	{
-	A_FaceTarget(0.95,3);
-	A_SpawnProjectile("FB_FairyMeleeKunai",random(2,30),random(-15,15),0,CMF_AIMDIRECTION|CMF_OFFSETPITCH,pitch);
-	}
-	"####" A 0;
-	Goto Cooldown;
-  ComboStab:
-    "####" A 0;
-    "####" A 0 { attackloop = random(2,4); }
-	"####" ACBDACBD 1
-		{
-		A_FaceTarget();
-		A_SpawnParticleEx
-		(
-		"",
-		tex[3],
-		style: STYLE_Add,
-		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
-		lifetime: random(2,8),
-		size: random(40,120),
-		xoff: 10,
-		zoff: 10,
-		startalphaf: 0.85,
-		fadestepf: -1,
-		sizestep: -15,
-		startroll: random(-180,180)
-		);
-		}
-   ComboStab2:
-    "####" A 0;
-	"####" A 0 
-	{
-	if(target && Distance3D(target) > 550)
-	A_SkullAttack(17);
-	if(target && Distance3D(target) > 330)
-	A_SkullAttack(15);
-	else
-	A_SkullAttack(8);
-	}
-  ComboStabGo:
-    "####" A 0;
-	"####" ACBD 3 
-	{
-	A_FaceTarget(0.95,3);
-	A_SpawnProjectile("FB_FairyMeleeKunai",random(2,30),random(-15,15),0,CMF_AIMDIRECTION|CMF_OFFSETPITCH,pitch);
-	}
-	"####" A 0;
-    "####" A 0;
-	"####" A 0 { if(attackloop < 0) SetStateLabel("Cooldown"); attackloop--; }
-	"####" AAACCCBBBDDDAAACCCBBBDDD 1 
-	{
-	A_ChangeVelocity(frandom(-0.5,0.5),frandom(-0.5,0.5),frandom(-0.5,0.5));
-	A_FaceTarget();
-	A_SpawnParticleEx
-	 (
-	 "",
-	 tex[3],
-	 style: STYLE_Add,
-	 flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
-	 lifetime: random(2,8),
-	 size: random(40,120),
-	 xoff: 10,
-	 zoff: 10,
-	 startalphaf: 0.85,
-	 fadestepf: -1,
-	 sizestep: -15,
-	 startroll: random(-180,180)
-	 );
-	}
-	"####" A 0;
-	Goto ComboStab2;
+    Goto Cooldown;
   Pain:
-	"####" A 1;
+	"####" A 1 A_StopSound(6);
 	"####" A 1 A_Pain();
 	"####" A 4; 
-	Goto ChaseAttack;
+	Goto WanderAttack;
   Death:
   "####" A 0;
 	"####" A 0 A_StopSound(6);
