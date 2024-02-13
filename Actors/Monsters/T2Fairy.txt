@@ -17,7 +17,7 @@ Class FB_T2Fairy : FB_FairyBase
     MeleeRange 100;
 	MeleeThreshold 180;
     Speed 3;
-    Scale 1.30;
+    Scale 1;
 	Painchance 128;
     SeeSound "FB/GreaterFairySight";
     DeathSound "";
