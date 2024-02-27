@@ -348,11 +348,11 @@ Class FB_FairyBeam : FB_FairyBall
 	  A_SpawnParticleEx
 		(
 		"",
-		tex[6], //SPKPB0
+		tex[0], //SPKPB0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(3,8),
-		size: random(5,90),
+		size: random(40,90),
 		angle: 0,
 		xoff: 0,
 		yoff: 0,
@@ -372,11 +372,11 @@ Class FB_FairyBeam : FB_FairyBall
 		A_SpawnParticleEx
 		(
 		"", 
-		tex[7], //SPKPA0
+		tex[1], //SPKPA0
 		style: STYLE_Add,
 		flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
 		lifetime: random(2,8),
-		size: random(60,170),
+		size: random(130,190),
 		angle: 0,
 		xoff: 0,
 		yoff: 0,
@@ -387,7 +387,7 @@ Class FB_FairyBeam : FB_FairyBall
 		startroll: random(-180,180)
 		);
 		}
-	  TNT1 A 5 Light("FB-BulletExplodePurple");
+	  TNT1 A 5 Light("FB-BulletExplodeBlue");
       Stop;
 	  }
 }
