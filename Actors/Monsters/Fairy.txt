@@ -41,6 +41,8 @@ Class FB_Fairy : FB_FairyBase
     +DONTFALL
     +NOICEDEATH
 	+AVOIDMELEE
+	+ROLLSPRITE
+	+ROLLCENTER
 	FloatBobStrength 0.5;
 	Obituary "%o was swiftly destroyed by a possessed Fairy.";
   }
@@ -570,6 +572,7 @@ A_SpawnItemEx("FB_FairyFall",xvel:random(-3,3),yvel:random(-3,3),zvel:frandom(1.
 	SetStateLabel("DeathEnd");
 	A_SpawnItemEx("FB_WhiteFairyExplode",random(-15,15),random(-15,15),random(-15,15),0,0,0,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE,0);
 	A_StartSound("FB/DeathSFXSmallSubdued",15);
+	A_SetRoll(random(-40,40));
 	deathtimer--;
 	}
 	Loop;

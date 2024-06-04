@@ -90,6 +90,7 @@ Class FB_FairyFall : Actor
 	+CANBOUNCEWATER
     +DONTSPLASH
 	+ROLLSPRITE
+	+ROLLCENTER
     Scale 1;
 	}
 	
@@ -163,15 +164,15 @@ Class FB_FairyFall : Actor
 			TexMan.CheckForTexture("SPKWC0"),
 			style: STYLE_Add,
 			flags: SPF_FULLBRIGHT|SPF_RELATIVE|SPF_ROLL,
-			lifetime: 10,
-			size: 350,
+			lifetime: 60,
+			size: 430,
 			angle: 0,
 			xoff: 0,
 			yoff: 0,
-			zoff: 0,
+			zoff: 8,
 			startalphaf: 1,
 			fadestepf: -1,
-			sizestep: -15,
+			sizestep: -8,
 			startroll: random(-180,180)
 			);
 		for(int i=12;i>0;i--)

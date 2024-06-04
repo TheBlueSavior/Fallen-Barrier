@@ -32,6 +32,8 @@ Class FB_MeleeFairy : FB_FairyBase
     +NOICEDEATH
 	-AVOIDMELEE
 	+THRUSPECIES
+	+ROLLSPRITE
+	+ROLLCENTER
 	FloatBobStrength 0.5;
 	StencilColor "White";
 	Obituary "%o was turned into a pincushion by a Fairy Assassin.";
@@ -299,6 +301,7 @@ Class FB_MeleeFairy : FB_FairyBase
 	SetStateLabel("Death3End");
 	A_ChangeVelocity(frandom(-0.55,0.55),frandom(-0.55,0.55),frandom(-0.15,-0.45));
 	A_SpawnItemEx("FB_WhiteFairyExplode",random(-15,15),random(-15,15),random(-15,15),0,0,0,0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE,0);
+	A_SetRoll(random(-40,40));
 	deathtimer--;
 	}
 	Loop;
@@ -351,6 +354,7 @@ Class FB_MeleeFairy : FB_FairyBase
 	SetStateLabel("DeathEnd");
 	A_SpawnItemEx("FB_WhiteFairyExplode2",random(-20,20),random(-20,20),random(-20,20),frandom(-0.5,0.5),frandom(-0.5,0.5),frandom(-0.5,0.5),0,SXF_NOCHECKPOSITION|SXF_CLIENTSIDE,0);
 	A_StartSound("FB/DeathSFXSmall",15);
+	A_SetRoll(random(-40,40));
 	deathtimer--;
 	}
 	Loop;

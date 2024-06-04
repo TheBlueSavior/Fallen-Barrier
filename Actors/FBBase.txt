@@ -158,7 +158,7 @@ Class FB_GiftOrb : Actor
    tex[0] = TexMan.CheckForTexture("GNSMK0",TexMan.Type_Sprite);
    tex[1] = TexMan.CheckForTexture("SPKWE0",TexMan.Type_Sprite);
    itemtype = random(0,3);
-   timer = random(45,95);
+   timer = random(10,65);
    A_SetRoll(random(0,256));
   }
   

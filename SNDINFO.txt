@@ -43,7 +43,7 @@ $pitchset FB/LesserFairySight5 1.15 1.40
 
 
 $alias FB/GreatFairySight FB/FairySight
-$pitchset FB/GreatFairySight 0.75
+$pitchset FB/GreatFairySight 0.85
 
 FB/GreatFairyPain "Sounds/Monsters/Fairy/GreatFairyPain.ogg"
 FB/FairyPain "Sounds/Monsters/Fairy/FairyPain.ogg"
@@ -76,11 +76,11 @@ $limit FB/BarrageHit 15
 $rolloff FB/BarrageHit 150 800
   
 FB/BulletHellFire "Sounds/SFX/BulletHellFire.ogg"
-$volume FB/BulletHellFire 0.4
+$volume FB/BulletHellFire 0.65
 $limit FB/BulletHellFire 20
 
 FB/LesserBulletHellFire "Sounds/SFX/BulletHellFire.ogg"
-$volume FB/LesserBulletHellFire 0.3
+$volume FB/LesserBulletHellFire 0.55
 $limit FB/LesserBulletHellFire 20
 $pitchset FB/LesserBulletHellFire 1.3 1.5
 
@@ -88,7 +88,7 @@ $random FB/LesserBulletHellHit { FB/LesserBulletHellHit1 FB/LesserBulletHellHit2
 FB/LesserBulletHellHit1 "Sounds/SFX/BulletHellHit1.ogg"
 FB/LesserBulletHellHit2 "Sounds/SFX/BulletHellHit2.ogg"
 FB/LesserBulletHellHit3 "Sounds/SFX/BulletHellHit3.ogg"
-$volume FB/LesserBulletHellHit 0.4
+$volume FB/LesserBulletHellHit 0.5
 $pitchset FB/LesserBulletHellHit1 1.6 1.8
 $pitchset FB/LesserBulletHellHit2 1.6 1.8
 $pitchset FB/LesserBulletHellHit3 1.6 1.8
@@ -101,7 +101,7 @@ FB/BulletHellHit3 "Sounds/SFX/BulletHellHit3.ogg"
 
 FB/StraightLaser "Sounds/SFX/BulletHellStraightLaser.ogg"
 $limit FB/StraightLaser 20
-$rolloff FB/StraightLaser 200 2200
+$rolloff FB/StraightLaser 400 2200
 
 FB/HomingLaser "Sounds/SFX/BulletHellHomingLaser.ogg"
 $limit FB/HomingLaser 20
@@ -113,8 +113,8 @@ $rolloff FB/RiseLaser 200 2500
 
 FB/LaserStart "Sounds/SFX/BulletHellLaserStart.ogg"
 FB/LaserLoop "Sounds/SFX/BulletHellLaserLoop.ogg"
-$rolloff FB/LaserReady 400 2200
-$rolloff FB/LaserLoop 400 2200
+$rolloff FB/LaserReady 400 2800
+$rolloff FB/LaserLoop 400 2800
 
 FB/MeleePowerSwing "Sounds/SFX/MeleePowerSwing.ogg"
 FB/MeleeFairyUnsheathe "Sounds/Monsters/Fairy/MeleeFairySchwing.ogg" //average day in london
