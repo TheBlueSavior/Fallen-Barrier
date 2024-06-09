@@ -1,0 +1,13 @@
+
+/* Fallen Barrier */
+"full" {
+   scr: 1000 exp: 6   type: imp        filter: "FB_Fairy";
+   scr: 300 exp: 2   type: imp        filter: "FB_LesserFairy";
+   scr: 2000 exp: 10   type: demon        filter: "FB_MeleeFairy";
+   scr: 2000 exp: 10   type: demon        filter: "FB_GhostFairy";
+   scr: 500 exp: 5   type: lostsoul        filter: "FB_SoulFairy";
+   scr: 1200 exp: 10   type: zombiecg        filter: "FB_BarrageFairy";
+   scr: 1200 exp: 10   type: cacodemon        filter: "FB_T2Fairy";
+
+}
+
