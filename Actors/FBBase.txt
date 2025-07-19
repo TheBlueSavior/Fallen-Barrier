@@ -11,7 +11,7 @@ Class FB_HitFlash : Actor
  States
   {
   Spawn:
-  "####" A 2 A_Warp(AAPTR_MASTER,frandom(-3,3),frandom(-3,3),frandom(-3,3),flags:WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE);
+  "####" A 3 A_Warp(AAPTR_MASTER,frandom(-3,3),frandom(-3,3),frandom(-3,3),flags:WARPF_NOCHECKPOSITION|WARPF_INTERPOLATE);
    Stop;
   }
 }

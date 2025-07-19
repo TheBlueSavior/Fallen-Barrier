@@ -27,6 +27,13 @@ FB/FairySight2 "Sounds/Monsters/Fairy/FairySight2.ogg"
 FB/FairySight3 "Sounds/Monsters/Fairy/FairySight3.ogg"
 FB/FairySight4 "Sounds/Monsters/Fairy/FairySight4.ogg"
 FB/FairySight5 "Sounds/Monsters/Fairy/FairySight5.ogg"
+$limit FB/FairySight 3
+$volume FB/FairySight 0.7
+$pitchset FB/FairySight1 1.10 1.35
+$pitchset FB/FairySight2 1.10 1.35
+$pitchset FB/FairySight3 1.10 1.35
+$pitchset FB/FairySight4 1.10 1.35
+$pitchset FB/FairySight5 1.10 1.35
 
 $random FB/LesserFairySight { FB/LesserFairySight1 FB/LesserFairySight2 FB/LesserFairySight3 FB/LesserFairySight4 FB/LesserFairySight5 }
 FB/LesserFairySight1 "Sounds/Monsters/Fairy/FairySight1.ogg"
@@ -75,20 +82,21 @@ $volume FB/BarrageHit 0.85
 $limit FB/BarrageHit 15
 $rolloff FB/BarrageHit 150 800
   
-FB/BulletHellFire "Sounds/SFX/BulletHellFire.ogg"
-$volume FB/BulletHellFire 0.65
+FB/BulletHellFire "Sounds/SFX/BulletHellFireNew.ogg"
+$volume FB/BulletHellFire 0.45
 $limit FB/BulletHellFire 20
+$pitchset FB/BulletHellFire 1.1
 
 FB/LesserBulletHellFire "Sounds/SFX/BulletHellFire.ogg"
-$volume FB/LesserBulletHellFire 0.55
+$volume FB/LesserBulletHellFire 0.35
 $limit FB/LesserBulletHellFire 20
-$pitchset FB/LesserBulletHellFire 1.3 1.5
+$pitchset FB/LesserBulletHellFire 1.6 1.8
 
 $random FB/LesserBulletHellHit { FB/LesserBulletHellHit1 FB/LesserBulletHellHit2 FB/LesserBulletHellHit3 }
 FB/LesserBulletHellHit1 "Sounds/SFX/BulletHellHit1.ogg"
 FB/LesserBulletHellHit2 "Sounds/SFX/BulletHellHit2.ogg"
 FB/LesserBulletHellHit3 "Sounds/SFX/BulletHellHit3.ogg"
-$volume FB/LesserBulletHellHit 0.5
+$volume FB/LesserBulletHellHit 0.3
 $pitchset FB/LesserBulletHellHit1 1.6 1.8
 $pitchset FB/LesserBulletHellHit2 1.6 1.8
 $pitchset FB/LesserBulletHellHit3 1.6 1.8
@@ -98,6 +106,11 @@ $random FB/BulletHellHit { FB/BulletHellHit1 FB/BulletHellHit2 FB/BulletHellHit3
 FB/BulletHellHit1 "Sounds/SFX/BulletHellHit1.ogg"
 FB/BulletHellHit2 "Sounds/SFX/BulletHellHit2.ogg"
 FB/BulletHellHit3 "Sounds/SFX/BulletHellHit3.ogg"
+$volume FB/BulletHellHit 0.65
+$pitchset FB/BulletHellHit3 1.4
+$pitchset FB/BulletHellHit2 1.4
+$pitchset FB/BulletHellHit1 1.4
+$pitchset FB/BulletHellHit 1.4
 
 FB/StraightLaser "Sounds/SFX/BulletHellStraightLaser.ogg"
 $limit FB/StraightLaser 20

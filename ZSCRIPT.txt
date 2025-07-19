@@ -16,3 +16,5 @@ version "4.10.0"
 #include "Actors/Monsters/SoulFairy.txt"
 #include "Actors/Monsters/T2Fairy.txt"
 #include "Actors/Monsters/LesserFairy.txt"
+
+#include "Actors/Monsters/TestFairy.txt"
