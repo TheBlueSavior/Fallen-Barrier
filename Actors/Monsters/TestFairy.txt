@@ -1,4 +1,4 @@
-Class FB_TestFairy : FB_FairyBase
+Class FB_Fairy : FB_FairyBase
 {
   bool standoff;
   Default

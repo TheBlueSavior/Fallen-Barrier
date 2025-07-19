@@ -9,7 +9,7 @@ version "4.10.0"
 #include "Actors/FBVFX.txt"
 
 //Enemies
-#include "Actors/Monsters/Fairy.txt"
+//#include "Actors/Monsters/Fairy.txt"
 #include "Actors/Monsters/BarrageFairy.txt"
 #include "Actors/Monsters/MeleeFairy.txt"
 #include "Actors/Monsters/GhostFairy.txt"
