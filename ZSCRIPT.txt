@@ -18,3 +18,4 @@ version "4.10.0"
 #include "Actors/Monsters/LesserFairy.txt"
 
 #include "Actors/Monsters/TestFairy.txt"
+#include "Actors/Monsters/Restbringer.txt"

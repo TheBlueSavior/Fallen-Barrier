@@ -281,3 +281,49 @@ Class FB_Restbringer : FB_FairyBase
     Stop;
   }
 }
+
+Class FB_Yokai : Actor
+{
+  Default
+  {
+    Health 250;
+    Radius 20;
+    Height 35;
+    Mass 50;
+    MeleeRange 100;
+	MeleeThreshold 180;
+    Speed 3;
+    Scale 1.20;
+	Painchance 128;
+    SeeSound "FB/GreatFairySight";
+    DeathSound "";
+    AttackSound "";
+	PainSound "FB/GreatFairyPain";
+    Tag "Restbringer Fairy";
+    Monster;
+    +DONTHARMCLASS
+    +NOGRAVITY
+    +FLOAT
+    +FLOATBOB
+    +DONTFALL
+    +NOICEDEATH
+	+AVOIDMELEE
+	FloatBobStrength 0.15;
+	FloatBobFactor 0.5;
+	StencilColor "White";
+	Obituary "%o was put to rest.";
+  }
+	
+  States
+  {
+  Spawn:
+	YO_0 A 0 NoDelay;
+	"####" A 0
+		{
+		scale.x = 0.86;
+		scale.y = 1.00;
+		}
+	"####" A -1;
+	Stop;
+  }
+}

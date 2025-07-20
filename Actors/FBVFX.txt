@@ -157,7 +157,7 @@ Class FB_FairyFall : Actor
 			startroll: random(-180,180),
 			rollvel: random(0,4)
 			);
-	    A_StartSound("FB/DeathSFXGround",14);
+	    A_StartSound("FB/DeathSFXMedium",14,pitch:frandom(0.85,1));
 		A_SpawnParticleEx
 		(
 			"",
